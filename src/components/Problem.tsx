@@ -87,7 +87,8 @@ const Problem = () => {
             {[
               "No apareces en búsquedas locales cuando alguien te necesita.",
               "Tu web actual es lenta o simplemente no genera llamadas.",
-              "Estás perdiendo clientes reales frente a tu competencia."
+              "Estás perdiendo clientes reales frente a tu competencia.",
+              "Pérdida de clientes por falta de respuesta inmediata fuera de horario comercial: Nuestra IA cierra ventas mientras duermes."
             ].map((text, i) => (
               <motion.div
                 key={i}

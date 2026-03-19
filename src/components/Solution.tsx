@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Zap, Calendar, MapPin, CheckCircle2, Sparkles, X } from "lucide-react";
+import { Zap, Calendar, MapPin, CheckCircle2, Sparkles, X, Brain } from "lucide-react";
 
 const Solution = () => {
   const [selectedCard, setSelectedCard] = useState<number | null>(null);
@@ -45,6 +45,18 @@ const Solution = () => {
       ],
       color: "emerald",
     },
+    {
+      title: "Agentes de IA & Automatización",
+      description: "Tu empleado 24/7. Implementamos asistentes inteligentes que responden dudas y agendan citas automáticamente.",
+      extendedDescription: "No dejes que el tiempo de respuesta sea un obstáculo para tus ventas. Implementamos agentes de Inteligencia Artificial conversacional entrenados específicamente con los datos de tu negocio. Estos asistentes atienden a tus clientes en tiempo real, resuelven dudas frecuentes, cualifican leads y agendan citas directamente en tu calendario (o WhatsApp) las 24 horas del día. Es como tener a tu mejor comercial trabajando sin descanso para captar cada oportunidad.",
+      icon: <Brain className="w-10 h-10 text-indigo-400" />,
+      features: [
+        { text: "Respuesta inmediata 24/7", highlight: false }, 
+        { text: "IA entrenada con tu negocio", highlight: true }, 
+        { text: "Cierre de ventas automático", highlight: false }
+      ],
+      color: "indigo",
+    },
   ];
 
   return (
@@ -70,7 +82,7 @@ const Solution = () => {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {cards.map((card, index) => (
             <motion.div
               key={index}
@@ -79,7 +91,7 @@ const Solution = () => {
               viewport={{ once: true, margin: "-100px" }}
               transition={{ delay: index * 0.2 }}
               onClick={() => setSelectedCard(index)}
-              className="p-8 rounded-3xl glass transition-all duration-500 hover:border-primary/50 hover:-translate-y-2 cursor-pointer group shadow-lg shadow-black/20"
+              className="p-8 rounded-3xl glass transition-all duration-500 hover:border-primary/50 hover:-translate-y-2 cursor-pointer group shadow-lg shadow-black/20 flex flex-col h-full"
             >
               <div className="mb-6 p-4 rounded-2xl bg-white/5 w-fit group-hover:scale-110 transition-transform">
                 {card.icon}
@@ -93,7 +105,7 @@ const Solution = () => {
                   </span>
                 )}
               </div>
-              <p className="text-foreground/60 mb-8 leading-relaxed h-[80px]">
+              <p className="text-foreground/60 mb-8 leading-relaxed flex-1">
                 {card.description}
               </p>
               <ul className="space-y-4">
