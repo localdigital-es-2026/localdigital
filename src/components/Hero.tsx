@@ -45,7 +45,7 @@ const Hero = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight"
         >
-          Digitaliza tu esencia, <br />
+          Desarrollo Web en Madrid, <br />
           <span className="text-gradient">multiplica tu alcance.</span>
         </motion.h1>
 

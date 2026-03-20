@@ -127,6 +127,20 @@ const Solution = () => {
         </div>
       </div>
 
+      <div className="sr-only">
+        {cards.map((card, index) => (
+          <article key={`seo-card-${index}`}>
+            <h3>{card.title} - {card.badge || ''}</h3>
+            <p>{card.extendedDescription}</p>
+            <ul>
+              {card.features.map((feature, i) => (
+                <li key={`seo-feature-${i}`}>{feature.text}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+
       <AnimatePresence>
         {selectedCard !== null && (
           <>

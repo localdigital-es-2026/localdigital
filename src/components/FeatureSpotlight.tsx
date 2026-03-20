@@ -103,7 +103,7 @@ const Showcase = () => {
                 <div className="aspect-[16/10] overflow-hidden relative flex flex-col items-center group cursor-ns-resize">
                   <img
                     src="/VersionEscritorioReformas.png"
-                    alt="Ejemplo Web Ordenador"
+                    alt="Diseño web profesional para empresas en Madrid - Versión Escritorio"
                     className="w-full h-auto object-cover object-top transition-transform duration-[4000ms] ease-linear group-hover:-translate-y-[5%]"
                   />
                   {/* Abstract bg element */}
@@ -129,7 +129,7 @@ const Showcase = () => {
                 {/* Screen Content */}
                 <img
                   src="/versionMovilReformas.png"
-                  alt="Ejemplo Web Móvil"
+                  alt="Diseño web profesional para empresas en Madrid - Versión Móvil"
                   className="w-full h-auto max-w-none object-cover object-top transition-transform duration-[4000ms] ease-linear group-hover:-translate-y-[2%]"
                 />
               </motion.div>

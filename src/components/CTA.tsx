@@ -53,19 +53,19 @@ const CTA = () => {
 
         <footer className="mt-20 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex items-center gap-3">
-            <img src="/real-logo.png" alt="Local Digital Logo" className="h-8 w-auto object-contain" />
+            <img src="/real-logo.png" alt="Local Digital - Agencia de Desarrollo Web y SEO en Madrid" className="h-8 w-auto object-contain" />
             <span className="text-xl font-bold tracking-tight text-white">Local<span className="text-primary">Digital</span></span>
             <span className="text-sm text-foreground/40 ml-4 font-medium hidden sm:inline">© 2026 Local Digital Agency.</span>
           </div>
 
           <div className="flex gap-6">
-            <a href="#" className="p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors text-foreground/60 hover:text-primary">
+            <a href="#" aria-label="Instagram" className="p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors text-foreground/60 hover:text-primary">
               <Instagram className="w-5 h-5" />
             </a>
-            <a href="#" className="p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors text-foreground/60 hover:text-primary">
+            <a href="#" aria-label="Twitter" className="p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors text-foreground/60 hover:text-primary">
               <Twitter className="w-5 h-5" />
             </a>
-            <a href="#" className="p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors text-foreground/60 hover:text-primary">
+            <a href="#" aria-label="LinkedIn" className="p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors text-foreground/60 hover:text-primary">
               <Linkedin className="w-5 h-5" />
             </a>
           </div>
