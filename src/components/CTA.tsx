@@ -3,7 +3,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Send, Instagram, Twitter, Linkedin, Phone } from "lucide-react";
-import { LogoIcon } from "@/components/LogoIcon";
 
 const CTA = () => {
   return (
@@ -15,7 +14,7 @@ const CTA = () => {
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true }}
           className="p-12 md:p-16 rounded-[3rem] glass border-white/20 relative overflow-hidden"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -27,7 +26,7 @@ const CTA = () => {
 
           <div className="flex flex-col items-center gap-6">
             <a
-              href="https://wa.me/34606701267?text=Hola!%20Me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n%20acerca%20de%20vuestros%20servicios.%20Estoy%20pensando%20en%20crear%20una%20web%20o%20mejorar%20la%20que%20tengo%20y%20quer%C3%ADa%20informaci%C3%B3n."
+              href="https://wa.me/34606701267?text=Hola!%20Quiero%20solicitar%20una%20propuesta%20gratuita%20para%20mi%20negocio.%20%F0%9F%93%84"
               target="_blank"
               className="px-12 py-6 rounded-[2rem] bg-primary text-white text-xl font-black flex items-center justify-center gap-3 glow-button hover:scale-105 active:scale-95 transition-transform"
             >
@@ -52,20 +51,19 @@ const CTA = () => {
         </motion.div>
 
         <footer className="mt-20 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex items-center gap-3">
-            <img src="/real-logo.png" alt="Local Digital - Agencia de Desarrollo Web y SEO en Madrid" className="h-8 w-auto object-contain" />
-            <span className="text-xl font-bold tracking-tight text-white">Local<span className="text-primary">Digital</span></span>
-            <span className="text-sm text-foreground/40 ml-4 font-medium hidden sm:inline">© 2026 Local Digital Agency.</span>
+          <div className="flex items-center gap-2">
+            <span className="text-xl font-bold tracking-tight">Local<span className="text-primary">Digital</span></span>
+            <span className="text-sm text-foreground/40 ml-4 font-medium">© 2026 Local Digital Agency.</span>
           </div>
 
           <div className="flex gap-6">
-            <a href="#" aria-label="Instagram" className="p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors text-foreground/60 hover:text-primary">
+            <a href="#" className="p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors text-foreground/60 hover:text-primary">
               <Instagram className="w-5 h-5" />
             </a>
-            <a href="#" aria-label="Twitter" className="p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors text-foreground/60 hover:text-primary">
+            <a href="#" className="p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors text-foreground/60 hover:text-primary">
               <Twitter className="w-5 h-5" />
             </a>
-            <a href="#" aria-label="LinkedIn" className="p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors text-foreground/60 hover:text-primary">
+            <a href="#" className="p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors text-foreground/60 hover:text-primary">
               <Linkedin className="w-5 h-5" />
             </a>
           </div>

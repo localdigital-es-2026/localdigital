@@ -13,11 +13,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Local Digital | Desarrollo Web en Madrid y Agentes de IA",
     description: "Digitaliza tu esencia y multiplica tu alcance con webs rápidas, sistemas de reservas e IA.",
-    url: "https://localdigital-seven.vercel.app/",
+    url: "https://www.localdigital.es/",
     siteName: "Local Digital",
     images: [
       {
-        url: "https://localdigital-seven.vercel.app/og-image.jpg",
+        url: "https://www.localdigital.es/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Local Digital - Diseño web profesional para empresas en Madrid",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     type: "website",
   },
   alternates: {
-    canonical: 'https://localdigital-seven.vercel.app/',
+    canonical: 'https://www.localdigital.es/',
   },
 };
 
@@ -36,9 +36,30 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Local Digital",
+    "image": "https://www.localdigital.es/og-image.jpg",
+    "url": "https://www.localdigital.es/",
+    "telephone": "+34606701267",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Madrid",
+      "addressRegion": "Madrid",
+      "addressCountry": "ES"
+    },
+    "description": "Especialistas en transformar negocios locales en Madrid. Creamos webs de alto rendimiento, sistemas de reservas y agentes de IA.",
+    "priceRange": "$$"
+  };
+
   return (
     <html lang="es" className="scroll-smooth">
       <body className={`${inter.className} antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {children}
         <WhatsAppFloating />
       </body>

@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Check, Star, MousePointer2 } from "lucide-react";
 
 const Showcase = () => {
@@ -101,9 +102,11 @@ const Showcase = () => {
               >
                 {/* Screen Content */}
                 <div className="aspect-[16/10] overflow-hidden relative flex flex-col items-center group cursor-ns-resize">
-                  <img
+                  <Image
                     src="/VersionEscritorioReformas.png"
                     alt="Diseño web profesional para empresas en Madrid - Versión Escritorio"
+                    width={800}
+                    height={500}
                     className="w-full h-auto object-cover object-top transition-transform duration-[4000ms] ease-linear group-hover:-translate-y-[5%]"
                   />
                   {/* Abstract bg element */}
@@ -127,9 +130,11 @@ const Showcase = () => {
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-3 md:h-4 bg-[#1a1f2e] rounded-b-xl z-20" />
 
                 {/* Screen Content */}
-                <img
+                <Image
                   src="/versionMovilReformas.png"
                   alt="Diseño web profesional para empresas en Madrid - Versión Móvil"
+                  width={300}
+                  height={600}
                   className="w-full h-auto max-w-none object-cover object-top transition-transform duration-[4000ms] ease-linear group-hover:-translate-y-[2%]"
                 />
               </motion.div>

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X, Phone } from "lucide-react";
 import { LogoIcon } from "@/components/LogoIcon";
 
@@ -38,7 +39,7 @@ const Navigation = () => {
           animate={{ opacity: 1, x: 0 }}
           className="flex items-center gap-3"
         >
-          <img src="/real-logo.png" alt="Local Digital - Desarrollo Web en Madrid" className="h-10 w-auto object-contain drop-shadow-[0_0_15px_rgba(59,130,246,0.5)]" />
+          <Image src="/real-logo.png" alt="Local Digital - Desarrollo Web en Madrid" width={40} height={40} className="h-10 w-auto object-contain drop-shadow-[0_0_15px_rgba(59,130,246,0.5)]" />
           <span className="text-xl font-bold tracking-tight text-white">Local<span className="text-primary">Digital</span></span>
         </motion.div>
 
