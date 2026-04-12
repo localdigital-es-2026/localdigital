@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { TrendingUp, ArrowRight } from "lucide-react";
 
 const WA_URL =
-  "https://wa.me/34603038050?text=Hola!%20Me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20vuestros%20servicios%20para%20mi%20negocio.%20%C2%BFHablamos%3F";
+  "https://wa.me/34603038050?text=Hola!%20Nos%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20vuestros%20servicios%20para%20nuestro%20negocio.%20%C2%BFHablamos%3F";
 
 const cases = [
   {
@@ -157,7 +157,7 @@ const CaseStudies = () => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-sm text-primary font-semibold hover:gap-3 transition-all"
                 >
-                  Quiero algo así para mi negocio
+                  Quiero algo así para nuestro negocio
                   <ArrowRight className="w-4 h-4" />
                 </a>
               </div>

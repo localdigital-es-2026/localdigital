@@ -7,13 +7,13 @@ import Image from "next/image";
 import { Menu, X, Phone } from "lucide-react";
 
 const WA_URL =
-  "https://wa.me/34603038050?text=Hola!%20Me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20vuestros%20servicios%20para%20mi%20negocio.%20%C2%BFHablamos%3F";
+  "https://wa.me/34603038050?text=Hola!%20Nos%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20vuestros%20servicios%20para%20nuestro%20negocio.%20%C2%BFHablamos%3F";
 
 const navLinks = [
   { name: "Servicios", href: "/#servicios" },
   { name: "Casos de éxito", href: "/#casos-de-exito" },
   { name: "Cómo funciona", href: "/#proceso" },
-  { name: "Sobre mí", href: "/#sobre-mi" },
+  { name: "Sobre nosotros", href: "/#sobre-nosotros" },
   { name: "FAQ", href: "/#faq" },
 ];
 

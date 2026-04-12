@@ -2,38 +2,47 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { MessageCircle, Hammer, Rocket } from "lucide-react";
+import { MessageCircle, Hammer, Rocket, Target, BarChart3 } from "lucide-react";
 
 const WA_URL =
-  "https://wa.me/34603038050?text=Hola!%20Me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20vuestros%20servicios%20para%20mi%20negocio.%20%C2%BFHablamos%3F";
+  "https://wa.me/34603038050?text=Hola!%20Nos%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20vuestros%20servicios%20para%20nuestro%20negocio.%20%C2%BFHablamos%3F";
 
 const steps = [
   {
     number: "01",
     icon: <MessageCircle className="w-6 h-6" />,
-    title: "Hablamos",
+    title: "Primer contacto",
     description:
-      "Empezamos con una llamada gratuita de 30 minutos. Me cuentas cómo funciona tu negocio, qué necesitas y qué te preocupa. Sin tecnicismos, sin presión.",
-    duration: "Gratis · 30 minutos",
+      "Empezamos con una llamada gratuita de 30 minutos. Nos contáis cómo funciona vuestro negocio, qué necesitáis y qué os preocupa. Sin tecnicismos, sin presión.",
+    duration: "Gratis · 30 min",
     color: "blue",
   },
   {
     number: "02",
-    icon: <Hammer className="w-6 h-6" />,
-    title: "Construimos",
+    icon: <Target className="w-6 h-6" />,
+    title: "Propuesta a medida",
     description:
-      "Diseñamos y desarrollamos todo en 2–3 semanas. Cada paso lo apruebas tú. Sin sorpresas, sin letra pequeña. El resultado es exactamente lo que acordamos.",
-    duration: "2–3 semanas",
+      "Analizamos vuestra competencia y vuestro mercado local para diseñaros una solución que capture contactos desde el primer día.",
+    duration: "2–3 días",
     color: "purple",
   },
   {
     number: "03",
-    icon: <Rocket className="w-6 h-6" />,
-    title: "Tu negocio crece",
+    icon: <Hammer className="w-6 h-6" />,
+    title: "Desarrollo e IA",
     description:
-      "Tu web empieza a trabajar para ti. Medimos los resultados y te mantenemos informado. Si algo no funciona, lo ajustamos.",
-    duration: "Resultados desde el mes 1",
+      "Nos encargamos de construir vuestra web y configurar vuestras automatizaciones. Estaréis informados en todo momento de los avances.",
+    duration: "2-3 semanas",
     color: "emerald",
+  },
+  {
+    number: "04",
+    icon: <BarChart3 className="w-6 h-6" />,
+    title: "Lanzamiento y datos",
+    description:
+      "Ponemos todo en marcha y empezamos a medir. No nos quedamos en el diseño; nos ocupamos de que todo funcione como un reloj.",
+    duration: "Resultados reales",
+    color: "blue",
   },
 ];
 
@@ -82,7 +91,7 @@ const Process = () => {
             transition={{ delay: 0.1 }}
             className="text-3xl md:text-5xl font-bold"
           >
-            Tres pasos.{" "}
+            Cuatro pasos.{" "}
             <span className="text-gradient">Sin complicaciones.</span>
           </motion.h2>
         </div>

@@ -26,8 +26,8 @@ const faqs = [
     a: "Funciona para cualquier negocio que tenga clientes locales: peluquerías, clínicas, restaurantes, fontaneros, academias, tiendas de barrio y muchos más. La clave es tener algo que ofrecer en tu zona, lo demás lo hacemos nosotros.",
   },
   {
-    q: "¿Tengo que saber de tecnología para trabajar contigo?",
-    a: "No. Explico todo en un lenguaje que entiende cualquier persona. Tú me dices qué quieres conseguir y yo me encargo del resto. Si en algún momento no entiendes algo, me lo dices y te lo explico de otra forma.",
+    q: "¿Tengo que saber de tecnología para trabajar con vosotros?",
+    a: "No. Explicamos todo en un lenguaje que entiende cualquier persona. Vosotros nos decís qué queréis conseguir y nosotros nos encargamos del resto. Si en algún momento no entendéis algo, nos lo decís y os lo explicamos de otra forma.",
   },
 ];
 
@@ -38,14 +38,14 @@ const FAQ = () => {
     <section id="faq" className="py-24 bg-white/[0.015] border-t border-white/5">
       <div className="max-w-3xl mx-auto px-6">
         {/* Header */}
-        <div className="text-center mb-14">
+        <div className="text-center mb-16">
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-sm font-bold uppercase tracking-widest text-primary mb-3"
           >
-            Preguntas frecuentes
+            Lo que nos suelen preguntar
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -127,7 +127,7 @@ const FAQ = () => {
         >
           ¿Tienes otra pregunta?{" "}
           <a
-              href="https://wa.me/34603038050?text=Hola!%20Me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20vuestros%20servicios%20para%20mi%20negocio.%20%C2%BFHablamos%3F"
+              href="https://wa.me/34603038050?text=Hola!%20Nos%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20vuestros%20servicios%20para%20nuestro%20negocio.%20%C2%BFHablamos%3F"
             className="text-primary font-semibold hover:underline"
           >
             Escríbeme directamente →

@@ -8,7 +8,7 @@ const WA_URL =
   "https://wa.me/34603038050?text=Hola!%20Me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20vuestros%20servicios%20para%20mi%20negocio.%20%C2%BFHablamos%3F";
 
 const WA_BOOKING_URL =
-  "https://wa.me/34603038050?text=Hola!%20Me%20gustar%C3%ADa%20reservar%20una%20llamada%20contigo%20para%20informarme%20sobre%20vuestros%20servicios.%20%C2%BFCu%C3%A1ndo%20te%20viene%20bien%3F";
+  "https://wa.me/34603038050?text=Hola!%20Me%20gustar%C3%ADa%20reservar%20una%20llamada%20con%20vosotros%20para%20informarme%20sobre%20vuestros%20servicios.%20%C2%BFCu%C3%A1ndo%20os%20viene%20bien%3F";
 
 const bullets = [
   "Sin permanencia · por proyecto o mensual",

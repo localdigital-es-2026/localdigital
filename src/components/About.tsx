@@ -6,29 +6,29 @@ import Image from "next/image";
 import { Code2, Heart, Lightbulb, ArrowRight } from "lucide-react";
 
 const WA_URL =
-  "https://wa.me/34603038050?text=Hola!%20Me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20vuestros%20servicios%20para%20mi%20negocio.%20%C2%BFHablamos%3F";
+  "https://wa.me/34603038050?text=Hola!%20Nos%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20vuestros%20servicios%20para%20nuestro%20negocio.%20%C2%BFHablamos%3F";
 
 const values = [
   {
     icon: <Heart className="w-5 h-5 text-rose-400" />,
-    label: "Me implico de verdad",
-    desc: "Cada proyecto lo trato como si fuera el mío.",
+    label: "Nos implicamos",
+    desc: "Tratamos cada proyecto como si fuera el nuestro.",
   },
   {
     icon: <Lightbulb className="w-5 h-5 text-amber-400" />,
-    label: "Tecnología actualizada",
-    desc: "Formación reciente, sin vicios ni métodos obsoletos.",
+    label: "Tecnología de hoy",
+    desc: "Formación reciente en DAM, sin métodos obsoletos.",
   },
   {
     icon: <Code2 className="w-5 h-5 text-primary" />,
-    label: "Precios justos",
-    desc: "Sin intermediarios ni equipos enormes que encarecer.",
+    label: "Trato directo",
+    desc: "Sin intermediarios. Hablas directamente con nosotros.",
   },
 ];
 
 const About = () => {
   return (
-    <section id="sobre-mi" className="py-24 relative overflow-hidden">
+    <section id="sobre-nosotros" className="py-24 relative overflow-hidden">
       {/* Background glow */}
       <div className="absolute top-1/2 right-0 -translate-y-1/2 w-96 h-96 bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
 
@@ -42,15 +42,15 @@ const About = () => {
             transition={{ duration: 0.7 }}
             className="flex-shrink-0"
           >
-            <div className="relative w-64 h-64 md:w-80 md:h-80">
+            <div className="relative w-64 h-64 md:w-96 md:h-96">
               {/* Glow ring */}
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/30 via-purple-500/20 to-transparent blur-2xl" />
-              <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-white/10 glass">
+              <div className="relative w-full h-full rounded-3xl overflow-hidden border-2 border-white/10 glass">
                 <Image
-                  src="/beatriz-avatar.png"
-                  alt="Beatriz - Fundadora de Local Digital"
+                  src="/equipo_local_digital.png"
+                  alt="Beatriz y Mauri - Fundadores de Local Digital"
                   fill
-                  className="object-cover object-top"
+                  className="object-cover"
                 />
               </div>
               {/* Floating badge */}
@@ -62,7 +62,7 @@ const About = () => {
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-accent shadow-[0_0_8px_rgba(16,185,129,0.8)] animate-pulse" />
                   <span className="text-xs font-bold text-foreground/80">
-                    Disponible ahora
+                    Disponibles ahora
                   </span>
                 </div>
               </motion.div>
@@ -77,7 +77,7 @@ const About = () => {
               viewport={{ once: true }}
               className="text-sm font-bold uppercase tracking-widest text-primary mb-3"
             >
-              Quién hay detrás
+              Quiénes somos
             </motion.p>
 
             <motion.h2
@@ -87,10 +87,10 @@ const About = () => {
               transition={{ delay: 0.1 }}
               className="text-3xl md:text-4xl font-bold mb-6 leading-tight"
             >
-              Hola, soy{" "}
-              <span className="text-gradient">Beatriz.</span>
+              Hola, somos{" "}
+              <span className="text-gradient">Beatriz y Mauri.</span>
               <br />
-              Y Local Digital soy yo.
+              Tus desarrolladores de confianza.
             </motion.h2>
 
             <motion.div
@@ -101,24 +101,25 @@ const About = () => {
               className="space-y-4 text-foreground/60 leading-relaxed mb-8"
             >
               <p>
-                Soy desarrolladora web recién titulada en DAM y fundadora de
-                Local Digital. No tengo 10 años de experiencia, pero sí algo
-                que muchas agencias han perdido por el camino:{" "}
+                Somos dos desarrolladores web recién titulados en DAM y las caras
+                detrás de Local Digital. No somos una gran corporación con cientos
+                de empleados, y precisamente esa es nuestra mayor ventaja:{" "}
                 <span className="text-foreground/85 font-medium">
-                  las ganas de hacerlo bien desde el principio.
+                  nos encargamos personalmente de cada línea de código de tu proyecto.
                 </span>
               </p>
               <p>
-                Creé Local Digital porque vi cómo negocios increíbles seguían
-                perdiendo clientes simplemente por no tener presencia digital.
-                Sabía que podía ayudar, y decidí hacerlo.
+                Creamos Local Digital porque vimos cómo negocios increíbles seguían
+                perdiendo oportunidades simplemente por no tener una presencia digital
+                que estuviera a su altura. Sabíamos que podíamos ayudar con un trato
+                honesto, directo y sin tecnicismos innecesarios.
               </p>
               <p>
-                Cada proyecto lo trato como si fuera el mío. Porque de cada
-                resultado aprendo algo nuevo, y eso me motiva a hacerlo mejor
-                cada vez.{" "}
+                No buscamos ser una agencia más; buscamos ser tus aliados tecnológicos.
+                Nos apasiona ver cómo una web bien hecha y una automatización inteligente
+                pueden cambiar el día a día de un negocio local.{" "}
                 <span className="text-foreground/85 font-medium">
-                  Si buscas a alguien que se involucre de verdad y te cobre
+                  Si buscas a alguien que se involucre, te hable claro y te cobre
                   un precio justo, estás en el sitio correcto.
                 </span>
               </p>

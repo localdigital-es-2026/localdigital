@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Send, Phone, CheckCircle2, User, Building2, Mail, MessageSquare, Loader2 } from "lucide-react";
 
 const WA_URL =
-  "https://wa.me/34603038050?text=Hola!%20Me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20vuestros%20servicios%20para%20mi%20negocio.%20%C2%BFHablamos%3F";
+  "https://wa.me/34603038050?text=Hola!%20Nos%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20vuestros%20servicios%20para%20nuestro%20negocio.%20%C2%BFHablamos%3F";
 
 const trust = [
   "Sin permanencia",
@@ -124,7 +124,7 @@ const CTA = () => {
 
                 <div className="space-y-4">
                   <p className="text-sm font-medium text-foreground/40 uppercase tracking-widest text-center md:text-left">
-                    ¿Por qué trabajar conmigo?
+                    ¿Por qué trabajar con nosotros?
                   </p>
                   <div className="space-y-3">
                     {trust.map((item) => (
@@ -155,7 +155,7 @@ const CTA = () => {
                         </div>
                         <h3 className="text-xl font-bold mb-2">¡Recibido correctamente!</h3>
                         <p className="text-foreground/50 text-sm">
-                          Me pondré en contacto contigo en las próximas horas.
+                          Nos pondremos en contacto contigo en las próximas horas.
                         </p>
                       </motion.div>
                     ) : (
@@ -169,7 +169,7 @@ const CTA = () => {
                         <div className="mb-6 text-center md:text-left">
                           <h3 className="text-lg font-bold mb-1">Déjame tus datos</h3>
                           <p className="text-xs text-foreground/40 italic">
-                            ¿Prefieres que te contacte yo? Te escribo en menos de 24h.
+                            ¿Prefieres que te contactemos nosotros? Te escribimos en menos de 24h.
                           </p>
                         </div>
 

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { CheckCircle2, Sparkles, TrendingUp, Clock, Search } from "lucide-react";
 
 const WA_URL =
-  "https://wa.me/34603038050?text=Hola!%20Me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20vuestros%20servicios%20para%20mi%20negocio.%20%C2%BFHablamos%3F";
+  "https://wa.me/34603038050?text=Hola!%20Nos%20gustar%C3%ADa%20recibir%20informaci%C3%B3n%20sobre%20nuestros%20servicios%20para%20nuestros%20negocios.%20%C2%BFHablamos%3F";
 
 const differentiators = [
   {

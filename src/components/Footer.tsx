@@ -13,7 +13,7 @@ const Footer = () => {
     { href: "#servicios", label: "Servicios" },
     { href: "#casos-de-exito", label: "Casos de éxito" },
     { href: "#proceso", label: "Cómo trabajamos" },
-    { href: "#sobre-mi", label: "Sobre mí" },
+    { href: "#sobre-nosotros", label: "Sobre nosotros" },
     { href: "#faq", label: "Preguntas frecuentes" },
   ];
 

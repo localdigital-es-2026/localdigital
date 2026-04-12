@@ -55,7 +55,7 @@ export default function PoliticaPrivacidad() {
               <div className="p-6 rounded-2xl bg-white/5 border border-white/10 space-y-2 text-sm">
                 <p>
                   <span className="font-semibold text-foreground/80">Identidad:</span>{" "}
-                  Beatriz{" "}
+                  Mauricio{" "}
                   <span className="text-amber-400 text-xs">
                     ⚠️ [COMPLETAR: apellidos]
                   </span>
