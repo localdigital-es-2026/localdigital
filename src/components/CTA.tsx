@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, Phone, CheckCircle2, User, Building2, Mail, MessageSquare, Loader2 } from "lucide-react";
 
@@ -21,7 +21,7 @@ const CTA = () => {
     mensaje: "",
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
     setFormState("loading");
 
@@ -46,12 +46,12 @@ const CTA = () => {
       alert("Hubo un problema al enviar el mensaje. Por favor, inténtalo por WhatsApp.");
       setFormState("idle");
     }
-  };
+  }, [formData]);
 
   return (
     <section id="contacto" className="py-24 relative overflow-hidden bg-primary/[0.03]">
       {/* Decorative glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-primary/10 rounded-full blur-[120px] -z-10 pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-primary/10 rounded-full blur-[60px] md:blur-[120px] -z-10 pointer-events-none" style={{ willChange: "transform" }} />
 
       <div className="max-w-4xl mx-auto px-6">
         <motion.div
@@ -259,5 +259,5 @@ const CTA = () => {
   );
 };
 
-export default CTA;
+export default React.memo(CTA);
 

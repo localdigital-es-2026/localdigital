@@ -1,14 +1,16 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import Problem from "@/components/Problem";
-import Solution from "@/components/Solution";
-import Services from "@/components/Services";
-import CaseStudies from "@/components/CaseStudies";
-import Process from "@/components/Process";
-import About from "@/components/About";
-import CTA from "@/components/CTA";
-import FAQ from "@/components/FAQ";
-import Footer from "@/components/Footer";
+import dynamic from "next/dynamic";
+
+const Solution = dynamic(() => import("@/components/Solution"));
+const Services = dynamic(() => import("@/components/Services"));
+const CaseStudies = dynamic(() => import("@/components/CaseStudies"));
+const Process = dynamic(() => import("@/components/Process"));
+const About = dynamic(() => import("@/components/About"));
+const CTA = dynamic(() => import("@/components/CTA"));
+const FAQ = dynamic(() => import("@/components/FAQ"));
+const Footer = dynamic(() => import("@/components/Footer"));
 
 export default function Home() {
   return (

@@ -6,7 +6,7 @@ import WhatsAppFloating from "@/components/WhatsAppFloating";
 import CookieBanner from "@/components/CookieBanner";
 import { GoogleTagManager } from '@next/third-parties/google';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.localdigital.es"),

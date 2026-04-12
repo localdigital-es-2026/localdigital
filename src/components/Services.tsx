@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Globe,
@@ -95,6 +95,10 @@ const colorMap: Record<string, { border: string; icon: string; badge: string; re
 const Services = () => {
   const [expanded, setExpanded] = useState<number | null>(null);
 
+  const handleToggle = useCallback((index: number) => {
+    setExpanded((prev) => (prev === index ? null : index));
+  }, []);
+
   return (
     <section id="servicios" className="py-24 bg-white/[0.015] border-y border-white/5 relative">
       <div className="max-w-7xl mx-auto px-6">
@@ -174,7 +178,7 @@ const Services = () => {
 
                   {/* Toggle includes */}
                   <button
-                    onClick={() => setExpanded(isExpanded ? null : i)}
+                    onClick={() => handleToggle(i)}
                     className="flex items-center gap-2 text-sm font-semibold text-foreground/60 hover:text-foreground/90 transition-colors mb-4 group"
                     aria-expanded={isExpanded}
                     id={`service-toggle-${i}`}
@@ -257,4 +261,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default React.memo(Services);
