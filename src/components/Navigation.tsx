@@ -7,7 +7,7 @@ import Image from "next/image";
 import { Menu, X, Phone } from "lucide-react";
 
 const WA_URL =
-  "https://wa.me/34606701267?text=Hola%20Beatriz!%20He%20visto%20tu%20web%20y%20me%20gustar%C3%ADa%20hablar%20sobre%20c%C3%B3mo%20conseguir%20m%C3%A1s%20clientes%20para%20mi%20negocio.";
+  "https://wa.me/34603038050?text=Hola%20Beatriz!%20He%20visto%20tu%20web%20y%20me%20gustar%C3%ADa%20hablar%20sobre%20c%C3%B3mo%20conseguir%20m%C3%A1s%20clientes%20para%20mi%20negocio.";
 
 const navLinks = [
   { name: "Servicios", href: "/#servicios" },
@@ -77,11 +77,11 @@ const Navigation = () => {
         {/* Desktop CTA */}
         <div className="hidden lg:flex items-center gap-3">
           <a
-            href="tel:+34606701267"
+            href="tel:+34603038050"
             className="flex items-center gap-1.5 text-sm font-medium text-foreground/50 hover:text-foreground/80 transition-colors"
           >
             <Phone className="w-4 h-4" />
-            606 701 267
+            603 03 80 50
           </a>
           <motion.a
             href={WA_URL}
@@ -137,12 +137,12 @@ const Navigation = () => {
                   Contactar por WhatsApp
                 </a>
                 <a
-                  href="tel:+34606701267"
+                  href="tel:+34603038050"
                   onClick={() => setIsOpen(false)}
                   className="w-full py-4 rounded-xl glass border border-white/10 text-white font-bold flex items-center justify-center gap-2 hover:bg-white/10 transition-colors"
                 >
                   <Phone className="w-5 h-5" />
-                  606 701 267
+                  603 03 80 50
                 </a>
               </div>
             </div>

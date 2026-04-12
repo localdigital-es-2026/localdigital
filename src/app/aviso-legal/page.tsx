@@ -64,13 +64,11 @@ export default function AvisoLegal() {
                 </p>
                 <p>
                   <span className="font-semibold text-foreground/80">Teléfono de contacto:</span>{" "}
-                  +34 606 701 267
+                  +34 603 03 80 50
                 </p>
                 <p>
                   <span className="font-semibold text-foreground/80">Correo electrónico:</span>{" "}
-                  <span className="text-amber-400 text-xs">
-                    ⚠️ [COMPLETAR: tu email de contacto]
-                  </span>
+                  localdigital.es@gmail.com
                 </p>
                 <p>
                   <span className="font-semibold text-foreground/80">Sitio web:</span>{" "}

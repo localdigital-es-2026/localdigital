@@ -127,9 +127,7 @@ const FAQ = () => {
         >
           ¿Tienes otra pregunta?{" "}
           <a
-            href="https://wa.me/34606701267?text=Hola%20Beatriz!%20Tengo%20una%20pregunta%20sobre%20tus%20servicios."
-            target="_blank"
-            rel="noopener noreferrer"
+              href="https://wa.me/34603038050?text=Hola!%20Me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n%20acerca%20de%20vuestros%20servicios.%20Estoy%20pensando%20en%20crear%20una%20web%20o%20mejorar%20la%20que%20tengo%20y%20quer%C3%ADa%20informaci%C3%B3n."
             className="text-primary font-semibold hover:underline"
           >
             Escríbeme directamente →

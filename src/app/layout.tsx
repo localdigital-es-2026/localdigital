@@ -53,7 +53,7 @@ export default function RootLayout({
     "name": "Local Digital",
     "image": "https://www.localdigital.es/og-image.jpg",
     "url": "https://www.localdigital.es/",
-    "telephone": "+34606701267",
+    "telephone": "+34603038050",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Madrid",

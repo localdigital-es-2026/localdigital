@@ -74,13 +74,11 @@ export default function PoliticaPrivacidad() {
                 </p>
                 <p>
                   <span className="font-semibold text-foreground/80">Teléfono:</span>{" "}
-                  +34 606 701 267
+                  +34 603 03 80 50
                 </p>
                 <p>
                   <span className="font-semibold text-foreground/80">Email de contacto:</span>{" "}
-                  <span className="text-amber-400 text-xs">
-                    ⚠️ [COMPLETAR: tu email de contacto]
-                  </span>
+                  localdigital.es@gmail.com
                 </p>
               </div>
             </section>
@@ -100,7 +98,7 @@ export default function PoliticaPrivacidad() {
                   teléfono y/o correo electrónico.
                 </li>
                 <li>
-                  <strong>WhatsApp Business</strong> (+34 606 701 267): los datos
+                  <strong>WhatsApp Business</strong> (+34 603 03 80 50): los datos
                   que compartas en la conversación (nombre, consulta, datos de
                   tu negocio).
                 </li>
@@ -253,10 +251,10 @@ export default function PoliticaPrivacidad() {
                   Para ejercer cualquiera de estos derechos, contacta con
                   nosotros en:{" "}
                   <a
-                    href="tel:+34606701267"
+                    href="tel:+34603038050"
                     className="text-primary font-semibold hover:underline"
                   >
-                    +34 606 701 267
+                    +34 603 03 80 50
                   </a>{" "}
                   indicando «Protección de datos» en tu mensaje.
                 </p>

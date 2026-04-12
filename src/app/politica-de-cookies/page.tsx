@@ -226,10 +226,10 @@ export default function PoliticaCookies() {
                 Si tienes dudas sobre nuestra política de cookies, puedes
                 contactar con nosotros en el{" "}
                 <a
-                  href="tel:+34606701267"
+                  href="tel:+34603038050"
                   className="text-primary font-semibold hover:underline"
                 >
-                  +34 606 701 267
+                  +34 603 03 80 50
                 </a>{" "}
                 o consultar la{" "}
                 <a

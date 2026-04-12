@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { Send, Phone, CheckCircle2 } from "lucide-react";
 
 const WA_URL =
-  "https://wa.me/34606701267?text=Hola%20Beatriz!%20Quiero%20reservar%20una%20llamada%20gratuita%20para%20ver%20c%C3%B3mo%20puedes%20ayudar%20a%20mi%20negocio.";
+  "https://wa.me/34603038050?text=Hola!%20Me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n%20acerca%20de%20vuestros%20servicios.%20Estoy%20pensando%20en%20crear%20una%20web%20o%20mejorar%20la%20que%20tengo%20y%20quer%C3%ADa%20informaci%C3%B3n.";
 
 const trust = [
   "Sin permanencia",
@@ -81,12 +81,11 @@ const CTA = () => {
               </a>
 
               <a
-                id="cta-final-phone"
-                href="tel:+34606701267"
-                className="w-full sm:w-auto px-8 py-5 rounded-2xl glass border border-white/10 font-bold flex items-center justify-center gap-2 hover:bg-white/10 transition-colors"
+                href="tel:+34603038050"
+                className="flex items-center gap-2 text-foreground/50 hover:text-primary transition-colors mt-2"
               >
-                <Phone className="w-5 h-5 text-primary" />
-                Llamar ahora
+                <Phone className="w-4 h-4" />
+                +34 603 03 80 50
               </a>
             </motion.div>
 

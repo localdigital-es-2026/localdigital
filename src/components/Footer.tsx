@@ -94,20 +94,20 @@ const Footer = () => {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="tel:+34606701267"
+                  href="tel:+34603038050"
                   className="flex items-center gap-2 text-sm text-foreground/50 hover:text-primary transition-colors"
                 >
                   <Phone className="w-4 h-4" />
-                  +34 606 701 267
+                  +34 603 03 80 50
                 </a>
               </li>
               <li>
                 <a
-                  href="mailto:hola@localdigital.es"
+                  href="mailto:localdigital.es@gmail.com"
                   className="flex items-center gap-2 text-sm text-foreground/50 hover:text-primary transition-colors"
                 >
                   <Mail className="w-4 h-4" />
-                  hola@localdigital.es
+                  localdigital.es@gmail.com
                 </a>
               </li>
             </ul>
