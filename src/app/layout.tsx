@@ -63,7 +63,20 @@ export default function RootLayout({
       "addressCountry": "ES"
     },
     "description": "Especialistas en transformar negocios locales en Madrid. Creamos webs de alto rendimiento, sistemas de reservas y agentes de IA.",
-    "priceRange": "$$"
+    "priceRange": "$$",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "opens": "09:00",
+      "closes": "20:00"
+    }
   };
 
   return (
