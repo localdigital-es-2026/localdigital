@@ -3,16 +3,27 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 import WhatsAppFloating from "@/components/WhatsAppFloating";
+import CookieBanner from "@/components/CookieBanner";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Local Digital | Desarrollo Web en Madrid y Agentes de IA para Negocios",
-  description: "Especialistas en transformar negocios locales en Madrid. Creamos webs de alto rendimiento, sistemas de reservas y agentes de IA. ¡Multiplica tu alcance hoy!",
-  keywords: ["Desarrollo Web en Madrid", "Sistemas de Reservas", "Agentes de IA para negocios", "SEO Local", "Diseño web Madrid"],
+  title: "Local Digital | Más clientes para tu negocio local con web, SEO e IA",
+  description: "Creamos webs que consiguen clientes, posicionamos tu negocio en Google Maps y automatizamos la captación con IA. Presupuesto gratis y sin compromiso.",
+  keywords: [
+    "diseño web para negocios locales",
+    "web que consigue clientes",
+    "SEO local Madrid",
+    "aparecer primero en Google Maps",
+    "automatización con IA para negocios",
+    "agente IA para negocios locales",
+    "página web para comercios",
+    "más clientes para mi negocio",
+    "desarrollo web Madrid",
+  ],
   openGraph: {
-    title: "Local Digital | Desarrollo Web en Madrid y Agentes de IA",
-    description: "Digitaliza tu esencia y multiplica tu alcance con webs rápidas, sistemas de reservas e IA.",
+    title: "Local Digital | Más clientes para tu negocio local",
+    description: "Web, SEO local e IA para que tu negocio consiga más clientes. Presupuesto gratis.",
     url: "https://www.localdigital.es/",
     siteName: "Local Digital",
     images: [
@@ -20,7 +31,7 @@ export const metadata: Metadata = {
         url: "https://www.localdigital.es/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Local Digital - Diseño web profesional para empresas en Madrid",
+        alt: "Local Digital - Más clientes para negocios locales",
       },
     ],
     locale: "es_ES",
@@ -62,6 +73,7 @@ export default function RootLayout({
         />
         {children}
         <WhatsAppFloating />
+        <CookieBanner />
       </body>
     </html>
   );

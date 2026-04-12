@@ -2,119 +2,122 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, ChevronRight, Star, Store, Stethoscope, ShoppingBag, Hammer, Scissors } from "lucide-react";
-import Link from "next/link";
+import { ArrowRight, Phone, CheckCircle2 } from "lucide-react";
+
+const WA_URL =
+  "https://wa.me/34606701267?text=Hola%20Beatriz!%20He%20visto%20tu%20web%20y%20me%20gustar%C3%ADa%20que%20me%20lleguen%20m%C3%A1s%20consultas%20para%20mi%20negocio.%20%C2%BFHablamos%3F";
+
+const WA_BOOKING_URL =
+  "https://wa.me/34606701267?text=Hola%20Beatriz!%20Me%20gustar%C3%ADa%20reservar%20una%20llamada%20contigo%20para%20hablar%20de%20mi%20negocio.";
+
+const bullets = [
+  "Sin permanencia · por proyecto o mensual",
+  "Presupuesto gratis en 24h · sin rodeos",
+  "Medimos visitas, clics y formularios recibidos",
+];
 
 const Hero = () => {
   return (
-    <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
-      {/* Background Orbs Animated */}
-      <motion.div 
-        animate={{ 
-          x: [0, 100, -50, 0], 
-          y: [0, 60, -40, 0],
-          scale: [1, 1.2, 0.8, 1] 
-        }}
-        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px] -z-10" 
+    <section
+      id="inicio"
+      className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden"
+    >
+      {/* Animated background orbs */}
+      <motion.div
+        animate={{ x: [0, 80, -40, 0], y: [0, 50, -30, 0], scale: [1, 1.2, 0.85, 1] }}
+        transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/15 rounded-full blur-[140px] -z-10 pointer-events-none"
       />
-      <motion.div 
-        animate={{ 
-          x: [0, -80, 50, 0], 
-          y: [0, -50, 70, 0],
-          scale: [1, 0.9, 1.1, 1] 
-        }}
-        transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px] -z-10" 
+      <motion.div
+        animate={{ x: [0, -70, 40, 0], y: [0, -40, 60, 0], scale: [1, 0.9, 1.15, 1] }}
+        transition={{ duration: 28, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-[120px] -z-10 pointer-events-none"
       />
 
-      <div className="max-w-7xl mx-auto px-6 text-center">
+      <div className="max-w-5xl mx-auto px-6 text-center">
+
+        {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border-white/20 text-xs font-medium text-primary mb-8"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border-white/20 text-xs font-semibold text-primary mb-10"
         >
-          <Star className="w-3 h-3 fill-current" />
-          <span>Liderando la era digital para comercios locales</span>
+          <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+          Especialistas en negocios locales · Madrid y toda España
         </motion.div>
 
+        {/* Titular — Corto, claro y potente */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 leading-[1.1]"
         >
-          Desarrollo Web en Madrid, <br />
-          <span className="text-gradient">multiplica tu alcance.</span>
+          Tu negocio local, <br className="hidden sm:block" />
+          <span className="text-gradient">captando contactos en piloto automático.</span>
         </motion.h1>
 
+        {/* Subtítulo — Realista, fácil de leer, incluye los 4 pilares */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="max-w-2xl mx-auto text-lg md:text-xl text-foreground/60 mb-10 leading-relaxed"
+          className="max-w-2xl mx-auto text-base md:text-lg text-foreground/60 mb-8 leading-relaxed"
         >
-          Transformamos negocios tradicionales en experiencias digitales de alto rendimiento. 
-          Resultados medibles, diseño premium y tecnología de vanguardia.
+          Web, posicionamiento local e <span className="text-white">IA que gestiona tus contactos incluso cuando no estás</span>. Todo medido con datos reales de visitas, clics y formularios.
         </motion.p>
 
+        {/* Trust bullets — Específicos y creíbles */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-x-6 gap-y-2 mb-10"
+        >
+          {bullets.map((item) => (
+            <span
+              key={item}
+              className="flex items-center gap-1.5 text-sm text-foreground/50"
+            >
+              <CheckCircle2 className="w-3.5 h-3.5 text-accent flex-shrink-0" />
+              {item}
+            </span>
+          ))}
+        </motion.div>
+
+        {/* Solo 2 CTAs principales */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <a 
-            href="https://wa.me/34606701267?text=Hola!%20Me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n%20acerca%20de%20vuestros%20servicios.%20Estoy%20pensando%20en%20crear%20una%20web%20o%20mejorar%20la%20que%20tengo%20y%20quer%C3%ADa%20informaci%C3%B3n."
+          {/* Primary CTA */}
+          <a
+            id="hero-cta-primary"
+            href={WA_URL}
             target="_blank"
-            className="group px-8 py-4 rounded-full bg-primary text-white font-bold flex items-center gap-2 glow-button"
+            rel="noopener noreferrer"
+            className="group w-full sm:w-auto px-8 py-4 rounded-full bg-primary text-white font-bold flex items-center justify-center gap-2 glow-button text-base"
           >
-            Contrata ahora
+            Quiero más consultas
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </a>
-          <Link 
-            href="/portfolio"
-            className="px-8 py-4 rounded-full glass font-semibold flex items-center gap-2 hover:bg-white/10 transition-colors"
+
+          {/* Secondary CTA */}
+          <a
+            id="hero-cta-secondary"
+            href={WA_BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto px-8 py-4 rounded-full glass font-semibold flex items-center justify-center gap-2 hover:bg-white/10 transition-colors text-base"
           >
-            Ver Portafolio
-            <ChevronRight className="w-5 h-5" />
-          </Link>
+            <Phone className="w-5 h-5" />
+            Reservar una llamada
+          </a>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.8 }}
-          className="mt-20 pt-10 border-t border-white/5 flex flex-wrap justify-center gap-12 md:gap-20"
-        >
-          <svg width="0" height="0" className="absolute" style={{ visibility: "hidden" }}>
-            <linearGradient id="icon-hero-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop stopColor="#60a5fa" offset="0%" />
-              <stop stopColor="#3b82f6" offset="50%" />
-              <stop stopColor="#34d399" offset="100%" />
-            </linearGradient>
-          </svg>
-
-          {[
-            { Icon: Store, label: "Comercios" },
-            { Icon: Stethoscope, label: "Clínicas" },
-            { Icon: ShoppingBag, label: "Tiendas" },
-            { Icon: Hammer, label: "Reformas" },
-            { Icon: Scissors, label: "Peluquerías" },
-          ].map((item, index) => (
-            <motion.div 
-              key={index} 
-              title={item.label}
-              className="flex items-center justify-center transition-transform hover:-translate-y-2 cursor-pointer group"
-            >
-              <item.Icon 
-                className="w-12 h-12 md:w-14 md:h-14 drop-shadow-[0_0_15px_rgba(59,130,246,0.5)] transition-transform group-hover:scale-110" 
-                style={{ stroke: "url(#icon-hero-gradient)" }} 
-              />
-            </motion.div>
-          ))}
-        </motion.div>
       </div>
     </section>
   );

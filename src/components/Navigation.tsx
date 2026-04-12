@@ -5,116 +5,146 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X, Phone } from "lucide-react";
-import { LogoIcon } from "@/components/LogoIcon";
+
+const WA_URL =
+  "https://wa.me/34606701267?text=Hola%20Beatriz!%20He%20visto%20tu%20web%20y%20me%20gustar%C3%ADa%20hablar%20sobre%20c%C3%B3mo%20conseguir%20m%C3%A1s%20clientes%20para%20mi%20negocio.";
+
+const navLinks = [
+  { name: "Servicios", href: "/#servicios" },
+  { name: "Casos de éxito", href: "/#casos-de-exito" },
+  { name: "Cómo funciona", href: "/#proceso" },
+  { name: "Sobre mí", href: "/#sobre-mi" },
+  { name: "FAQ", href: "/#faq" },
+];
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: "Inicio", href: "/" },
-    { name: "Problema", href: "/#problem" },
-    { name: "Solución", href: "/#solution" },
-  ];
-  
-  const whatsappUrl = "https://wa.me/34606701267?text=Hola!%20Me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n%20acerca%20de%20vuestros%20servicios.%20Estoy%20pensando%20en%20crear%20una%20web%20o%20mejorar%20la%20que%20tengo%20y%20quer%C3%ADa%20informaci%C3%B3n.";
-
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? "py-4 backdrop-blur-lg bg-black/50 border-b border-white/10" : "py-6 bg-transparent"
+        scrolled
+          ? "py-3 backdrop-blur-lg bg-black/60 border-b border-white/10"
+          : "py-5 bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <motion.div 
+        {/* Logo */}
+        <motion.a
+          href="/"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           className="flex items-center gap-3"
         >
-          <Image src="/real-logo.png" alt="Local Digital - Desarrollo Web en Madrid" width={40} height={40} className="h-10 w-auto object-contain drop-shadow-[0_0_15px_rgba(59,130,246,0.5)]" />
-          <span className="text-xl font-bold tracking-tight text-white">Local<span className="text-primary">Digital</span></span>
-        </motion.div>
+          <Image
+            src="/real-logo.png"
+            alt="Local Digital"
+            width={36}
+            height={36}
+            className="h-9 w-auto object-contain drop-shadow-[0_0_12px_rgba(59,130,246,0.5)]"
+          />
+          <span className="text-xl font-bold tracking-tight text-white">
+            Local<span className="text-primary">Digital</span>
+          </span>
+        </motion.a>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-8">
+        {/* Desktop menu */}
+        <div className="hidden lg:flex items-center gap-1">
           {navLinks.map((link, index) => (
             <motion.div
               key={link.name}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
+              transition={{ delay: index * 0.07 }}
             >
-              <Link
+              <a
                 href={link.href}
-                className="text-sm font-medium text-foreground/70 hover:text-primary transition-colors"
+                className="px-4 py-2 text-sm font-medium text-foreground/65 hover:text-foreground/95 transition-colors rounded-lg hover:bg-white/5"
               >
                 {link.name}
-              </Link>
+              </a>
             </motion.div>
           ))}
+        </div>
+
+        {/* Desktop CTA */}
+        <div className="hidden lg:flex items-center gap-3">
+          <a
+            href="tel:+34606701267"
+            className="flex items-center gap-1.5 text-sm font-medium text-foreground/50 hover:text-foreground/80 transition-colors"
+          >
+            <Phone className="w-4 h-4" />
+            606 701 267
+          </a>
           <motion.a
-            href={whatsappUrl}
+            href={WA_URL}
             target="_blank"
+            rel="noopener noreferrer"
+            id="nav-cta"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="px-5 py-2.5 rounded-full bg-primary text-white text-sm font-semibold glow-button"
+            className="px-5 py-2.5 rounded-full bg-primary text-white text-sm font-bold glow-button"
           >
-            Empezar
+            Contactar
           </motion.a>
         </div>
 
-        {/* Mobile Toggle */}
-        <div className="md:hidden">
-          <button onClick={() => setIsOpen(!isOpen)} aria-label={isOpen ? "Cerrar menú" : "Abrir menú"} className="text-foreground">
-            {isOpen ? <X /> : <Menu />}
-          </button>
-        </div>
+        {/* Mobile toggle */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
+          className="lg:hidden text-foreground p-2"
+        >
+          {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-black/90 backdrop-blur-xl border-b border-white/10 overflow-hidden"
+            className="lg:hidden bg-black/90 backdrop-blur-xl border-b border-white/10 overflow-hidden"
           >
-            <div className="flex flex-col p-6 gap-4">
+            <div className="flex flex-col p-6 gap-1">
               {navLinks.map((link) => (
-                <Link
+                <a
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="text-lg font-medium text-foreground/80 py-2"
+                  className="py-3 px-3 text-base font-medium text-foreground/75 hover:text-foreground hover:bg-white/5 rounded-xl transition-colors"
                 >
                   {link.name}
-                </Link>
+                </a>
               ))}
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                onClick={() => setIsOpen(false)}
-                className="w-full py-4 rounded-xl bg-primary text-white font-bold text-center glow-button mt-4"
-              >
-                Empezar
-              </a>
-              <a
-                href="tel:+34606701267"
-                onClick={() => setIsOpen(false)}
-                className="w-full py-4 rounded-xl bg-white/5 border border-white/10 text-white font-bold flex items-center justify-center gap-2 hover:bg-white/10 transition-colors"
-              >
-                <Phone className="w-5 h-5" />
-                Llamar ahora
-              </a>
+              <div className="mt-4 flex flex-col gap-3">
+                <a
+                  href={WA_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsOpen(false)}
+                  className="w-full py-4 rounded-xl bg-primary text-white font-bold text-center glow-button"
+                >
+                  Contactar por WhatsApp
+                </a>
+                <a
+                  href="tel:+34606701267"
+                  onClick={() => setIsOpen(false)}
+                  className="w-full py-4 rounded-xl glass border border-white/10 text-white font-bold flex items-center justify-center gap-2 hover:bg-white/10 transition-colors"
+                >
+                  <Phone className="w-5 h-5" />
+                  606 701 267
+                </a>
+              </div>
             </div>
           </motion.div>
         )}
