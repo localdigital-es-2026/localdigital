@@ -16,9 +16,9 @@ const cases = [
     solution:
       "Web nueva con sistema de citas online + chatbot en WhatsApp entrenado para responder preguntas frecuentes y confirmar citas automáticamente.",
     metrics: [
-      { value: "+47%", label: "citas al mes" },
-      { value: "3 de cada 10", label: "reservas sin intervención humana" },
-      { value: "0", label: "pacientes perdidos por falta de respuesta" },
+      { value: "24/7", label: "disponibilidad para responder pacientes" },
+      { value: "Activo", label: "sistema de citas integrado" },
+      { value: "Mejorada", label: "atención fuera del horario de la clínica" },
     ],
     color: "blue",
   },
@@ -30,9 +30,9 @@ const cases = [
     solution:
       "SEO local específico para su barrio y tipo de servicio + landing page optimizada para conversión con prueba social y precios claros.",
     metrics: [
-      { value: "#1", label: "en Google en su barrio" },
-      { value: "+22", label: "nuevos alumnos en 2 meses" },
-      { value: "×3", label: "consultas versus antes" },
+      { value: "Mayor", label: "presencia destacada en su barrio" },
+      { value: "Eficaz", label: "flujo para capturar peticiones de alumnos" },
+      { value: "Mejor", label: "imagen frente a academias competidoras" },
     ],
     color: "emerald",
   },
@@ -44,11 +44,25 @@ const cases = [
     solution:
       "Web de emergencias con botón de llamada visible + Google Business optimizado para búsquedas de urgencia en su zona.",
     metrics: [
-      { value: "Top 3", label: "en búsquedas de emergencia" },
-      { value: "+35%", label: "trabajos en temporada baja" },
-      { value: "2 semanas", label: "para ver resultados" },
+      { value: "Óptima", label: "visibilidad en búsquedas de urgencia" },
+      { value: "Directo", label: "botón de llamada accesible a un clic" },
+      { value: "Estable", label: "recepción de avisos todo el año" },
     ],
     color: "orange",
+  },
+  {
+    category: "Restaurante · Sevilla",
+    emoji: "🍽️",
+    problem:
+      "Dependían totalmente de plataformas de terceros que se llevaban gran parte del margen. Su web antigua no permitía reservar mesa fácilmente desde el móvil.",
+    solution:
+      "Diseño web inmersivo y de alta velocidad con motor de reservas propio sin comisiones. Optimización de la ficha de Google para 'restaurantes cerca de mí'.",
+    metrics: [
+      { value: "Propio", label: "motor de reservas integrado en la web" },
+      { value: "0€", label: "en comisiones por las reservas directas" },
+      { value: "Alta", label: "visibilidad en búsquedas gastronómicas" },
+    ],
+    color: "purple",
   },
 ];
 
@@ -56,6 +70,7 @@ const colorMap: Record<string, { accent: string; metric: string; border: string 
   blue: { accent: "text-blue-400", metric: "text-blue-300 bg-blue-400/10", border: "border-blue-400/20" },
   emerald: { accent: "text-emerald-400", metric: "text-emerald-300 bg-emerald-400/10", border: "border-emerald-400/20" },
   orange: { accent: "text-orange-400", metric: "text-orange-300 bg-orange-400/10", border: "border-orange-400/20" },
+  purple: { accent: "text-purple-400", metric: "text-purple-300 bg-purple-400/10", border: "border-purple-400/20" },
 };
 
 const CaseStudies = () => {

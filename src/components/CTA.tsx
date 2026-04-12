@@ -93,7 +93,7 @@ const CTA = () => {
                 transition={{ delay: 0.2 }}
                 className="text-lg text-foreground/55 mb-10 max-w-xl mx-auto"
               >
-                Te cuento exactamente qué puedo hacer por tu negocio,
+                Te contamos exactamente qué podemos hacer por tu negocio,
                 sin letra pequeña y sin compromiso alguno.
               </motion.p>
             </div>
@@ -167,7 +167,7 @@ const CTA = () => {
                         className="space-y-4"
                       >
                         <div className="mb-6 text-center md:text-left">
-                          <h3 className="text-lg font-bold mb-1">Déjame tus datos</h3>
+                          <h3 className="text-lg font-bold mb-1">Déjanos tus datos</h3>
                           <p className="text-xs text-foreground/40 italic">
                             ¿Prefieres que te contactemos nosotros? Te escribimos en menos de 24h.
                           </p>
@@ -214,7 +214,7 @@ const CTA = () => {
                             <MessageSquare className="absolute left-4 top-4 w-4 h-4 text-foreground/30" />
                             <textarea
                               rows={3}
-                              placeholder="¿En qué puedo ayudarte? (opcional)"
+                              placeholder="¿En qué podemos ayudarte? (opcional)"
                               className="w-full bg-white/5 border border-white/10 rounded-xl py-3 pl-11 pr-4 text-sm focus:outline-none focus:border-primary/50 transition-colors resize-none"
                               value={formData.mensaje}
                               onChange={(e) => setFormData({ ...formData, mensaje: e.target.value })}
@@ -248,7 +248,7 @@ const CTA = () => {
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5">
                 <div className="w-2 h-2 rounded-full bg-accent shadow-[0_0_8px_rgba(16,185,129,0.8)] animate-pulse" />
                 <span className="text-xs font-bold text-foreground/50 uppercase tracking-widest">
-                  Respondo en menos de 24 horas
+                  Respondemos en menos de 24 horas
                 </span>
               </div>
             </div>
