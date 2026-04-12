@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { MessageCircle } from "lucide-react";
 
 const WhatsAppFloating = () => {
-  const whatsappUrl = "https://wa.me/34603038050?text=Hola!%20Me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n%20acerca%20de%20vuestros%20servicios.%20Estoy%20pensando%20en%20crear%20una%20web%20o%20mejorar%20la%20que%20tengo%20y%20quer%C3%ADa%20informaci%C3%B3n.";
+  const whatsappUrl = "https://wa.me/34603038050?text=Hola,%20estoy%20interesado%20en%20mejorar%20la%20web%20de%20mi%20negocio%20y%20me%20gustar%C3%ADa%20saber%20c%C3%B3mo%20trabaj%C3%A1is.";
 
   return (
     <motion.a
