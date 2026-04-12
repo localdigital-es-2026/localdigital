@@ -4,10 +4,12 @@ import "./globals.css";
 
 import WhatsAppFloating from "@/components/WhatsAppFloating";
 import CookieBanner from "@/components/CookieBanner";
+import { GoogleTagManager } from '@next/third-parties/google';
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.localdigital.es"),
   title: "Local Digital | Más clientes para tu negocio local con web, SEO e IA",
   description: "Creamos webs que consiguen clientes, posicionamos tu negocio en Google Maps y automatizamos la captación con IA. Presupuesto gratis y sin compromiso.",
   keywords: [
@@ -66,6 +68,7 @@ export default function RootLayout({
 
   return (
     <html lang="es" className="scroll-smooth">
+      <GoogleTagManager gtmId="GTM-NXXPK3D4" />
       <body className={`${inter.className} antialiased`}>
         <script
           type="application/ld+json"
