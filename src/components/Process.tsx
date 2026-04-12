@@ -35,15 +35,6 @@ const steps = [
     duration: "2-3 semanas",
     color: "emerald",
   },
-  {
-    number: "04",
-    icon: <BarChart3 className="w-6 h-6" />,
-    title: "Lanzamiento y datos",
-    description:
-      "Ponemos todo en marcha y empezamos a medir. No nos quedamos en el diseño; nos ocupamos de que todo funcione como un reloj.",
-    duration: "Resultados reales",
-    color: "blue",
-  },
 ];
 
 const colorMap: Record<string, { num: string; icon: string; border: string; duration: string }> = {
@@ -91,7 +82,7 @@ const Process = () => {
             transition={{ delay: 0.1 }}
             className="text-3xl md:text-5xl font-bold"
           >
-            Cuatro pasos.{" "}
+            Tres pasos.{" "}
             <span className="text-gradient">Sin complicaciones.</span>
           </motion.h2>
         </div>

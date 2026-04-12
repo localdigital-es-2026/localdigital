@@ -39,9 +39,9 @@ const services = [
     icon: <MapPin className="w-8 h-8" />,
     color: "emerald",
     badge: null,
-    title: "Aparece primero en Google Maps",
-    tagline: "Que te encuentren antes que a tu competencia",
-    result: "Top 3 en búsquedas locales de tu zona",
+    title: "Optimización en Google Maps",
+    tagline: "Optimizamos técnica y estratégicamente tu ficha para superar a tus competidores locales.",
+    result: "Aumenta drásticamente tus probabilidades de aparecer en el Local Pack",
     includes: [
       "Optimización completa de Google Business Profile",
       "Estrategia de palabras clave locales",
