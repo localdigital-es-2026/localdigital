@@ -1,6 +1,6 @@
 # Plan técnico — Spec 001 · HUB y landing de academias
 
-> Estado: aprobado · Fecha: 2026-10-14 · cambio v1.1 (§9) aprobado el 2026-10-15 · cambio v1.2 (§10) aprobado el 2026-10-15
+> Estado: aprobado · Fecha: 2026-10-14 · cambio v1.1 (§9) aprobado el 2026-10-15 · cambio v1.2 (§10) aprobado el 2026-10-15 · cambio v1.3 (§11) aprobado el 2026-10-15
 > Basado en: `docs/constitution.md` v1.0 y `specs/001-hub-y-landing-academias/spec.md` (aprobada).
 > Solo firmas e interfaces; nada de implementación.
 
@@ -418,3 +418,37 @@ export interface Footnote { id: 1 | 2; text: string }
 | Logo PNG con bordes imperfectos al quitar el blanco. | P-13: sustituir por el SVG en cuanto llegue. |
 | Títulos de 80 px desplazan el contenido y alteran el LCP. | Lighthouse en la batería; ajustar a 72 px si baja de 90. |
 | Algún texto con color fijo pensado para fondo claro queda en una sección oscura. | Auditoría de accesibilidad de Lighthouse + test de contraste en RF-28. |
+
+## 11. Cambio v1.3 · logo gris 3D (aprobado)
+
+**Origen:** `C:\Users\cuba_\Downloads\logo-local-digital-svg.svg` (2,5 MB). Contiene dos imágenes de 2048×2086 px: una máscara de luminancia (la forma) y la caracola gris con relieve. Al combinarlas se obtiene el logo con fondo transparente. El archivo original **no se publica**: pesaría 2,5 MB en cada página.
+
+| Archivo publicado | Contenido | Tamaño objetivo |
+|---|---|---|
+| `public/brand/logo-3d.webp` | Logo gris 3D, 112 px de alto (2× para pantallas retina de 56 px) | ≤ 30 KB |
+| `src/assets/logo-3d-og.png` (no se publica) | PNG para generar la imagen de redes al compilar (el generador de Next.js trabaja de forma fiable con PNG) | — (no se sirve) |
+| `src/app/icon.png` | Favicon 64×64 | ≤ 10 KB |
+| Se eliminan | `logo-azul.png`, `logo-blanco.png` | — |
+
+**Cambios técnicos:**
+
+| Módulo | Cambio | RF |
+|---|---|---|
+| `scripts/` (nada nuevo) | La extracción se hace una vez y se versionan los archivos resultantes; no se añade dependencia. | Const. §2 |
+| `components/brand/Logo.tsx` | Una sola imagen (`logo-3d.webp`) para cualquier fondo; se elimina la prop `tone`. | RF-42 |
+| `lib/og.tsx` | Usa `logo-3d.png` sobre fondo `#161617`. | RF-42, RF-21 |
+| `tests/style.spec.ts` | La prueba del logo pasa de «versión azul» a «logo 3D ≤ 30 KB»; la del favicon, de «píxeles azules» a «píxeles grises, sin azul de marca»; la de la imagen para redes, de «logo blanco» a «logo gris». *(Cambian por requisito.)* | RF-42 |
+
+**Decisiones:**
+
+| # | Decisión | Motivo |
+|---|---|---|
+| D-26 | Publicar derivados optimizados y no el SVG recibido. | El SVG no es vectorial y pesa 2,5 MB; no aporta nitidez frente a una imagen bien dimensionada. |
+| D-27 | Misma imagen en fondo claro y oscuro. | El relieve gris con contorno blanco funciona en ambos (comparativa en `propuestas/comparativa-logos.png`). |
+
+**Riesgos:**
+
+| Riesgo | Mitigación |
+|---|---|
+| A 16–32 px el relieve se emborrona y el favicon se reconoce peor que el azul plano. | Recorte ajustado y redimensionado de alta calidad; revisión visual. Si no convence, volver al azul solo para el favicon (cambio de spec). |
+| Más peso que el logo plano. | Límite de 30 KB por archivo con test; Lighthouse en la batería. |

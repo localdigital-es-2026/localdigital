@@ -1,6 +1,6 @@
 # Spec 001 — Web central (HUB) y landing de academias y autoescuelas
 
-> Estado: aprobada · v1.1 aprobada el 2026-10-15 · v1.2 (estilo profesional) aprobada el 2026-10-15 · Fecha: 2026-10-14 · Constitución: `docs/constitution.md` v1.1
+> Estado: aprobada · v1.1 aprobada el 2026-10-15 · v1.2 (estilo profesional) aprobada el 2026-10-15 · v1.3 (logo gris 3D) aprobada el 2026-10-15 · Fecha: 2026-10-14 · Constitución: `docs/constitution.md` v1.1
 > Contenido aprobado (textos literales): `specs/001-hub-y-landing-academias/contenido/hub.md` y `contenido/academias.md`.
 
 ## 1. Contexto
@@ -20,6 +20,7 @@ Tras el análisis de webs de referencia y de los cursos MKT-Hackers y de redacci
 - Cada sector tendrá su propia **landing** en una subcarpeta; la primera, **academias y autoescuelas**.
 - **Precios visibles**, **un único botón principal** ("Reserva una demo de 15 min") y **programa piloto** en lugar de casos de éxito.
 - Estilo visual **A · cálida y cercana**.
+- **v1.3 (2026-10-15):** se sustituye el logo azul plano por la caracola **gris con relieve 3D** del archivo `logo-local-digital-svg.svg` facilitado por el usuario. El archivo no es vectorial (imagen de 2048 px dentro de un SVG de 2,5 MB), así que se publican versiones optimizadas generadas a partir de él. El azul `#0D4964` se mantiene como color del botón principal.
 - **v1.2 (2026-10-15):** la versión A resulta «infantil» (titulares con serifa redondeada, crema y terracota). Se adopta un estilo profesional inspirado en apple.com/careers: tipografía sans única (Inter, la alternativa libre más próxima a SF Pro, cuya licencia no permite usarla fuera de plataformas Apple), gran contraste de tamaños entre titulares y texto, fondos blanco y gris claro alternos, secciones de impacto casi negras, y el nuevo logo (caracola azul `#0D4964`) con el azul como color del botón principal.
 - **v1.1 (2026-10-15):** se incorporan cuatro patrones de apple.com/services: titular grande en dos líneas, un bloque por servicio con la misma plantilla, una cinta animada de preguntas que contesta el asistente y notas al pie numeradas para las condiciones de precio.
 
@@ -117,7 +118,7 @@ Que un dueño de negocio local entienda en 5 segundos qué ofrece Local Digital,
 
 ### 4.10 Estilo profesional (v1.2)
 
-- **RF-42** · El sistema deberá mostrar el logotipo de la caracola junto al nombre «Local Digital» en el menú de todas las páginas, en azul `#0D4964` sobre fondos claros y en blanco sobre fondos oscuros, servido desde el propio dominio y con «Local Digital» como nombre accesible del enlace al inicio; el mismo logotipo deberá usarse como icono del sitio (favicon) y en la imagen para redes.
+- **RF-42** · *(v1.3)* El sistema deberá mostrar el logotipo de la caracola gris con relieve 3D junto al nombre «Local Digital» en el menú y en el pie de todas las páginas, con la misma imagen sobre fondos claros y oscuros, servido desde el propio dominio, con un peso de cada archivo de imagen del logotipo ≤ 30 KB y con «Local Digital» como nombre accesible del enlace al inicio; el mismo logotipo deberá usarse como icono del sitio (favicon, 64 px) y en la imagen para redes.
 - **RF-43** · El sistema deberá usar una única familia tipográfica sans (Inter) para titulares y texto, con esta escala en pantallas de 768 px o más (entre paréntesis, por debajo de 768 px): titular de portada ≥ 72 px (≥ 40 px); titular de sección (h2) 48 px (32 px); subtítulo (h3) 21 px; texto 17 px con interlineado ≈ 1,47; titulares en peso semi-negrita (600) con espaciado de letras ligeramente negativo.
 - **RF-44** · El sistema deberá mostrar las secciones de portada, problema y cierre del HUB, y las de portada y cierre de academias, sobre fondo casi negro (secciones de impacto), y las demás secciones alternando fondo blanco y gris claro, sin dos secciones claras consecutivas con el mismo fondo.
 
@@ -211,7 +212,7 @@ Que un dueño de negocio local entienda en 5 segundos qué ofrece Local Digital,
 | RF-39 | Sin reducir movimiento, la lista de la cinta tiene una animación en curso; al activar el control de pausa (clic o teclado, también sin JS) la animación queda en pausa y al reactivarlo continúa; al pasar el puntero se pausa. |
 | RF-40 | Con reducir movimiento, la cinta no tiene animación, no se muestra el control de pausa y todas las preguntas son visibles. |
 | RF-41 | En `/` y `/academias` cada precio «desde» lleva «¹» enlazado a `#nota-1` y la garantía «²» enlazado a `#nota-2` (si aparece en precios); las notas existen dentro de la sección de precios y contienen las condiciones; cada llamada tiene nombre accesible «Nota N». |
-| RF-42 | El enlace al inicio de la cabecera contiene la imagen del logotipo (del propio dominio) y el texto «Local Digital»; en fondo claro se usa la versión azul; el favicon es el logotipo; la imagen para redes lo incluye. |
+| RF-42 | El enlace al inicio de la cabecera y el pie contienen la imagen del logotipo gris 3D (del propio dominio, ≤ 30 KB) y el texto «Local Digital»; la misma imagen en todas las páginas; el favicon de 64 px es el logotipo gris (sin píxeles del azul de marca); la imagen para redes lo incluye sobre fondo casi negro. |
 | RF-43 | `h1`, `h2`, `h3` y el texto usan Inter; tamaños calculados a 1280 px: `h1` portada ≥ 72 px, `h2` = 48 px, `h3` = 21 px, texto = 17 px; a 375 px: `h1` ≥ 40 px, `h2` = 32 px; peso de titulares 600. |
 | RF-44 | En `/` las secciones `inicio`, `problema` y `cierre` tienen fondo `#161617`; en `/academias`, `inicio` y `cierre`; el resto alterna `#FFFFFF` / `#F5F5F7` sin que dos secciones claras consecutivas compartan fondo. |
 | RF-31 | Ninguna página contiene porcentajes de resultados ni las frases de casos de la web anterior. |
@@ -233,4 +234,4 @@ Los RNF se aceptan con: RNF-01 auditoría ≥ 90 ×4 en móvil y en escritorio; 
 - ~~P-10~~ · Resuelta: «junio o julio» (actualizado en `contenido/academias.md`).
 - ~~P-11~~ · Resuelta: «Si en los primeros 60 días no te convence, te devolvemos la instalación.» (RF-03). Reflejar en el contrato (fuera de alcance).
 - ~~P-12~~ · Resuelta: textos nuevos v1.1 aprobados el 2026-10-15 (`contenido/hub.md` §3b y §5).
-- **P-13 · Logotipo en SVG:** el logo recibido es un PNG de 370 px con fondo blanco. Hasta tener el SVG original se usa una versión PNG transparente generada a partir de él (bordes no perfectos). Al recibir el SVG se sustituye sin cambiar requisitos.
+- ~~P-13~~ · Resuelta parcialmente (v1.3): el usuario facilitó `logo-local-digital-svg.svg`, que no es vectorial (imagen de 2048 px). Se usan imágenes optimizadas derivadas de él. Mejora futura: versión vectorial si se rediseña con formas.

@@ -5,10 +5,10 @@ import { site } from "@/content/site";
 
 export const ogSize = { width: 1200, height: 630 };
 
-// Logotipo blanco incrustado (se genera al compilar, sin peticiones externas).
-const logo = `data:image/png;base64,${readFileSync(join(process.cwd(), "public/brand/logo-blanco.png")).toString("base64")}`;
+// Logotipo gris 3D incrustado (se genera al compilar, sin peticiones externas; v1.3).
+const logo = `data:image/png;base64,${readFileSync(join(process.cwd(), "src/assets/logo-3d-og.png")).toString("base64")}`;
 
-/** Imagen para redes con la paleta v1.2: fondo casi negro y logotipo blanco (RF-21, RF-42). */
+/** Imagen para redes: fondo casi negro y logotipo gris 3D (RF-21, RF-42). */
 export function renderOgImage(title: string, eyebrow: string) {
   return new ImageResponse(
     (
@@ -26,7 +26,7 @@ export function renderOgImage(title: string, eyebrow: string) {
       >
         <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={logo} width={110} height={112} alt="" />
+          <img src={logo} width={112} height={120} alt="" />
           <div style={{ display: "flex", fontSize: 40, fontWeight: 600 }}>{site.name}</div>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>

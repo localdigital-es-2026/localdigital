@@ -73,6 +73,11 @@
 - [x] T-33 · Ilustraciones, imagen fija y 3D con la paleta nueva. Tests: sin colores de la paleta A en SVG y escena; imagen fija y 3D siguen cumpliendo RF-29/RF-33 · cubre RF-36, RF-29, RF-33
 - [x] T-34 · Verificación final v1.2: batería completa y Lighthouse ≥ 90 (móvil y escritorio) con accesibilidad sin incidencias de contraste · cubre RF-28, RF-43, RF-44
 
+## Bloque K · Cambio v1.3 · logo gris 3D (aprobado)
+
+- [x] T-35 · Logo gris 3D en cabecera y pie: generar `logo-3d.webp`/`.png` desde el SVG recibido, `Logo` con una sola imagen y eliminar las versiones azul y blanca. Tests: logo 3D ≤ 30 KB en cabecera y pie de todas las páginas, mismo archivo en claro y oscuro, enlace con nombre «Local Digital» · cubre RF-42
+- [x] T-36 · Favicon e imagen para redes con el logo gris 3D y verificación final. Tests: favicon 64 px gris sin azul de marca; imagen para redes con el logo gris sobre casi negro; batería completa y Lighthouse ≥ 90 · cubre RF-42, RF-21
+
 ## Trazabilidad
 
 ### RF → tareas
@@ -81,7 +86,7 @@
 |---|---|---|---|
 | RF-01 | T-06, T-13, T-29 | RF-19 | T-13 |
 | RF-02 | T-08, T-12 | RF-20 | T-03, T-14, T-15 |
-| RF-03 | T-04, T-09, T-13, T-25 | RF-21 | T-16 |
+| RF-03 | T-04, T-09, T-13, T-25 | RF-21 | T-16, T-36 |
 | RF-04 | T-04, T-09, T-13 | RF-22 | T-16 |
 | RF-05 | T-04, T-09 | RF-23 | T-16 |
 | RF-06 | T-06 | RF-24 | T-17 |
@@ -102,7 +107,7 @@
 |  |  | RF-39 | T-27, T-28 |
 |  |  | RF-40 | T-28 |
 |  |  | RF-41 | T-25, T-26 |
-|  |  | RF-42 | T-32 |
+|  |  | RF-42 | T-32, T-35, T-36 |
 |  |  | RF-43 | T-30, T-34 |
 |  |  | RF-44 | T-31, T-34 |
 
@@ -118,4 +123,4 @@
 | RNF-08 | T-07 |
 | RNF-09, RNF-10 | T-02 (sin formularios, peticiones externas ni almacenamiento) |
 
-Todas las tareas (T-01 a T-34) cubren al menos un RF.
+Todas las tareas (T-01 a T-36) cubren al menos un RF.

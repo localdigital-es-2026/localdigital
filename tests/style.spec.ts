@@ -74,46 +74,61 @@ test.describe("v1.2 · fondos por sección", () => {
   });
 });
 
-test.describe("v1.2 · logotipo", () => {
+test.describe("v1.3 · logotipo gris 3D", () => {
   for (const path of ["/", "/academias", "/aviso-legal", "/politica-de-privacidad", "/politica-de-cookies", "/no-existe"]) {
-    test(`RF-42 · la cabecera de ${path} muestra el logo azul y «Local Digital»`, async ({ page, baseURL }) => {
+    test(`RF-42 · cabecera y pie de ${path} muestran el logo 3D (≤ 30 KB) y «Local Digital»`, async ({ page, request, baseURL }) => {
       await page.goto(path);
       const home = page.locator("header").getByRole("link", { name: "Local Digital" });
       await expect(home).toHaveAttribute("href", "/");
-      const img = home.locator("img");
-      await expect(img).toBeVisible();
-      const src = await img.evaluate((el) => (el as HTMLImageElement).currentSrc);
-      expect(src.startsWith(new URL(baseURL!).origin)).toBe(true);
-      expect(src).toMatch(/logo-azul/);
-      expect(await img.evaluate((el) => (el as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
+      for (const img of [home.locator("img"), page.locator("footer img").first()]) {
+        await expect(img).toBeVisible();
+        const src = await img.evaluate((el) => (el as HTMLImageElement).currentSrc);
+        expect(src.startsWith(new URL(baseURL!).origin)).toBe(true);
+        expect(src).toMatch(/\/brand\/logo-3d\.webp$/);
+        expect(await img.evaluate((el) => (el as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
+        const bytes = (await (await request.get(new URL(src).pathname)).body()).length;
+        expect(bytes).toBeLessThanOrEqual(30 * 1024);
+      }
+      await expect(page.locator("footer").getByText("Local Digital").first()).toBeVisible();
     });
   }
 
-  test("RF-42 · el favicon es el logotipo", async ({ page, request }) => {
+  test("RF-42 · las versiones azul y blanca ya no se publican", async ({ request }) => {
+    for (const old of ["/brand/logo-azul.png", "/brand/logo-blanco.png"]) {
+      expect((await request.get(old)).status()).toBe(404);
+    }
+  });
+
+  test("RF-42 · el favicon es el logo gris 3D (64 px, sin el azul de marca)", async ({ page, request }) => {
     await page.goto("/");
     const href = await page.locator("link[rel='icon']").first().getAttribute("href");
     const response = await request.get(href!);
     expect(response.status()).toBe(200);
     const body = await response.body();
-    const size = { w: body.readUInt32BE(16), h: body.readUInt32BE(20) };
-    expect(size).toEqual({ w: 64, h: 64 });
-    // Píxel central: azul del logotipo (no el logo antiguo rojo/degradado).
+    expect({ w: body.readUInt32BE(16), h: body.readUInt32BE(20) }).toEqual({ w: 64, h: 64 });
+    expect(body.length).toBeLessThanOrEqual(10 * 1024);
     await page.setContent(`<canvas id=c width=64 height=64></canvas>`);
-    const rgb = await page.evaluate(async (b64) => {
+    const counts = await page.evaluate(async (b64) => {
       const img = new Image();
       img.src = `data:image/png;base64,${b64}`;
       await img.decode();
       const ctx = (document.getElementById("c") as HTMLCanvasElement).getContext("2d")!;
       ctx.drawImage(img, 0, 0);
-      const data = ctx.getImageData(0, 0, 64, 64).data;
-      let blue = 0;
-      for (let i = 0; i < data.length; i += 4) if (data[i + 3] > 200 && Math.abs(data[i] - 13) < 25 && Math.abs(data[i + 1] - 73) < 25 && Math.abs(data[i + 2] - 100) < 25) blue++;
-      return blue;
+      const d = ctx.getImageData(0, 0, 64, 64).data;
+      let gray = 0, blue = 0;
+      for (let i = 0; i < d.length; i += 4) {
+        if (d[i + 3] < 200) continue;
+        const [r, g, b] = [d[i], d[i + 1], d[i + 2]];
+        if (Math.max(r, g, b) - Math.min(r, g, b) < 24) gray++;
+        if (Math.abs(r - 13) < 25 && Math.abs(g - 73) < 25 && Math.abs(b - 100) < 25) blue++;
+      }
+      return { gray, blue };
     }, body.toString("base64"));
-    expect(rgb).toBeGreaterThan(300);
+    expect(counts.gray).toBeGreaterThan(600);
+    expect(counts.blue).toBe(0);
   });
 
-  test("RF-42 · la imagen para redes tiene fondo casi negro y el logotipo blanco", async ({ page, request }) => {
+  test("RF-42 · la imagen para redes lleva el logo gris 3D sobre casi negro", async ({ page, request }) => {
     const body = await (await request.get("/opengraph-image")).body();
     await page.setContent(`<canvas id=c width=1200 height=630></canvas>`);
     const result = await page.evaluate(async (b64) => {
@@ -124,11 +139,14 @@ test.describe("v1.2 · logotipo", () => {
       ctx.drawImage(img, 0, 0);
       const corner = [...ctx.getImageData(5, 5, 1, 1).data].slice(0, 3);
       const logo = ctx.getImageData(72, 72, 120, 120).data;
-      let white = 0;
-      for (let i = 0; i < logo.length; i += 4) if (logo[i] > 230 && logo[i + 1] > 230 && logo[i + 2] > 230) white++;
-      return { corner, white };
+      let midGray = 0;
+      for (let i = 0; i < logo.length; i += 4) {
+        const [r, g, b] = [logo[i], logo[i + 1], logo[i + 2]];
+        if (Math.max(r, g, b) - Math.min(r, g, b) < 24 && r > 60 && r < 230) midGray++;
+      }
+      return { corner, midGray };
     }, body.toString("base64"));
     expect(result.corner).toEqual([22, 22, 23]);
-    expect(result.white).toBeGreaterThan(1000);
+    expect(result.midGray).toBeGreaterThan(1000);
   });
 });
