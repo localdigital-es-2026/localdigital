@@ -1,31 +1,35 @@
-import Navigation from "@/components/Navigation";
-import Hero from "@/components/Hero";
-import Problem from "@/components/Problem";
-import dynamic from "next/dynamic";
+import Footer from "@/components/layout/Footer";
+import { NavFull } from "@/components/layout/NavFull";
+import { SectionRenderer } from "@/components/sections/SectionRenderer";
+import { hub } from "@/content/hub";
+import { site } from "@/content/site";
+import { pageMetadata } from "@/lib/metadata";
 
-const Solution = dynamic(() => import("@/components/Solution"));
-const Services = dynamic(() => import("@/components/Services"));
-const CaseStudies = dynamic(() => import("@/components/CaseStudies"));
-const Process = dynamic(() => import("@/components/Process"));
-const About = dynamic(() => import("@/components/About"));
-const CTA = dynamic(() => import("@/components/CTA"));
-const FAQ = dynamic(() => import("@/components/FAQ"));
-const Footer = dynamic(() => import("@/components/Footer"));
+export const metadata = pageMetadata(hub);
+
+// Datos estructurados de negocio local (RF-23).
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: site.name,
+  url: `${site.url}/`,
+  image: `${site.url}/opengraph-image`,
+  telephone: `+${site.phone.replace(/\D/g, "")}`,
+  email: site.email,
+  description: hub.seo.description,
+  areaServed: "ES",
+  address: { "@type": "PostalAddress", addressLocality: "Madrid", addressRegion: "Madrid", addressCountry: "ES" },
+};
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
-      <Navigation />
-      <Hero />
-      <Problem />
-      <Solution />
-      <Services />
-      <CaseStudies />
-      <Process />
-      <About />
-      <CTA />
-      <FAQ />
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <NavFull links={hub.navLinks ?? []} />
+      <main id="contenido">
+        <SectionRenderer sections={hub.sections} darkSections={hub.darkSections} />
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }

@@ -1,0 +1,7 @@
+# Publicación en Netlify (constitución §5). Las cabeceras de seguridad se generan en out/_headers (RNF-06).
+[build]
+  command = "npm run build"
+  publish = "out"
+
+[build.environment]
+  NODE_VERSION = "22"
