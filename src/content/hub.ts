@@ -34,7 +34,6 @@ export const hub: PageContent = {
         "Instalamos un asistente que responde a tus clientes en segundos, de día y de noche: precios, horarios, plazas y citas. Tú solo hablas con los que ya quieren comprar.",
       ctaNote: "Gratis y sin compromiso · Te lo enseñamos funcionando con preguntas de tu negocio",
       demoLinkText: "¿Prefieres probarlo ya? Escríbele a nuestro asistente por WhatsApp →",
-      visual: "3d",
     },
     {
       kind: "problem",

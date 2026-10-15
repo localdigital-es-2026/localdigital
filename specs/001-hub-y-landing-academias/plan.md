@@ -1,6 +1,6 @@
 # Plan técnico — Spec 001 · HUB y landing de academias
 
-> Estado: aprobado · Fecha: 2026-10-14 · cambio v1.1 (§9) aprobado el 2026-10-15 · cambio v1.2 (§10) aprobado el 2026-10-15 · cambio v1.3 (§11) aprobado el 2026-10-15 · cambio v1.4 (§12) aprobado el 2026-10-15 · cambio v1.5 (§13) aprobado el 2026-10-15 · cambio v1.6 (§14) aprobado el 2026-10-15
+> Estado: aprobado · Fecha: 2026-10-14 · cambio v1.1 (§9) aprobado el 2026-10-15 · cambio v1.2 (§10) aprobado el 2026-10-15 · cambio v1.3 (§11) aprobado el 2026-10-15 · cambio v1.4 (§12) aprobado el 2026-10-15 · cambio v1.5 (§13) aprobado el 2026-10-15 · cambio v1.6 (§14) aprobado el 2026-10-15 · cambio v1.7 (§15) aprobado el 2026-10-15
 > Basado en: `docs/constitution.md` v1.0 y `specs/001-hub-y-landing-academias/spec.md` (aprobada).
 > Solo firmas e interfaces; nada de implementación.
 
@@ -528,3 +528,21 @@ export interface Footnote { id: 1 | 2; text: string }
 **Decisión D-33:** las páginas legales y la 404 se quedan sin llamada a la acción: no son páginas de venta (RF-01 solo exige el botón en HUB y landings) y su salida es el logo, que lleva al inicio.
 
 **Riesgo:** al bajar por la página no hay botón siempre visible. Mitigación: el botón aparece en portada, precios, piloto y cierre; el menú lleva a «Precios», donde está.
+
+## 15. Cambio v1.7 · portada sin imagen y logo que vuelve arriba (aprobado)
+
+**Origen:** el usuario considera que la imagen de la portada no aporta. Además, en la versión de prueba de Netlify, el logo del HUB no volvía arriba estando ya en `/` (la navegación interna de Next.js no cambia de página y conserva el desplazamiento).
+
+| Módulo | Cambio | RF |
+|---|---|---|
+| `sections/Hero.tsx` | Sin columna de imagen; contenido centrado en una sola columna. | RF-47 |
+| `content/types.ts`, `hub.ts`, `academias.ts` | Se elimina el campo `visual` de la portada. | RF-47 |
+| `illustrations/HeroStill.tsx`, `three/*` | Se borran. | RF-47 |
+| `package.json` | Se desinstalan `three`, `@react-three/fiber` y `@types/three`. | RF-47, Const. §2 |
+| `layout/NavFull.tsx` | El logo es un enlace normal `<a href="/">` (recarga en el inicio) en lugar de `<Link>`. Ya aplicado con su test. | RNF-02 |
+| `tests/three.spec.ts` | Se sustituye por las pruebas de RF-47. `design.spec.ts` deja de buscar la imagen fija. *(Cambian por requisito.)* | RF-47 |
+| `postbuild-headers.mjs` / CSP | Sin cambios: no dependían del 3D. | — |
+
+**Decisión D-34:** quitar también el 3D y sus dependencias, no solo ocultarlo: menos peso, menos código y menos superficie de seguridad.
+
+**Riesgo:** portada más sobria, sin ningún elemento visual. Mitigación: es el patrón de apple.com/services (titular grande y botón); la cinta de preguntas, justo debajo, aporta el movimiento.

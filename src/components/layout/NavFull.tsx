@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { site } from "@/content/site";
 import type { NavLink } from "@/content/types";
 import { Logo } from "@/components/brand/Logo";
@@ -21,9 +20,11 @@ export function NavFull({ links }: { links: NavLink[] }) {
   return (
     <header data-tone="dark" className="sticky top-0 z-40 bg-surface px-6 py-3">
       <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-x-4 gap-y-3 md:flex-nowrap">
-        <Link href="/" aria-label={site.name} className="inline-flex min-h-11 items-center">
+        {/* Enlace normal, no <Link>: desde / la navegación interna no vuelve arriba; así recarga en el inicio. */}
+        {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+        <a href="/" aria-label={site.name} className="inline-flex min-h-11 items-center">
           <Logo />
-        </Link>
+        </a>
 
         <nav aria-label="Principal" className="hidden md:block">
           <ul className="flex items-center gap-1">{items}</ul>

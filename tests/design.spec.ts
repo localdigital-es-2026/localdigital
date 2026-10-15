@@ -85,15 +85,6 @@ test.describe("Movimiento", () => {
 });
 
 test.describe("Ilustraciones", () => {
-  for (const path of ["/", "/academias"]) {
-    test(`RF-33 · RF-36 · la portada de ${path} muestra la imagen fija con texto alternativo`, async ({ page }) => {
-      await page.goto(path);
-      const still = page.locator("section#inicio [data-hero-still]");
-      await expect(still).toBeVisible();
-      await expect(still).toHaveAccessibleName(/.+/);
-    });
-  }
-
   for (const path of ["/", "/academias", "/aviso-legal", "/politica-de-privacidad", "/politica-de-cookies"]) {
     test(`RF-36 · ${path} no carga fotografías`, async ({ page }) => {
       const rasters: string[] = [];

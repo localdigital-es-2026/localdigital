@@ -85,7 +85,7 @@ export interface Chat {
 }
 
 export type Section =
-  | { kind: "hero"; id: string; eyebrow: string; title: string; subtitle: string; ctaNote: string; demoLinkText?: string; visual: "3d" | "illustration" }
+  | { kind: "hero"; id: string; eyebrow: string; title: string; subtitle: string; ctaNote: string; demoLinkText?: string }
   | { kind: "problem"; id: string; title: string; scenes: Scene[]; closing: string }
   | { kind: "features"; id: string; eyebrow?: string; title: string; intro: string; items: Item[]; control?: Item; benefits?: { title: string; items: string[] }; cta?: boolean }
   | { kind: "services"; id: string; title: string; intro: string; blocks: ServiceBlock[] }

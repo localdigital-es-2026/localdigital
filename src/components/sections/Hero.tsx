@@ -2,8 +2,6 @@ import { site } from "@/content/site";
 import { demoWhatsappUrl } from "@/lib/links";
 import { CtaButton } from "@/components/layout/CtaButton";
 import { SecondaryButton } from "@/components/layout/SecondaryButton";
-import { HeroStill } from "@/components/illustrations/HeroStill";
-import { Hero3DSlot } from "@/components/three/Hero3DSlot";
 import type { SectionProps } from "./types";
 
 /** Una frase por línea, como los titulares de apple.com/services (RF-37). */
@@ -15,7 +13,7 @@ export function Hero({ section, tone }: SectionProps<"hero">) {
   const demoUrl = demoWhatsappUrl(site);
   return (
     <section id={section.id} data-tone={tone} className="px-6 pb-16 pt-14 md:pt-24">
-      {/* Una sola columna centrada, como apple.com/careers (v1.2). */}
+      {/* Una sola columna centrada y sin imagen, como apple.com/services (v1.2, v1.7 · RF-47). */}
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-12 text-center">
         <div className="flex flex-col items-center gap-6">
           <p className="text-sm font-semibold uppercase tracking-wide text-muted">{section.eyebrow}</p>
@@ -38,7 +36,6 @@ export function Hero({ section, tone }: SectionProps<"hero">) {
             )}
           </div>
         </div>
-        <div className="flex justify-center">{section.visual === "3d" ? <Hero3DSlot /> : <HeroStill />}</div>
       </div>
     </section>
   );

@@ -35,9 +35,6 @@ test.describe("Cabeceras de seguridad", () => {
       const faq = page.locator("section#faq details").first();
       await faq.locator("summary").click();
       await expect(faq).toHaveAttribute("open", "");
-      if (path === "/" && testInfo.project.name === "desktop-chrome") {
-        await expect(page.locator("section#inicio canvas")).toBeVisible({ timeout: 15000 });
-      }
       if (path === "/" && testInfo.project.name === "mobile") {
         await page.locator("header summary").click();
         await expect(page.locator("header").getByRole("link", { name: "Precios", exact: true })).toBeVisible();

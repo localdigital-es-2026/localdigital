@@ -25,7 +25,6 @@ export const academias: PageContent = {
       title: "Septiembre sin 200 WhatsApps sin contestar.",
       subtitle: `Un asistente que responde precios, horarios, niveles y plazas en segundos, de día y de noche. Apunta a los interesados y te los deja listos para matricular. Listo en ${conditions.installDays} días laborables.`,
       ctaNote: "Gratis y sin compromiso · Te lo enseñamos con las preguntas que te hacen tus alumnos",
-      visual: "illustration",
     },
     {
       kind: "problem",

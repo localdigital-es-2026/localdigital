@@ -15,6 +15,16 @@ test.describe("Navegación en páginas secundarias", () => {
   }
 });
 
+test("RNF-02 · en el HUB, el logo vuelve al principio de la página aunque ya estés en /", async ({ page }) => {
+  await page.goto("/");
+  await page.locator("#precios").scrollIntoViewIfNeeded();
+  expect(await page.evaluate(() => window.scrollY)).toBeGreaterThan(500);
+  await page.locator("header").getByRole("link", { name: "Local Digital" }).click();
+  await expect(page).toHaveURL(/\/$/);
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBeLessThan(5);
+  await expect(page.locator("h1")).toBeInViewport();
+});
+
 test.describe("Contenido legal (RF-20)", () => {
   const read = async (page: import("@playwright/test").Page, path: string) => {
     await page.goto(path);

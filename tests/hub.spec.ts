@@ -10,7 +10,7 @@ test.describe("HUB · secciones superiores", () => {
     await page.goto("/");
   });
 
-  test("RF-10 · portada con etiqueta, titular único, subtítulo, botón, nota e imagen fija", async ({ page }) => {
+  test("RF-10 · portada con etiqueta, titular único, subtítulo, botón y nota, sin imagen (v1.7)", async ({ page }) => {
     const hero = byKind("hero");
     const section = page.locator(`section#${hero.id}`);
     await expect(page.locator("h1")).toHaveCount(1);
@@ -19,7 +19,7 @@ test.describe("HUB · secciones superiores", () => {
     await expect(section.getByText(hero.subtitle)).toBeVisible();
     await expect(section.locator("[data-cta='primary']")).toBeVisible();
     await expect(section.getByText(hero.ctaNote)).toBeVisible();
-    await expect(section.getByRole("img")).toHaveAccessibleName(/.+/);
+    await expect(section.getByRole("img")).toHaveCount(0);
   });
 
   test("RF-34 · sin número del asistente de ejemplo no aparece el enlace «pruébalo ya»", async ({ page }) => {

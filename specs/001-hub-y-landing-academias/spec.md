@@ -1,6 +1,6 @@
 # Spec 001 — Web central (HUB) y landing de academias y autoescuelas
 
-> Estado: aprobada · v1.1 aprobada el 2026-10-15 · v1.2 (estilo profesional) aprobada el 2026-10-15 · v1.3 (logo gris 3D) aprobada el 2026-10-15 · v1.4 (negro puro) aprobada el 2026-10-15 · v1.5 (botones de apple.com/services) aprobada el 2026-10-15 · v1.6 (menú sin botón) aprobada el 2026-10-15 · Fecha: 2026-10-14 · Constitución: `docs/constitution.md` v1.1
+> Estado: aprobada · v1.1 aprobada el 2026-10-15 · v1.2 (estilo profesional) aprobada el 2026-10-15 · v1.3 (logo gris 3D) aprobada el 2026-10-15 · v1.4 (negro puro) aprobada el 2026-10-15 · v1.5 (botones de apple.com/services) aprobada el 2026-10-15 · v1.6 (menú sin botón) aprobada el 2026-10-15 · v1.7 (portada sin imagen) aprobada el 2026-10-15 · Fecha: 2026-10-14 · Constitución: `docs/constitution.md` v1.1
 > Contenido aprobado (textos literales): `specs/001-hub-y-landing-academias/contenido/hub.md` y `contenido/academias.md`.
 
 ## 1. Contexto
@@ -20,6 +20,7 @@ Tras el análisis de webs de referencia y de los cursos MKT-Hackers y de redacci
 - Cada sector tendrá su propia **landing** en una subcarpeta; la primera, **academias y autoescuelas**.
 - **Precios visibles**, **un único botón principal** ("Reserva una demo de 15 min") y **programa piloto** en lugar de casos de éxito.
 - Estilo visual **A · cálida y cercana**.
+- **v1.7 (2026-10-15):** la imagen de la portada (móvil con burbujas, en 3D o fija) no aporta: se quita de `/` y `/academias` y la portada queda solo con texto y botón, como apple.com/services. Se retiran el elemento 3D y sus dependencias. Se corrige además el logo del menú del HUB, que no volvía al principio cuando ya estabas en `/`.
 - **v1.6 (2026-10-15):** como en apple.com, el menú no lleva botón de reserva: había dos «Reserva una demo de 15 min» en la misma pantalla (cabecera y portada). La llamada a la acción queda en el contenido de cada página (portada, precios, piloto, cierre…).
 - **v1.5 (2026-10-15):** se adoptan los botones de apple.com/services (capturas del usuario): cápsula sin borde de color invertido respecto al fondo (casi negro `#1D1D1F` con texto blanco sobre fondos claros; gris muy claro `#F5F5F7` con texto casi negro sobre fondos oscuros), un botón secundario de contorno fino y enlaces de texto «… ›» sin subrayado. El azul `#0D4964` deja de ser el color del botón y queda para iconos, ilustraciones y realces.
 - **v1.4 (2026-10-15):** el casi negro `#161617` no se percibe como negro. Se adopta el **negro puro `#000000`** de apple.com/services en las secciones de impacto, en la cabecera de todas las páginas y en la imagen para redes. Las tarjetas sobre fondo oscuro siguen en `#1D1D1F`.
@@ -106,9 +107,9 @@ Que un dueño de negocio local entienda en 5 segundos qué ofrece Local Digital,
 ### 4.7 Diseño (versión visual A)
 
 - **RF-28** · *(v1.2, sustituye a la paleta A)* El sistema deberá usar esta paleta: fondos claros blanco `#FFFFFF` y gris `#F5F5F7`; fondo de impacto negro `#000000` *(v1.4; antes casi negro `#161617`)*; texto `#1D1D1F` sobre claro y `#F5F5F7` sobre oscuro; texto secundario `#6E6E73` sobre claro y `#A1A1A6` sobre oscuro; color de marca azul `#0D4964` para iconos, ilustraciones y realces *(v1.5: ya no se usa en la llamada a la acción; ver RF-46)*.
-- **RF-29** · Mientras el ancho de pantalla sea de 768 px o más y el visitante no tenga activada la preferencia de reducir movimiento, el sistema deberá mostrar en la portada del HUB un elemento 3D suave con la paleta de RF-28 (un móvil con burbujas de conversación que flotan despacio), cargado después de que el titular y la llamada a la acción sean visibles.
-- **RF-33** · Si el ancho de pantalla es menor de 768 px, o el visitante tiene activada la preferencia de reducir movimiento, o el navegador no permite gráficos 3D, o JavaScript está desactivado, entonces el sistema deberá mostrar en su lugar una imagen fija equivalente y no descargar ningún recurso del elemento 3D.
-- **RF-36** · El sistema deberá usar ilustraciones planas con la paleta de RF-28, en lugar de fotografías, en «Quiénes somos», en la imagen para redes y en la imagen fija que sustituye al 3D; las ilustraciones de personas deberán tener texto alternativo descriptivo.
+- ~~**RF-29**~~ · *(retirado en v1.7, ver RF-47)* Mientras el ancho de pantalla sea de 768 px o más y el visitante no tenga activada la preferencia de reducir movimiento, el sistema deberá mostrar en la portada del HUB un elemento 3D suave con la paleta de RF-28 (un móvil con burbujas de conversación que flotan despacio), cargado después de que el titular y la llamada a la acción sean visibles.
+- ~~**RF-33**~~ · *(retirado en v1.7, ver RF-47)* Si el ancho de pantalla es menor de 768 px, o el visitante tiene activada la preferencia de reducir movimiento, o el navegador no permite gráficos 3D, o JavaScript está desactivado, entonces el sistema deberá mostrar en su lugar una imagen fija equivalente y no descargar ningún recurso del elemento 3D.
+- **RF-36** · El sistema deberá usar ilustraciones planas con la paleta de RF-28, en lugar de fotografías, en «Quiénes somos», en la imagen para redes *(v1.7: ya no hay imagen en la portada)*; las ilustraciones de personas deberán tener texto alternativo descriptivo.
 - **RF-30** · Mientras el visitante tenga activada la preferencia de reducir movimiento, el sistema deberá desactivar animaciones y transiciones no esenciales.
 
 ### 4.8 Patrones de apple.com/services (v1.1)
@@ -129,6 +130,7 @@ Que un dueño de negocio local entienda en 5 segundos qué ofrece Local Digital,
   - **Principal** (la llamada a la acción de RF-01): relleno `#1D1D1F` con texto blanco sobre fondos blanco y gris; relleno `#F5F5F7` con texto `#1D1D1F` sobre fondo negro.
   - **Secundario** (probar el asistente de ejemplo, RF-02): fondo transparente con contorno de 1 px del color del texto de la sección.
   - **Enlace de texto** (enlaces de los bloques de servicios y de sectores): sin subrayado, terminado en «›», subrayado al pasar el puntero o al recibir el foco.
+- **RF-47** · *(v1.7)* El sistema deberá mostrar la portada de `/` y `/academias` sin imagen ni elemento 3D: solo antetítulo, titular, subtítulo, botón y nota, centrados; y no deberá descargar ningún recurso de gráficos 3D en ninguna página.
 
 ### 4.9 Contenido heredado
 
@@ -158,7 +160,7 @@ Que un dueño de negocio local entienda en 5 segundos qué ofrece Local Digital,
 - **CL-06** · Plazas del piloto = 0 → RF-05 (el bloque y el precio piloto desaparecen en todas las páginas).
 - **CL-07** · Visitante que llega con una dirección antigua con ancla → la página carga sin error. `/#faq` lleva a Preguntas frecuentes y `/#servicios` a Qué hacemos; `/#casos-de-exito`, `/#proceso` y `/#sobre-nosotros` cargan la página (`#proceso` → Cómo funciona, `#sobre-nosotros` → Quiénes somos; `#casos-de-exito` → portada).
 - **CL-08** · Dirección inexistente → RF-09.
-- **CL-10** · Navegador de escritorio sin soporte de gráficos 3D → RF-33 (imagen fija, sin error).
+- ~~**CL-10**~~ · *(retirado en v1.7: no hay elemento 3D)*.
 - **CL-11** · Lector de pantalla en la cinta de preguntas → las preguntas se anuncian una sola vez (la copia que permite el bucle visual queda oculta a tecnologías de asistencia).
 - **CL-13** · *(v1.5)* Llamada a la acción dentro de una sección negra → se invierte (relleno claro, texto oscuro) para distinguirse, sin borde; mismo estilo en todas las páginas (RF-01, RF-46).
 - **CL-12** · Cinta con JavaScript desactivado → el control de pausa sigue funcionando (RF-39).
@@ -211,10 +213,10 @@ Que un dueño de negocio local entienda en 5 segundos qué ofrece Local Digital,
 | RF-26 | Durante la carga de `/` y `/academias` no se hace ninguna petición a otros dominios. |
 | RF-27 | Todos los enlaces externos se abren en pestaña nueva y la página abierta no puede acceder ni modificar la página de origen. |
 | RF-28 | Los fondos de sección son `#FFFFFF`, `#F5F5F7` o `#000000`; el texto es `#1D1D1F` en claro y `#F5F5F7` en oscuro; la llamada a la acción sigue RF-46; ningún texto incumple el contraste AA (auditoría de accesibilidad). |
-| RF-29 | A 1280 px sin reducir movimiento, la portada muestra el elemento 3D; el titular y la llamada a la acción son visibles antes de que empiece a cargar; el elemento más grande pintado (LCP) no es el 3D. |
-| RF-33 | A 375 px, con reducir movimiento, sin soporte 3D o sin JavaScript, se ve la imagen fija y no se descarga ningún recurso del elemento 3D. |
+| ~~RF-29~~ | *(retirado en v1.7)* A 1280 px sin reducir movimiento, la portada muestra el elemento 3D; el titular y la llamada a la acción son visibles antes de que empiece a cargar; el elemento más grande pintado (LCP) no es el 3D. |
+| ~~RF-33~~ | *(retirado en v1.7)* A 375 px, con reducir movimiento, sin soporte 3D o sin JavaScript, se ve la imagen fija y no se descarga ningún recurso del elemento 3D. |
 | RF-30 | Con reducir movimiento activado, no hay animaciones ni transiciones no esenciales. |
-| RF-36 | Ninguna página carga fotografías de personas; «Quiénes somos» muestra una ilustración con texto alternativo; la imagen para redes y la imagen fija del 3D usan la paleta A. |
+| RF-36 | Ninguna página carga fotografías de personas; «Quiénes somos» muestra una ilustración con texto alternativo; la imagen para redes usa la paleta de RF-28. |
 | RF-37 | El `h1` de `/` muestra «Ningún cliente sin respuesta.» y «Ni a las 11 de la noche.» en líneas distintas; su tamaño calculado es ≥ 48 px a 1280 px y ≥ 36 px a 375 px. |
 | RF-38 | La sección «servicios» de `/` tiene exactamente 3 bloques con icono, nombre, titular, precio con «¹» y un enlace; dentro no hay `[data-cta='primary']` ni botones. |
 | RF-39 | Sin reducir movimiento, la lista de la cinta tiene una animación en curso; al activar el control de pausa (clic o teclado, también sin JS) la animación queda en pausa y al reactivarlo continúa; al pasar el puntero se pausa. |
@@ -227,6 +229,7 @@ Que un dueño de negocio local entienda en 5 segundos qué ofrece Local Digital,
 | RF-31 | Ninguna página contiene porcentajes de resultados ni las frases de casos de la web anterior. |
 | RF-32 | `/portfolio` devuelve código 404 y muestra la página de error con enlace al HUB; ninguna página enlaza a `/portfolio`. |
 | RF-46 | En `/` y `/academias`, la llamada a la acción es una cápsula (radio ≥ 22 px y altura ≥ 44 px) sin borde visible; en secciones claras tiene fondo `rgb(29, 29, 31)` y texto `rgb(255, 255, 255)`; en secciones negras, fondo `rgb(245, 245, 247)` y texto `rgb(29, 29, 31)`; los enlaces de servicios y sectores no tienen subrayado, terminan en «›» y se subrayan al recibir el foco; el botón secundario tiene fondo transparente y contorno de 1 px del color del texto (prueba en página cuando exista el número del asistente de ejemplo, P-01). |
+| RF-47 | En `/` y `/academias`, a 375 y 1280 px, `section#inicio` no contiene `svg`, `img`, `canvas` ni `[data-hero-still]`; ninguna petición de la página es un fragmento de JavaScript del 3D; `three` y `@react-three/fiber` no están en `package.json`. En `/`, tras desplazarse hasta «precios» y pulsar el logo, la vista vuelve arriba con el `h1` visible. |
 
 Los RNF se aceptan con: RNF-01 auditoría ≥ 90 ×4 en móvil y en escritorio; RNF-02 auditoría de accesibilidad sin errores y navegación por teclado; RNF-03 sin desplazamiento horizontal a 320/375/768/1280/1920 px; RNF-04 pruebas con JavaScript desactivado; RNF-06 cabeceras presentes en la respuesta; CL-07 cada ancla antigua lleva a la sección indicada; RNF-08 búsqueda de «yo», «me » y «escríbeme» sin resultados en los textos.
 

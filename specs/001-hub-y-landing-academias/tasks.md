@@ -92,6 +92,11 @@
 
 - [x] T-41 · Quitar la llamada a la acción de `NavFull` y `NavMinimal`. Tests: ninguna cabecera tiene `[data-cta]` (`/`, `/academias`, legales, 404, menú móvil abierto); los botones del contenido siguen cumpliendo RF-01 y RF-46; batería completa y Lighthouse ≥ 90 · cubre RF-11, RF-16, RF-46
 
+## Bloque O · Cambio v1.7 · portada sin imagen (aprobado)
+
+- [x] T-42 · El logo del menú del HUB vuelve arriba estando ya en `/` (enlace normal). Test: desplazarse a «precios», pulsar el logo y ver el `h1` · cubre RNF-02, RF-47
+- [x] T-43 · Quitar la imagen y el 3D de la portada de `/` y `/academias`, borrar sus componentes y desinstalar `three`. Tests: RF-47 a 375 y 1280 px; sin peticiones del 3D; batería completa y Lighthouse ≥ 90 · cubre RF-47, RNF-01
+
 ## Trazabilidad
 
 ### RF → tareas
@@ -126,6 +131,7 @@
 |  |  | RF-44 | T-31, T-34, T-37 |
 |  |  | RF-45 | T-38 |
 |  |  | RF-46 | T-39, T-40, T-41 |
+|  |  | RF-47 | T-42, T-43 |
 
 ### RNF → tareas
 
@@ -139,4 +145,4 @@
 | RNF-08 | T-07 |
 | RNF-09, RNF-10 | T-02 (sin formularios, peticiones externas ni almacenamiento) |
 
-Todas las tareas (T-01 a T-41) cubren al menos un RF.
+Todas las tareas (T-01 a T-43) cubren al menos un RF.

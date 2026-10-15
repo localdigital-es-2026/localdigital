@@ -12,12 +12,10 @@
     "test:perf": "lhci autorun --config=lighthouserc.mobile.json && lhci autorun --config=lighthouserc.desktop.json"
   },
   "dependencies": {
-    "@react-three/fiber": "^9.8.2",
     "lucide-react": "^0.577.0",
     "next": "^16.4.1",
     "react": "19.2.3",
-    "react-dom": "19.2.3",
-    "three": "^0.186.1"
+    "react-dom": "19.2.3"
   },
   "devDependencies": {
     "@lhci/cli": "^0.15.1",
@@ -26,7 +24,6 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@types/three": "^0.186.0",
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
     "eslint-config-next": "^16.4.1",
