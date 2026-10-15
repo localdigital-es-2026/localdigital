@@ -20,7 +20,7 @@ export function renderOgImage(title: string, eyebrow: string) {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: 72,
-          background: "#161617",
+          background: "#000000",
           color: "#f5f5f7",
         }}
       >

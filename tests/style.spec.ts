@@ -38,7 +38,7 @@ test.describe("v1.2 · escala tipográfica", () => {
 });
 
 test.describe("v1.2 · fondos por sección", () => {
-  const DARK = "rgb(22, 22, 23)";
+  const DARK = "rgb(0, 0, 0)";
   const LIGHT = ["rgb(255, 255, 255)", "rgb(245, 245, 247)"];
   const CASES = [
     { path: "/", dark: ["inicio", "problema", "cierre"] },
@@ -46,7 +46,7 @@ test.describe("v1.2 · fondos por sección", () => {
   ];
 
   for (const { path, dark } of CASES) {
-    test(`RF-44 · ${path}: impacto en casi negro y el resto alterna blanco y gris`, async ({ page }) => {
+    test(`RF-44 · ${path}: impacto en negro y el resto alterna blanco y gris`, async ({ page }) => {
       await page.goto(path);
       const sections = await page.locator("main > section[id]").evaluateAll((els) =>
         els.map((el) => ({ id: el.id, bg: getComputedStyle(el).backgroundColor, fg: getComputedStyle(el).color })),
@@ -67,10 +67,13 @@ test.describe("v1.2 · fondos por sección", () => {
     });
   }
 
-  test("CL-13 · el botón principal se distingue en una sección oscura (borde claro)", async ({ page }) => {
+  test("CL-13 · el botón principal se invierte en una sección negra (relleno claro, sin borde)", async ({ page }) => {
     await page.goto("/");
-    const border = await page.locator("section#cierre [data-cta='primary']").evaluate((el) => getComputedStyle(el).borderTopColor);
-    expect(border).toBe("rgba(255, 255, 255, 0.35)");
+    const style = await page.locator("section#cierre [data-cta='primary']").evaluate((el) => {
+      const s = getComputedStyle(el);
+      return { bg: s.backgroundColor, fg: s.color, border: s.borderTopWidth };
+    });
+    expect(style).toEqual({ bg: "rgb(245, 245, 247)", fg: "rgb(29, 29, 31)", border: "0px" });
   });
 });
 
@@ -128,7 +131,7 @@ test.describe("v1.3 · logotipo gris 3D", () => {
     expect(counts.blue).toBe(0);
   });
 
-  test("RF-42 · la imagen para redes lleva el logo gris 3D sobre casi negro", async ({ page, request }) => {
+  test("RF-42 · la imagen para redes lleva el logo gris 3D sobre negro", async ({ page, request }) => {
     const body = await (await request.get("/opengraph-image")).body();
     await page.setContent(`<canvas id=c width=1200 height=630></canvas>`);
     const result = await page.evaluate(async (b64) => {
@@ -146,7 +149,117 @@ test.describe("v1.3 · logotipo gris 3D", () => {
       }
       return { corner, midGray };
     }, body.toString("base64"));
-    expect(result.corner).toEqual([22, 22, 23]);
+    expect(result.corner).toEqual([0, 0, 0]);
     expect(result.midGray).toBeGreaterThan(1000);
+  });
+});
+
+test.describe("v1.4 · cabecera negra", () => {
+  const BLACK = "rgb(0, 0, 0)";
+  const LIGHT_TEXT = "rgb(245, 245, 247)";
+
+  for (const path of ["/", "/academias", "/aviso-legal", "/no-existe"]) {
+    test(`RF-45 · ${path}: cabecera negra con texto claro`, async ({ page }) => {
+      await page.goto(path);
+      const header = page.locator("header").first();
+      const styles = await header.evaluate((el) => ({
+        bg: getComputedStyle(el).backgroundColor,
+        fg: getComputedStyle(el).color,
+        links: [...el.querySelectorAll("a:not([data-cta]), summary")]
+          .filter((a) => (a as HTMLElement).offsetParent !== null)
+          .map((a) => getComputedStyle(a).color),
+      }));
+      expect(styles.bg).toBe(BLACK);
+      expect(styles.fg).toBe(LIGHT_TEXT);
+      for (const color of styles.links) expect(color).toBe(LIGHT_TEXT);
+    });
+  }
+
+  test("RF-45 · sigue negra al desplazarse sobre una sección blanca", async ({ page }) => {
+    await page.goto("/");
+    const white = page.locator("main > section[id]").filter({ has: page.locator("h2") });
+    const ids = await white.evaluateAll((els) =>
+      els.filter((el) => getComputedStyle(el).backgroundColor === "rgb(255, 255, 255)").map((el) => el.id),
+    );
+    expect(ids.length).toBeGreaterThan(0);
+    await page.locator(`#${ids[0]}`).scrollIntoViewIfNeeded();
+    const bg = await page.locator("header").first().evaluate((el) => getComputedStyle(el).backgroundColor);
+    expect(bg).toBe(BLACK);
+  });
+
+  test("RF-45 · en móvil el menú desplegado es negro con enlaces claros", async ({ page }, testInfo) => {
+    test.skip(testInfo.project.name !== "mobile");
+    await page.goto("/");
+    await page.locator("header summary").click();
+    const menu = page.locator("header details nav");
+    await expect(menu).toBeVisible();
+    const styles = await menu.evaluate((el) => ({
+      bg: getComputedStyle(el).backgroundColor,
+      link: getComputedStyle(el.querySelector("a")!).color,
+    }));
+    expect(styles.bg).toBe(BLACK);
+    expect(styles.link).toBe(LIGHT_TEXT);
+  });
+});
+
+test.describe("v1.5 · botones de apple.com/services", () => {
+  for (const { path, needsLight } of [{ path: "/", needsLight: true }, { path: "/academias", needsLight: false }]) {
+    test(`RF-46 · RF-01 · ${path}: botón principal en cápsula, invertido según el fondo`, async ({ page }) => {
+      await page.goto(path);
+      const buttons = await page.locator("[data-cta='primary']").evaluateAll((els) =>
+        els
+          .filter((el) => (el as HTMLElement).offsetParent !== null)
+          .map((el) => {
+            const s = getComputedStyle(el);
+            const box = el.getBoundingClientRect();
+            const container = el.closest("section, header")!;
+            return {
+              where: container.id || container.tagName,
+              containerBg: getComputedStyle(container).backgroundColor,
+              bg: s.backgroundColor,
+              fg: s.color,
+              border: s.borderTopWidth,
+              radius: parseFloat(s.borderTopLeftRadius),
+              height: box.height,
+            };
+          }),
+      );
+      expect(buttons.length).toBeGreaterThan(1);
+      let light = 0;
+      for (const b of buttons) {
+        const onBlack = b.containerBg === "rgb(0, 0, 0)";
+        if (!onBlack) light++;
+        expect(b.bg, b.where).toBe(onBlack ? "rgb(245, 245, 247)" : "rgb(29, 29, 31)");
+        expect(b.fg, b.where).toBe(onBlack ? "rgb(29, 29, 31)" : "rgb(255, 255, 255)");
+        expect(b.border, b.where).toBe("0px");
+        expect(b.radius, b.where).toBeGreaterThanOrEqual(22);
+        expect(b.height, b.where).toBeGreaterThanOrEqual(44);
+      }
+      // En /academias todos los botones están en la cabecera o en secciones negras.
+      if (needsLight) expect(light, "algún botón sobre fondo claro").toBeGreaterThan(0);
+    });
+  }
+
+  test("RF-46 · RF-38 · los enlaces de servicios y sectores son «… ›» sin subrayado y se subrayan con el foco", async ({ page }) => {
+    await page.goto("/");
+    const links = page.locator("section#que-ofrecemos article > a, section#sectores a");
+    const count = await links.count();
+    expect(count).toBeGreaterThan(3);
+    for (let i = 0; i < count; i++) {
+      const link = links.nth(i);
+      const style = await link.evaluate((el) => ({
+        decoration: getComputedStyle(el).textDecorationLine,
+        after: getComputedStyle(el, "::after").content,
+        text: el.textContent!.trim(),
+      }));
+      expect(style.decoration).toBe("none");
+      expect(style.after).toContain("›");
+      // La flecha es decorativa: no forma parte del nombre accesible.
+      await expect(page.getByRole("link", { name: style.text, exact: true }).first()).toBeAttached();
+      await link.focus();
+      await page.keyboard.press("Shift+Tab");
+      await page.keyboard.press("Tab");
+      expect(await link.evaluate((el) => getComputedStyle(el).textDecorationLine)).toBe("underline");
+    }
   });
 });

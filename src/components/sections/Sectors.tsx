@@ -11,7 +11,7 @@ export function Sectors({ section, tone }: SectionProps<"sectors">) {
           <div key={sector.slug} className="flex flex-col gap-3">
             <h2>{sector.title}</h2>
             <p className="text-lg">{sector.summary}</p>
-            <Link href={`/${sector.slug}`} className="font-semibold underline">
+            <Link href={`/${sector.slug}`} className="ld-more">
               {sector.linkText}
             </Link>
           </div>

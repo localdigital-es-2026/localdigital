@@ -1,6 +1,6 @@
 # Spec 001 — Web central (HUB) y landing de academias y autoescuelas
 
-> Estado: aprobada · v1.1 aprobada el 2026-10-15 · v1.2 (estilo profesional) aprobada el 2026-10-15 · v1.3 (logo gris 3D) aprobada el 2026-10-15 · Fecha: 2026-10-14 · Constitución: `docs/constitution.md` v1.1
+> Estado: aprobada · v1.1 aprobada el 2026-10-15 · v1.2 (estilo profesional) aprobada el 2026-10-15 · v1.3 (logo gris 3D) aprobada el 2026-10-15 · v1.4 (negro puro) aprobada el 2026-10-15 · v1.5 (botones de apple.com/services) aprobada el 2026-10-15 · v1.6 (menú sin botón) aprobada el 2026-10-15 · Fecha: 2026-10-14 · Constitución: `docs/constitution.md` v1.1
 > Contenido aprobado (textos literales): `specs/001-hub-y-landing-academias/contenido/hub.md` y `contenido/academias.md`.
 
 ## 1. Contexto
@@ -20,6 +20,9 @@ Tras el análisis de webs de referencia y de los cursos MKT-Hackers y de redacci
 - Cada sector tendrá su propia **landing** en una subcarpeta; la primera, **academias y autoescuelas**.
 - **Precios visibles**, **un único botón principal** ("Reserva una demo de 15 min") y **programa piloto** en lugar de casos de éxito.
 - Estilo visual **A · cálida y cercana**.
+- **v1.6 (2026-10-15):** como en apple.com, el menú no lleva botón de reserva: había dos «Reserva una demo de 15 min» en la misma pantalla (cabecera y portada). La llamada a la acción queda en el contenido de cada página (portada, precios, piloto, cierre…).
+- **v1.5 (2026-10-15):** se adoptan los botones de apple.com/services (capturas del usuario): cápsula sin borde de color invertido respecto al fondo (casi negro `#1D1D1F` con texto blanco sobre fondos claros; gris muy claro `#F5F5F7` con texto casi negro sobre fondos oscuros), un botón secundario de contorno fino y enlaces de texto «… ›» sin subrayado. El azul `#0D4964` deja de ser el color del botón y queda para iconos, ilustraciones y realces.
+- **v1.4 (2026-10-15):** el casi negro `#161617` no se percibe como negro. Se adopta el **negro puro `#000000`** de apple.com/services en las secciones de impacto, en la cabecera de todas las páginas y en la imagen para redes. Las tarjetas sobre fondo oscuro siguen en `#1D1D1F`.
 - **v1.3 (2026-10-15):** se sustituye el logo azul plano por la caracola **gris con relieve 3D** del archivo `logo-local-digital-svg.svg` facilitado por el usuario. El archivo no es vectorial (imagen de 2048 px dentro de un SVG de 2,5 MB), así que se publican versiones optimizadas generadas a partir de él. El azul `#0D4964` se mantiene como color del botón principal.
 - **v1.2 (2026-10-15):** la versión A resulta «infantil» (titulares con serifa redondeada, crema y terracota). Se adopta un estilo profesional inspirado en apple.com/careers: tipografía sans única (Inter, la alternativa libre más próxima a SF Pro, cuya licencia no permite usarla fuera de plataformas Apple), gran contraste de tamaños entre titulares y texto, fondos blanco y gris claro alternos, secciones de impacto casi negras, y el nuevo logo (caracola azul `#0D4964`) con el azul como color del botón principal.
 - **v1.1 (2026-10-15):** se incorporan cuatro patrones de apple.com/services: titular grande en dos líneas, un bloque por servicio con la misma plantilla, una cinta animada de preguntas que contesta el asistente y notas al pie numeradas para las condiciones de precio.
@@ -63,7 +66,7 @@ Que un dueño de negocio local entienda en 5 segundos qué ofrece Local Digital,
 ### 4.2 Web central (HUB) — `/`
 
 - **RF-10** · El sistema deberá mostrar en la raíz del dominio las secciones de `contenido/hub.md` en este orden: portada, problema, preguntas que contesta (cinta), qué hacemos, servicios, cómo funciona, precios, programa piloto, sector, quiénes somos, tus datos, preguntas frecuentes, cierre y pie. *(v1.1: «complementos» pasa a «servicios» y se añade la cinta tras «problema».)*
-- **RF-11** · El sistema deberá mostrar en el HUB un menú con enlaces a las secciones Qué hacemos, Cómo funciona, Precios, Quiénes somos y Preguntas, más la llamada a la acción principal.
+- **RF-11** · El sistema deberá mostrar en el HUB un menú con enlaces a las secciones Qué hacemos, Cómo funciona, Precios, Quiénes somos y Preguntas *(v1.6: sin la llamada a la acción, que está en el contenido)*.
 - **RF-12** · Cuando el visitante pulse un enlace del menú, el sistema deberá desplazar la vista hasta la sección correspondiente.
 - **RF-13** · Mientras el ancho de pantalla sea menor de 768 px, el sistema deberá mostrar el menú plegado tras un botón accesible que lo abre y lo cierra.
 - **RF-14** · El sistema deberá mostrar en la sección de sectores solo los sectores activos (en esta spec, únicamente «Academias y autoescuelas», con enlace a `/academias`), sin mencionar sectores «próximamente».
@@ -71,7 +74,7 @@ Que un dueño de negocio local entienda en 5 segundos qué ofrece Local Digital,
 ### 4.3 Landing de academias y autoescuelas — `/academias`
 
 - **RF-15** · El sistema deberá mostrar en `/academias` las secciones de `contenido/academias.md` en este orden: portada, dolor, solución, oferta y precio, garantía, demo, programa piloto, quiénes somos, preguntas frecuentes, cierre y pie.
-- **RF-16** · El sistema deberá mostrar en `/academias` un menú reducido formado solo por el logotipo (que enlaza al HUB) y la llamada a la acción principal.
+- **RF-16** · El sistema deberá mostrar en `/academias` un menú reducido formado solo por el logotipo (que enlaza al HUB) *(v1.6: sin la llamada a la acción)*.
 - **RF-17** · El sistema deberá mostrar las conversaciones de ejemplo con aspecto de chat de WhatsApp y con una etiqueta visible «Ejemplo» en cada una.
 - **RF-18** · El sistema deberá mostrar en `/academias` a la vez los ejemplos de academia y de autoescuela: en las secciones de dolor y solución, cada ejemplo con su etiqueta visible («Academia» / «Autoescuela»); en la demo, las dos conversaciones de ejemplo, una junto a otra en pantallas de 768 px o más y una debajo de otra en pantallas menores.
 - **RF-19** · El sistema deberá incluir en el pie de `/academias` un enlace «Volver a localdigital.es» que lleve al HUB.
@@ -102,7 +105,7 @@ Que un dueño de negocio local entienda en 5 segundos qué ofrece Local Digital,
 
 ### 4.7 Diseño (versión visual A)
 
-- **RF-28** · *(v1.2, sustituye a la paleta A)* El sistema deberá usar esta paleta: fondos claros blanco `#FFFFFF` y gris `#F5F5F7`; fondo de impacto casi negro `#161617`; texto `#1D1D1F` sobre claro y `#F5F5F7` sobre oscuro; texto secundario `#6E6E73` sobre claro y `#A1A1A6` sobre oscuro; color de marca y de la llamada a la acción azul `#0D4964` con texto blanco.
+- **RF-28** · *(v1.2, sustituye a la paleta A)* El sistema deberá usar esta paleta: fondos claros blanco `#FFFFFF` y gris `#F5F5F7`; fondo de impacto negro `#000000` *(v1.4; antes casi negro `#161617`)*; texto `#1D1D1F` sobre claro y `#F5F5F7` sobre oscuro; texto secundario `#6E6E73` sobre claro y `#A1A1A6` sobre oscuro; color de marca azul `#0D4964` para iconos, ilustraciones y realces *(v1.5: ya no se usa en la llamada a la acción; ver RF-46)*.
 - **RF-29** · Mientras el ancho de pantalla sea de 768 px o más y el visitante no tenga activada la preferencia de reducir movimiento, el sistema deberá mostrar en la portada del HUB un elemento 3D suave con la paleta de RF-28 (un móvil con burbujas de conversación que flotan despacio), cargado después de que el titular y la llamada a la acción sean visibles.
 - **RF-33** · Si el ancho de pantalla es menor de 768 px, o el visitante tiene activada la preferencia de reducir movimiento, o el navegador no permite gráficos 3D, o JavaScript está desactivado, entonces el sistema deberá mostrar en su lugar una imagen fija equivalente y no descargar ningún recurso del elemento 3D.
 - **RF-36** · El sistema deberá usar ilustraciones planas con la paleta de RF-28, en lugar de fotografías, en «Quiénes somos», en la imagen para redes y en la imagen fija que sustituye al 3D; las ilustraciones de personas deberán tener texto alternativo descriptivo.
@@ -120,7 +123,12 @@ Que un dueño de negocio local entienda en 5 segundos qué ofrece Local Digital,
 
 - **RF-42** · *(v1.3)* El sistema deberá mostrar el logotipo de la caracola gris con relieve 3D junto al nombre «Local Digital» en el menú y en el pie de todas las páginas, con la misma imagen sobre fondos claros y oscuros, servido desde el propio dominio, con un peso de cada archivo de imagen del logotipo ≤ 30 KB y con «Local Digital» como nombre accesible del enlace al inicio; el mismo logotipo deberá usarse como icono del sitio (favicon, 64 px) y en la imagen para redes.
 - **RF-43** · El sistema deberá usar una única familia tipográfica sans (Inter) para titulares y texto, con esta escala en pantallas de 768 px o más (entre paréntesis, por debajo de 768 px): titular de portada ≥ 72 px (≥ 40 px); titular de sección (h2) 48 px (32 px); subtítulo (h3) 21 px; texto 17 px con interlineado ≈ 1,47; titulares en peso semi-negrita (600) con espaciado de letras ligeramente negativo.
-- **RF-44** · El sistema deberá mostrar las secciones de portada, problema y cierre del HUB, y las de portada y cierre de academias, sobre fondo casi negro (secciones de impacto), y las demás secciones alternando fondo blanco y gris claro, sin dos secciones claras consecutivas con el mismo fondo.
+- **RF-44** · El sistema deberá mostrar las secciones de portada, problema y cierre del HUB, y las de portada y cierre de academias, sobre fondo negro (secciones de impacto), y las demás secciones alternando fondo blanco y gris claro, sin dos secciones claras consecutivas con el mismo fondo.
+- **RF-45** · *(v1.4)* El sistema deberá mostrar la cabecera de todas las páginas (HUB, landings, páginas legales y error) sobre fondo negro `#000000`, con el texto y el botón «Menú» en claro, también al desplegar el menú en móvil y al desplazarse sobre secciones claras.
+- **RF-46** · *(v1.5)* El sistema deberá mostrar los botones con forma de cápsula, sin borde de color y con estos tres niveles, iguales en todas las páginas:
+  - **Principal** (la llamada a la acción de RF-01): relleno `#1D1D1F` con texto blanco sobre fondos blanco y gris; relleno `#F5F5F7` con texto `#1D1D1F` sobre fondo negro.
+  - **Secundario** (probar el asistente de ejemplo, RF-02): fondo transparente con contorno de 1 px del color del texto de la sección.
+  - **Enlace de texto** (enlaces de los bloques de servicios y de sectores): sin subrayado, terminado en «›», subrayado al pasar el puntero o al recibir el foco.
 
 ### 4.9 Contenido heredado
 
@@ -152,7 +160,7 @@ Que un dueño de negocio local entienda en 5 segundos qué ofrece Local Digital,
 - **CL-08** · Dirección inexistente → RF-09.
 - **CL-10** · Navegador de escritorio sin soporte de gráficos 3D → RF-33 (imagen fija, sin error).
 - **CL-11** · Lector de pantalla en la cinta de preguntas → las preguntas se anuncian una sola vez (la copia que permite el bucle visual queda oculta a tecnologías de asistencia).
-- **CL-13** · Llamada a la acción azul dentro de una sección casi negra → debe seguir distinguiéndose: el botón lleva un borde claro sutil en todas sus apariciones (mismo estilo en todas las páginas, RF-01).
+- **CL-13** · *(v1.5)* Llamada a la acción dentro de una sección negra → se invierte (relleno claro, texto oscuro) para distinguirse, sin borde; mismo estilo en todas las páginas (RF-01, RF-46).
 - **CL-12** · Cinta con JavaScript desactivado → el control de pausa sigue funcionando (RF-39).
 - **CL-09** · Visitante que llega a `/portfolio` desde Google → RF-32 (404 con enlace al HUB).
 
@@ -185,12 +193,12 @@ Que un dueño de negocio local entienda en 5 segundos qué ofrece Local Digital,
 | RF-08 | Los titulares y textos de cada sección coinciden con los documentos de contenido; ninguna página contiene «{nota». |
 | RF-09 | Una dirección inexistente devuelve la página de error con enlace al HUB. |
 | RF-10 | Los títulos de sección de `/` aparecen en el orden indicado. |
-| RF-11 | El menú del HUB contiene los 5 enlaces y la llamada a la acción. |
+| RF-11 | El menú del HUB contiene los 5 enlaces y ninguna llamada a la acción (`header` sin `[data-cta]`), también con el menú móvil abierto. |
 | RF-12 | Al pulsar cada enlace del menú, la sección destino queda visible en pantalla. |
 | RF-13 | A 375 px el menú aparece plegado; el botón lo abre y lo cierra y tiene nombre accesible y estado. |
 | RF-14 | La sección de sectores contiene un único enlace a `/academias`; la palabra «próximamente» no aparece en ninguna página. |
 | RF-15 | Los títulos de sección de `/academias` aparecen en el orden indicado. |
-| RF-16 | El menú de `/academias` contiene solo el logo (enlace a `/`) y la llamada a la acción. |
+| RF-16 | El menú de `/academias` contiene solo el logo (enlace a `/`), sin llamada a la acción. Ninguna cabecera (`/`, `/academias`, páginas legales, 404) contiene `[data-cta]`. |
 | RF-17 | Cada conversación de ejemplo muestra la etiqueta «Ejemplo». |
 | RF-18 | `/academias` contiene las etiquetas «Academia» y «Autoescuela» en dolor y solución, y dos conversaciones de ejemplo; a 1280 px están lado a lado y a 375 px apiladas; ambas visibles sin JavaScript. |
 | RF-19 | El pie de `/academias` contiene «Volver a localdigital.es» enlazando a `/`. |
@@ -202,7 +210,7 @@ Que un dueño de negocio local entienda en 5 segundos qué ofrece Local Digital,
 | RF-25 | Tras cargar `/` y `/academias`, el navegador no tiene cookies ni datos de almacenamiento local del dominio. |
 | RF-26 | Durante la carga de `/` y `/academias` no se hace ninguna petición a otros dominios. |
 | RF-27 | Todos los enlaces externos se abren en pestaña nueva y la página abierta no puede acceder ni modificar la página de origen. |
-| RF-28 | Los fondos de sección son `#FFFFFF`, `#F5F5F7` o `#161617`; el texto es `#1D1D1F` en claro y `#F5F5F7` en oscuro; la llamada a la acción tiene fondo `#0D4964` y texto blanco; ningún texto incumple el contraste AA (auditoría de accesibilidad). |
+| RF-28 | Los fondos de sección son `#FFFFFF`, `#F5F5F7` o `#000000`; el texto es `#1D1D1F` en claro y `#F5F5F7` en oscuro; la llamada a la acción sigue RF-46; ningún texto incumple el contraste AA (auditoría de accesibilidad). |
 | RF-29 | A 1280 px sin reducir movimiento, la portada muestra el elemento 3D; el titular y la llamada a la acción son visibles antes de que empiece a cargar; el elemento más grande pintado (LCP) no es el 3D. |
 | RF-33 | A 375 px, con reducir movimiento, sin soporte 3D o sin JavaScript, se ve la imagen fija y no se descarga ningún recurso del elemento 3D. |
 | RF-30 | Con reducir movimiento activado, no hay animaciones ni transiciones no esenciales. |
@@ -212,11 +220,13 @@ Que un dueño de negocio local entienda en 5 segundos qué ofrece Local Digital,
 | RF-39 | Sin reducir movimiento, la lista de la cinta tiene una animación en curso; al activar el control de pausa (clic o teclado, también sin JS) la animación queda en pausa y al reactivarlo continúa; al pasar el puntero se pausa. |
 | RF-40 | Con reducir movimiento, la cinta no tiene animación, no se muestra el control de pausa y todas las preguntas son visibles. |
 | RF-41 | En `/` y `/academias` cada precio «desde» lleva «¹» enlazado a `#nota-1` y la garantía «²» enlazado a `#nota-2` (si aparece en precios); las notas existen dentro de la sección de precios y contienen las condiciones; cada llamada tiene nombre accesible «Nota N». |
-| RF-42 | El enlace al inicio de la cabecera y el pie contienen la imagen del logotipo gris 3D (del propio dominio, ≤ 30 KB) y el texto «Local Digital»; la misma imagen en todas las páginas; el favicon de 64 px es el logotipo gris (sin píxeles del azul de marca); la imagen para redes lo incluye sobre fondo casi negro. |
+| RF-42 | El enlace al inicio de la cabecera y el pie contienen la imagen del logotipo gris 3D (del propio dominio, ≤ 30 KB) y el texto «Local Digital»; la misma imagen en todas las páginas; el favicon de 64 px es el logotipo gris (sin píxeles del azul de marca); la imagen para redes lo incluye sobre fondo negro `#000000`. |
 | RF-43 | `h1`, `h2`, `h3` y el texto usan Inter; tamaños calculados a 1280 px: `h1` portada ≥ 72 px, `h2` = 48 px, `h3` = 21 px, texto = 17 px; a 375 px: `h1` ≥ 40 px, `h2` = 32 px; peso de titulares 600. |
-| RF-44 | En `/` las secciones `inicio`, `problema` y `cierre` tienen fondo `#161617`; en `/academias`, `inicio` y `cierre`; el resto alterna `#FFFFFF` / `#F5F5F7` sin que dos secciones claras consecutivas compartan fondo. |
+| RF-44 | En `/` las secciones `inicio`, `problema` y `cierre` tienen fondo `#000000`; en `/academias`, `inicio` y `cierre`; el resto alterna `#FFFFFF` / `#F5F5F7` sin que dos secciones claras consecutivas compartan fondo. |
+| RF-45 | En `/`, `/academias`, `/aviso-legal` y la página 404, la cabecera tiene fondo `rgb(0, 0, 0)` y sus enlaces y el botón «Menú» tienen texto claro con contraste AA; a 375 px el menú desplegado también es negro; al desplazarse hasta una sección blanca la cabecera sigue negra. |
 | RF-31 | Ninguna página contiene porcentajes de resultados ni las frases de casos de la web anterior. |
 | RF-32 | `/portfolio` devuelve código 404 y muestra la página de error con enlace al HUB; ninguna página enlaza a `/portfolio`. |
+| RF-46 | En `/` y `/academias`, la llamada a la acción es una cápsula (radio ≥ 22 px y altura ≥ 44 px) sin borde visible; en secciones claras tiene fondo `rgb(29, 29, 31)` y texto `rgb(255, 255, 255)`; en secciones negras, fondo `rgb(245, 245, 247)` y texto `rgb(29, 29, 31)`; los enlaces de servicios y sectores no tienen subrayado, terminan en «›» y se subrayan al recibir el foco; el botón secundario tiene fondo transparente y contorno de 1 px del color del texto (prueba en página cuando exista el número del asistente de ejemplo, P-01). |
 
 Los RNF se aceptan con: RNF-01 auditoría ≥ 90 ×4 en móvil y en escritorio; RNF-02 auditoría de accesibilidad sin errores y navegación por teclado; RNF-03 sin desplazamiento horizontal a 320/375/768/1280/1920 px; RNF-04 pruebas con JavaScript desactivado; RNF-06 cabeceras presentes en la respuesta; CL-07 cada ancla antigua lleva a la sección indicada; RNF-08 búsqueda de «yo», «me » y «escríbeme» sin resultados en los textos.
 

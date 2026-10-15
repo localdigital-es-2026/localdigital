@@ -1,7 +1,7 @@
 import { site } from "@/content/site";
 import { demoWhatsappUrl } from "@/lib/links";
 import { CtaButton } from "@/components/layout/CtaButton";
-import { ExternalLink } from "@/components/layout/ExternalLink";
+import { SecondaryButton } from "@/components/layout/SecondaryButton";
 import { HeroStill } from "@/components/illustrations/HeroStill";
 import { Hero3DSlot } from "@/components/three/Hero3DSlot";
 import type { SectionProps } from "./types";
@@ -32,9 +32,9 @@ export function Hero({ section, tone }: SectionProps<"hero">) {
             <CtaButton />
             <p className="text-sm text-muted">{section.ctaNote}</p>
             {demoUrl && section.demoLinkText && (
-              <ExternalLink href={demoUrl} className="text-sm underline">
+              <SecondaryButton href={demoUrl}>
                 {section.demoLinkText}
-              </ExternalLink>
+              </SecondaryButton>
             )}
           </div>
         </div>

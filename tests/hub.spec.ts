@@ -118,7 +118,7 @@ test.describe("HUB · secciones inferiores", () => {
     const links = section.getByRole("link");
     await expect(links).toHaveCount(1);
     await expect(links).toHaveAttribute("href", "/academias");
-    await expect(links).toHaveText("Ver la solución para academias →");
+    await expect(links).toHaveText("Ver la solución para academias"); // v1.5: la flecha «›» la pone el CSS
     expect(await page.locator("body").innerText()).not.toMatch(/próximamente/i);
   });
 
@@ -178,14 +178,14 @@ test.describe("HUB · página y menú", () => {
     expect(ids).toEqual(hub.sections.map((s) => s.id));
   });
 
-  test("RF-11 · el menú de escritorio tiene los cinco enlaces y el botón", async ({ page }, testInfo) => {
+  test("RF-11 · el menú de escritorio tiene los cinco enlaces y ningún botón (v1.6)", async ({ page }, testInfo) => {
     test.skip(testInfo.project.name !== "desktop-chrome");
     await page.goto("/");
     const nav = page.getByRole("navigation", { name: "Principal" });
     for (const link of hub.navLinks!) {
       await expect(nav.getByRole("link", { name: link.label, exact: true })).toHaveAttribute("href", link.href);
     }
-    await expect(page.locator("header [data-cta='primary']")).toBeVisible();
+    await expect(page.locator("header [data-cta]")).toHaveCount(0);
   });
 
   test("RF-12 · cada enlace del menú lleva a su sección", async ({ page }, testInfo) => {
@@ -208,7 +208,7 @@ test.describe("HUB · página y menú", () => {
     await expect(firstLink).toBeHidden();
     await toggle.click();
     await expect(firstLink).toBeVisible();
-    await expect(page.locator("header [data-cta='primary']")).toBeVisible();
+    await expect(page.locator("header [data-cta]")).toHaveCount(0);
     await toggle.click();
     await expect(firstLink).toBeHidden();
   });

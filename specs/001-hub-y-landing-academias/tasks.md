@@ -78,6 +78,20 @@
 - [x] T-35 · Logo gris 3D en cabecera y pie: generar `logo-3d.webp`/`.png` desde el SVG recibido, `Logo` con una sola imagen y eliminar las versiones azul y blanca. Tests: logo 3D ≤ 30 KB en cabecera y pie de todas las páginas, mismo archivo en claro y oscuro, enlace con nombre «Local Digital» · cubre RF-42
 - [x] T-36 · Favicon e imagen para redes con el logo gris 3D y verificación final. Tests: favicon 64 px gris sin azul de marca; imagen para redes con el logo gris sobre casi negro; batería completa y Lighthouse ≥ 90 · cubre RF-42, RF-21
 
+## Bloque L · Cambio v1.4 · negro puro (aprobado)
+
+- [x] T-37 · Negro puro en las secciones de impacto y en la imagen para redes: `--ld-dark` a `#000000` y fondo de `og.tsx`. Tests: token y fondos de RF-44 en `/` y `/academias` a `rgb(0, 0, 0)`; imagen para redes con fondo negro; contraste AA · cubre RF-28, RF-44, RF-42
+- [x] T-38 · Cabecera negra en todas las páginas y verificación final. Tests: fondo negro y texto claro en la cabecera de `/`, `/academias`, `/aviso-legal` y 404; menú móvil abierto negro; sigue negra sobre una sección blanca; batería completa y Lighthouse ≥ 90 (móvil y escritorio) · cubre RF-45, RNF-01
+
+## Bloque M · Cambio v1.5 · botones de apple.com/services (aprobado)
+
+- [x] T-39 · Botón principal en cápsula con colores por tono: tokens `--tone-btn-*`, `CtaButton` sin borde ni azul. Tests: colores del botón en secciones claras, en la cabecera negra y en el cierre negro de `/` y `/academias`; cápsula ≥ 44 px; sigue habiendo un único estilo (RF-01) · cubre RF-46, RF-01, RF-28, CL-13
+- [x] T-40 · Botón secundario y enlaces «›», y verificación final. Tests: enlaces de servicios y sectores sin subrayado, con «›» y subrayado con el foco; nombre accesible sin la flecha; `SecondaryButton` transparente con contorno (prueba de componente); batería completa y Lighthouse ≥ 90 · cubre RF-46, RF-38, RNF-01
+
+## Bloque N · Cambio v1.6 · menú sin botón (aprobado)
+
+- [x] T-41 · Quitar la llamada a la acción de `NavFull` y `NavMinimal`. Tests: ninguna cabecera tiene `[data-cta]` (`/`, `/academias`, legales, 404, menú móvil abierto); los botones del contenido siguen cumpliendo RF-01 y RF-46; batería completa y Lighthouse ≥ 90 · cubre RF-11, RF-16, RF-46
+
 ## Trazabilidad
 
 ### RF → tareas
@@ -93,7 +107,7 @@
 | RF-07 | T-10, T-21 | RF-25 | T-02 |
 | RF-08 | T-07, T-12 | RF-26 | T-02, T-05, T-20 |
 | RF-09 | T-01 | RF-27 | T-04, T-06 |
-| RF-10 | T-08, T-11, T-26, T-27 | RF-28 | T-05 |
+| RF-10 | T-08, T-11, T-26, T-27 | RF-28 | T-05, T-37, T-39 |
 | RF-11 | T-11 | RF-29 | T-19, T-22 |
 | RF-12 | T-11 | RF-30 | T-05 |
 | RF-13 | T-11, T-21 | RF-31 | T-02 |
@@ -107,9 +121,11 @@
 |  |  | RF-39 | T-27, T-28 |
 |  |  | RF-40 | T-28 |
 |  |  | RF-41 | T-25, T-26 |
-|  |  | RF-42 | T-32, T-35, T-36 |
+|  |  | RF-42 | T-32, T-35, T-36, T-37 |
 |  |  | RF-43 | T-30, T-34 |
-|  |  | RF-44 | T-31, T-34 |
+|  |  | RF-44 | T-31, T-34, T-37 |
+|  |  | RF-45 | T-38 |
+|  |  | RF-46 | T-39, T-40, T-41 |
 
 ### RNF → tareas
 
@@ -123,4 +139,4 @@
 | RNF-08 | T-07 |
 | RNF-09, RNF-10 | T-02 (sin formularios, peticiones externas ni almacenamiento) |
 
-Todas las tareas (T-01 a T-36) cubren al menos un RF.
+Todas las tareas (T-01 a T-41) cubren al menos un RF.

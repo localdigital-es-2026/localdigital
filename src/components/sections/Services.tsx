@@ -25,7 +25,7 @@ export function Services({ section, tone }: SectionProps<"services">) {
                   {block.price}
                   <NoteRef id={1} />
                 </p>
-                <a href={block.link.href} className="mt-auto inline-flex min-h-11 items-center font-semibold underline">
+                <a href={block.link.href} className="ld-more mt-auto inline-flex min-h-11 items-center">
                   {block.link.label}
                 </a>
               </article>

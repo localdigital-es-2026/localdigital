@@ -1,6 +1,6 @@
 # Plan técnico — Spec 001 · HUB y landing de academias
 
-> Estado: aprobado · Fecha: 2026-10-14 · cambio v1.1 (§9) aprobado el 2026-10-15 · cambio v1.2 (§10) aprobado el 2026-10-15 · cambio v1.3 (§11) aprobado el 2026-10-15
+> Estado: aprobado · Fecha: 2026-10-14 · cambio v1.1 (§9) aprobado el 2026-10-15 · cambio v1.2 (§10) aprobado el 2026-10-15 · cambio v1.3 (§11) aprobado el 2026-10-15 · cambio v1.4 (§12) aprobado el 2026-10-15 · cambio v1.5 (§13) aprobado el 2026-10-15 · cambio v1.6 (§14) aprobado el 2026-10-15
 > Basado en: `docs/constitution.md` v1.0 y `specs/001-hub-y-landing-academias/spec.md` (aprobada).
 > Solo firmas e interfaces; nada de implementación.
 
@@ -361,7 +361,7 @@ export interface Footnote { id: 1 | 2; text: string }
 | `:has()` no existe en navegadores antiguos. | Soportado en todos los navegadores actuales; si no, la cinta sigue moviéndose y se pausa con el puntero/foco. |
 | Titular a 60 px desplaza el contenido en escritorio y empeora el LCP. | Lighthouse en la batería; si baja de 90 se ajusta el tamaño. |
 
-## 10. Cambio v1.2 · estilo profesional inspirado en apple.com/careers (pendiente de OK)
+## 10. Cambio v1.2 · estilo profesional inspirado en apple.com/careers (aprobado)
 
 ### 10.1 Medidas tomadas de apple.com/careers (navegador integrado, 1440 px)
 
@@ -452,3 +452,79 @@ export interface Footnote { id: 1 | 2; text: string }
 |---|---|
 | A 16–32 px el relieve se emborrona y el favicon se reconoce peor que el azul plano. | Recorte ajustado y redimensionado de alta calidad; revisión visual. Si no convence, volver al azul solo para el favicon (cambio de spec). |
 | Más peso que el logo plano. | Límite de 30 KB por archivo con test; Lighthouse en la batería. |
+
+## 12. Cambio v1.4 · negro puro de apple.com/services (aprobado)
+
+**Origen:** captura de apple.com/services aportada por el usuario: cabecera y portada en negro puro, sin separación visible entre ambas.
+
+**Contraste con `#000000`** (WCAG, mínimo AA 4,5:1): `#F5F5F7`/negro 19,3 · `#A1A1A6`/negro 8,1 · `#A1A1A6`/`#1D1D1F` 6,5 · azul `#0D4964`/negro 2,2 (el botón conserva su borde claro, CL-13; su texto blanco sobre azul sigue en 9,75).
+
+**Cambios técnicos:**
+
+| Módulo | Cambio | RF |
+|---|---|---|
+| `globals.css` | `--ld-dark: #000000`. Las tarjetas oscuras (`--tone-card` en `[data-tone="dark"]`) siguen en `#1D1D1F`. | RF-28, RF-44 |
+| `lib/og.tsx` | Fondo `#000000`. | RF-42, RF-21 |
+| `layout/NavFull.tsx`, `layout/NavMinimal.tsx` | La cabecera lleva `data-tone="dark"` y fondo `bg-surface` (el negro del tono oscuro); el borde inferior usa la línea oscura. El menú móvil desplegado hereda el tono. | RF-45 |
+| `tests/design.spec.ts` | `--ld-dark` pasa a `#000000`; nuevo test de cabecera negra en las cuatro páginas, menú móvil abierto y tras desplazarse. *(Cambian por requisito.)* | RF-28, RF-45 |
+| `tests/` de fondos y de imagen para redes | Esperan `rgb(0, 0, 0)` en lugar de `rgb(22, 22, 23)`. *(Cambian por requisito.)* | RF-44, RF-42 |
+
+**Decisiones:**
+
+| # | Decisión | Motivo |
+|---|---|---|
+| D-28 | Cabecera negra opaca, no translúcida. | Apple usa negro translúcido; opaco da el mismo aspecto sobre las secciones negras, no se vuelve gris sobre las blancas y el test es determinista. |
+| D-29 | Reutilizar el tono `dark` existente en la cabecera en lugar de colores fijos. | Un solo sitio define el negro y sus textos; si cambia, cambia en todo. |
+
+**Riesgos:**
+
+| Riesgo | Mitigación |
+|---|---|
+| Negro puro junto a blanco puro resulta más duro en secciones largas. | Solo portada, problema (HUB) y cierre son negras; el resto sigue alternando blanco y gris. |
+| Algún elemento de la cabecera con color pensado para fondo claro (borde del botón «Menú», subrayados). | Test de contraste de RF-45 y auditoría de accesibilidad de Lighthouse. |
+
+## 13. Cambio v1.5 · botones de apple.com/services (aprobado)
+
+**Origen:** capturas de apple.com/services aportadas por el usuario: «Try it free» (cápsula rellena), «Learn more» (cápsula de contorno o enlace «Learn more ›»), en fondos blanco, negro y sobre imagen.
+
+**Colores por tono** (WCAG): blanco sobre `#1D1D1F` 16,8 · `#1D1D1F` sobre `#F5F5F7` 15,5 · relleno `#1D1D1F` sobre blanco 16,8 y sobre `#F5F5F7` 15,5 · relleno `#F5F5F7` sobre negro 19,3. Todos se distinguen sin borde.
+
+**Cambios técnicos:**
+
+| Módulo | Cambio | RF |
+|---|---|---|
+| `globals.css` | Nuevos tokens por tono `--tone-btn-bg` y `--tone-btn-fg` (claro: `#1D1D1F` / blanco; oscuro: `#F5F5F7` / `#1D1D1F`) y utilidades de Tailwind `bg-btn` y `text-on-btn`. Se retiran `--color-accent` del botón y `--color-on-accent`. | RF-46, RF-28 |
+| `layout/CtaButton.tsx` | Cápsula `bg-btn text-on-btn`, sin borde, `min-h-11`, 17 px peso 500, relleno 11 × 22 px; contorno de foco del color del texto. | RF-01, RF-46, CL-13 |
+| `layout/SecondaryButton.tsx` (nuevo) | Cápsula transparente con `border border-ink`; la usan los enlaces «prueba el asistente» de `Hero` y `ChatDemo`. | RF-46, RF-02 |
+| `sections/Services.tsx`, `sections/Sectors.tsx` | Enlaces sin subrayado con « ›» añadido por CSS (`after:content`), subrayado en `hover` y `focus-visible`. El nombre accesible no incluye la flecha. | RF-46, RF-38 |
+| `tests/design.spec.ts`, `tests/style.spec.ts` | El botón deja de esperar azul con borde claro y espera los colores por tono de RF-46. *(Cambian por requisito.)* | RF-28, CL-13 |
+
+**Decisiones:**
+
+| # | Decisión | Motivo |
+|---|---|---|
+| D-30 | Colores del botón como tokens del tono, no clases por sección. | El mismo componente se invierte solo en la cabecera y en las secciones negras; un único estilo (RF-01). |
+| D-31 | El azul de marca se queda en iconos, ilustraciones y bordes destacados (precio principal, piloto). | La marca sigue presente sin competir con el botón, como el color de cada servicio en Apple. |
+| D-32 | La flecha «›» se añade por CSS; la «→» final de los enlaces de servicios y de sectores sale del texto (el enlace «probar el asistente» la conserva). | Una sola flecha, igual en todos los enlaces, y los lectores de pantalla no la anuncian. |
+
+**Riesgos:**
+
+| Riesgo | Mitigación |
+|---|---|
+| Sin color de marca, el botón llama menos la atención. | Es el único relleno oscuro (o claro en negro) de cada pantalla; tamaño y posición se mantienen. Revisión visual. |
+| Los enlaces sin subrayado se confunden con texto. | Solo en enlaces sueltos (no dentro de párrafos), con «›» y peso 600; subrayado al pasar el puntero o con el foco. Los enlaces del pie y de las notas siguen subrayados. |
+
+## 14. Cambio v1.6 · menú sin botón de reserva (aprobado)
+
+**Origen:** captura del usuario: el botón de la cabecera y el de la portada se ven a la vez. En apple.com el menú no lleva botones.
+
+| Módulo | Cambio | RF |
+|---|---|---|
+| `layout/NavFull.tsx` | Se quita `CtaButton` y su envoltorio móvil (`peer-open`); quedan logo, enlaces y «Menú». | RF-11, RF-13 |
+| `layout/NavMinimal.tsx` | Solo el logo. Afecta a `/academias`, páginas legales y 404. | RF-16 |
+| `tests/hub.spec.ts`, `tests/academias.spec.ts` | Pasan de «hay botón en la cabecera» a «no hay botón en ninguna cabecera». *(Cambian por requisito.)* | RF-11, RF-16 |
+| `tests/design.spec.ts`, `tests/style.spec.ts` | La comprobación de colores del botón se hace sobre los botones del contenido, no sobre el de la cabecera. *(Cambian por requisito.)* | RF-28, RF-46 |
+
+**Decisión D-33:** las páginas legales y la 404 se quedan sin llamada a la acción: no son páginas de venta (RF-01 solo exige el botón en HUB y landings) y su salida es el logo, que lleva al inicio.
+
+**Riesgo:** al bajar por la página no hay botón siempre visible. Mitigación: el botón aparece en portada, precios, piloto y cierre; el menú lleva a «Precios», donde está.

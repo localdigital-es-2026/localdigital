@@ -48,13 +48,20 @@ test.describe("Academias · página", () => {
     expect(ids).toEqual(academias.sections.map((s) => s.id));
   });
 
-  test("RF-16 · el menú solo tiene el logo (al HUB) y el botón", async ({ page }) => {
+  test("RF-16 · el menú solo tiene el logo (al HUB), sin botón (v1.6)", async ({ page }) => {
     await page.goto("/academias");
     const header = page.locator("header");
-    await expect(header.getByRole("link")).toHaveCount(2);
+    await expect(header.getByRole("link")).toHaveCount(1);
     await expect(header.getByRole("link", { name: "Local Digital" })).toHaveAttribute("href", "/");
-    await expect(header.locator("[data-cta='primary']")).toBeVisible();
+    await expect(header.locator("[data-cta]")).toHaveCount(0);
   });
+
+  for (const path of ["/", "/academias", "/aviso-legal", "/politica-de-privacidad", "/politica-de-cookies", "/no-existe"]) {
+    test(`RF-11 · RF-16 · ninguna cabecera lleva botón de reserva: ${path}`, async ({ page }) => {
+      await page.goto(path);
+      await expect(page.locator("header [data-cta]")).toHaveCount(0);
+    });
+  }
 
   test("RF-19 · el pie tiene «Volver a localdigital.es» hacia el HUB", async ({ page }) => {
     await page.goto("/academias");
@@ -79,7 +86,8 @@ test.describe("Coherencia entre páginas", () => {
         await expect(cta).toHaveText("Reserva una demo de 15 min");
         styles.add(await cta.evaluate((el) => {
           const s = getComputedStyle(el);
-          return `${s.backgroundColor}|${s.color}|${s.borderRadius}|${s.fontWeight}`;
+          // v1.5: los colores dependen del fondo (RF-46, CL-13); la forma y la letra son siempre las mismas.
+          return `${s.borderRadius}|${s.fontWeight}|${s.fontSize}|${s.paddingLeft}|${s.borderTopWidth}`;
         }));
       }
     }

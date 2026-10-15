@@ -1,6 +1,6 @@
 import { site } from "@/content/site";
 import { demoWhatsappUrl } from "@/lib/links";
-import { ExternalLink } from "@/components/layout/ExternalLink";
+import { SecondaryButton } from "@/components/layout/SecondaryButton";
 import { TagPill } from "./TagPill";
 import type { SectionProps } from "./types";
 
@@ -37,9 +37,9 @@ export function ChatDemo({ section, tone }: SectionProps<"chatDemo">) {
           ))}
         </div>
         {demoUrl && section.demoLinkText && (
-          <ExternalLink href={demoUrl} className="text-sm underline">
+          <SecondaryButton href={demoUrl}>
             {section.demoLinkText}
-          </ExternalLink>
+          </SecondaryButton>
         )}
       </div>
     </section>

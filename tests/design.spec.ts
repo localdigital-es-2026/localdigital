@@ -4,12 +4,12 @@ const PAGES = ["/", "/aviso-legal"];
 
 test.describe("Paleta v1.2", () => {
   for (const path of PAGES) {
-    test(`RF-28 · ${path} usa la paleta v1.2 y el botón azul de marca`, async ({ page }) => {
+    test(`RF-28 · ${path} usa la paleta v1.2 y el botón de RF-46`, async ({ page }) => {
       await page.goto(path);
       const colors = await page.evaluate(() => {
         const root = getComputedStyle(document.documentElement);
         const body = getComputedStyle(document.body);
-        const cta = document.querySelector("[data-cta='primary']");
+        const cta = document.querySelector("main [data-cta='primary']");
         const c = cta ? getComputedStyle(cta) : null;
         return {
           background: body.backgroundColor,
@@ -19,17 +19,22 @@ test.describe("Paleta v1.2", () => {
           gray: root.getPropertyValue("--ld-gray").trim().toLowerCase(),
           ctaBg: c?.backgroundColor,
           ctaText: c?.color,
-          ctaBorder: c?.borderTopColor,
+          ctaBorder: c?.borderTopWidth,
         };
       });
       expect(colors.background).toBe("rgb(255, 255, 255)");
       expect(colors.text).toBe("rgb(29, 29, 31)");
       expect(colors.brand).toBe("#0d4964");
-      expect(colors.dark).toBe("#161617");
+      expect(colors.dark).toMatch(/^#000(000)?$/); // el minificador de CSS escribe #000
       expect(colors.gray).toBe("#f5f5f7");
-      expect(colors.ctaBg).toBe("rgb(13, 73, 100)");
-      expect(colors.ctaText).toBe("rgb(255, 255, 255)");
-      expect(colors.ctaBorder).toBe("rgba(255, 255, 255, 0.35)");
+      // v1.6: las páginas legales no llevan botón; en / el primero está en la portada negra (RF-46).
+      if (path === "/") {
+        expect(colors.ctaBg).toBe("rgb(245, 245, 247)");
+        expect(colors.ctaText).toBe("rgb(29, 29, 31)");
+        expect(colors.ctaBorder).toBe("0px");
+      } else {
+        expect(colors.ctaBg).toBeUndefined();
+      }
     });
   }
 });
