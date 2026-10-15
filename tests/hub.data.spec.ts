@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { expect, test } from "@playwright/test";
 import { hub } from "../src/content/hub";
+import { hubMenu } from "../src/content/navigation";
 import type { Section } from "../src/content/types";
 
 const plain = (value: unknown) => JSON.stringify(value).replace(/\\u00a0| /g, " ");
@@ -13,14 +14,12 @@ test.describe("Contenido del HUB", () => {
       "hero",
       "problem",
       "marquee",
-      "features",
       "services",
       "steps",
       "pricing",
       "pilot",
       "sectors",
       "about",
-      "privacy",
       "faq",
       "closing",
     ]);
@@ -29,7 +28,6 @@ test.describe("Contenido del HUB", () => {
   test("RF-08 · los titulares coinciden con contenido/hub.md", () => {
     expect(byKind("hero").title).toBe("Ningún cliente sin respuesta. Ni a las 11 de la noche.");
     expect(byKind("problem").title).toBe("Cada mensaje sin contestar es un cliente que pregunta en otro sitio.");
-    expect(byKind("features").title).toBe("Un asistente en tu WhatsApp que atiende como lo harías tú.");
     expect(byKind("services").title).toBe("Todo lo que necesitas para no perder clientes.");
     expect(byKind("services").blocks.map((b) => [b.name, b.title])).toEqual([
       ["Asistente de WhatsApp", "Contesta por ti, a cualquier hora."],
@@ -48,18 +46,19 @@ test.describe("Contenido del HUB", () => {
     ]);
     expect(byKind("steps").title).toBe("Tres pasos. Tú sigues con tu negocio.");
     expect(byKind("pricing").title).toBe("Precios claros desde el principio.");
-    expect(byKind("pilot").title).toBe("Buscamos 3 negocios para nuestros primeros casos.");
+    expect(byKind("pilot").title).toBe("Instalación a mitad de precio para nuestros 3 primeros negocios.");
     expect(byKind("about").title).toBe("Somos Beatriz y Mauri.");
-    expect(byKind("privacy").title).toBe("Tus datos, protegidos.");
     expect(byKind("faq").title).toBe("Preguntas frecuentes");
     expect(byKind("closing").title).toBe("Mira cómo contestaría tu negocio.");
     expect(byKind("problem").scenes).toHaveLength(3);
-    expect(byKind("features").items).toHaveLength(4);
+    expect(byKind("services").blocks[0].featured?.features).toHaveLength(4);
     expect(byKind("faq").items.map((i) => i.q)).toEqual([
       "¿Cuánto cuesta?",
       "¿Esto sirve para mi negocio?",
       "Sois nuevos. ¿Por qué debería confiar?",
       "¿Y si el asistente se equivoca?",
+      "¿Qué pasa con los datos de mis clientes?",
+      "¿Puedo cambiar lo que contesta?",
       "¿Tengo que saber de tecnología?",
       "¿Necesito WhatsApp Business?",
       "¿Qué pasa si quiero dejarlo?",
@@ -98,16 +97,14 @@ test.describe("Contenido del HUB", () => {
     expect(text).not.toMatch(/escr[ií]beme/i);
   });
 
-  test("RF-11 · el menú tiene los cinco enlaces a sus secciones", () => {
-    expect(hub.navLinks).toEqual([
-      { label: "Qué hacemos", href: "#servicios" },
-      { label: "Cómo funciona", href: "#proceso" },
-      { label: "Precios", href: "#precios" },
-      { label: "Quiénes somos", href: "#sobre-nosotros" },
-      { label: "Preguntas", href: "#faq" },
-    ]);
+  test("RF-50 · el menú tiene sus cinco cabeceras y cada ancla existe en la portada", () => {
+    expect(hubMenu.map((group) => group.label)).toEqual(["Servicios", "Sectores", "Precios", "Cómo trabajamos", "Nosotros"]);
     const ids = hub.sections.map((s) => s.id);
-    for (const link of hub.navLinks ?? []) expect(ids).toContain(link.href.slice(1));
+    const hrefs = hubMenu.flatMap((group) => (group.items ?? []).map((item) => item.href).concat(group.href ?? []));
+    for (const href of hrefs) {
+      if (href.startsWith("#")) expect(ids).toContain(href.slice(1));
+      else expect(href).toBe("/academias");
+    }
   });
 
   test("SEO del HUB según contenido/hub.md", () => {

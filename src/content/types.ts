@@ -79,27 +79,55 @@ export interface ChatMessage {
   text: string;
 }
 
+/** Conversación del móvil dibujado de la portada (RF-52). */
+export interface HeroChat {
+  contact: string;
+  /** Descripción para lectores de pantalla. */
+  description: string;
+  messages: { from: "cliente" | "asistente"; time: string; text: string }[];
+}
+
+/** Pantalla de bloqueo dibujada de la sección «problema» (RF-53). */
+export interface LockScreenData {
+  date: string;
+  time: string;
+  title: string;
+  previews: string[];
+  more: string;
+  /** Descripción para lectores de pantalla. */
+  description: string;
+}
+
 export interface Chat {
   tag: Tag;
   messages: ChatMessage[];
 }
 
 export type Section =
-  | { kind: "hero"; id: string; eyebrow: string; title: string; subtitle: string; ctaNote: string; demoLinkText?: string }
-  | { kind: "problem"; id: string; title: string; scenes: Scene[]; closing: string }
+  | { kind: "hero"; id: string; eyebrow: string; title: string; subtitle: string; ctaNote: string; demoLinkText?: string; secondaryCta?: NavLink; chat?: HeroChat }
+  | { kind: "problem"; id: string; title: string; scenes: Scene[]; closing: string; lockScreen?: LockScreenData }
   | { kind: "features"; id: string; eyebrow?: string; title: string; intro: string; items: Item[]; control?: Item; benefits?: { title: string; items: string[] }; cta?: boolean }
   | { kind: "services"; id: string; title: string; intro: string; blocks: ServiceBlock[] }
   | { kind: "marquee"; id: string; label: string; questions: string[] }
-  | { kind: "steps"; id: string; title: string; steps: Item[] }
+  | { kind: "steps"; id: string; title: string; steps: (Item & { thumb?: StepThumbKind })[] }
   | { kind: "pricing"; id: string; title: string; plans: PricingPlan[]; notes: Footnote[]; guaranteeLabel?: string; cta?: boolean }
   | { kind: "guarantee"; id: string; title: string; points: Item[] }
   | { kind: "pilot"; id: string; eyebrow: string; title: string; body: string; asksIntro: string; asks: string[] }
   | { kind: "sectors"; id: string }
   | { kind: "about"; id: string; title: string; body: string[]; commitments?: Item[] }
-  | { kind: "privacy"; id: string; title: string; points: string[] }
   | { kind: "faq"; id: string; title: string; items: FaqItem[] }
   | { kind: "chatDemo"; id: string; title: string; intro: string; chats: Chat[]; demoLinkText?: string }
   | { kind: "closing"; id: string; title: string; body: string };
+
+/** Miniatura dibujada de cada paso de «cómo funciona» (RF-55). */
+export type StepThumbKind = "call" | "list" | "chat";
+
+/** Tarjeta grande del servicio principal (RF-54). El resumen es un dibujo sin cifras (D-37). */
+export interface FeaturedService {
+  badge: string;
+  features: string[];
+  summary: { label: string; items: string[]; description: string };
+}
 
 /** Bloque de servicio con plantilla común (RF-38). */
 export interface ServiceBlock {
@@ -109,6 +137,7 @@ export interface ServiceBlock {
   /** Generado desde site.ts; la llamada a nota la añade el componente. */
   price: string;
   link: NavLink;
+  featured?: FeaturedService;
 }
 
 /** Nota al pie numerada de la sección de precios (RF-41). */
@@ -136,14 +165,11 @@ export interface NavLink {
   href: string;
 }
 
-export type Tone = "dark" | "white" | "gray";
+export type Tone = "dark" | "white" | "gray" | "brand";
 
 export interface PageContent {
   slug: "" | "academias";
-  /** Secciones de impacto con fondo casi negro (RF-44). */
-  darkSections: string[];
   nav: "full" | "minimal";
-  navLinks?: NavLink[];
   seo: { title: string; description: string };
   sections: Section[];
 }

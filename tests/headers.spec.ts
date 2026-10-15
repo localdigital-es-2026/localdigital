@@ -36,7 +36,7 @@ test.describe("Cabeceras de seguridad", () => {
       await faq.locator("summary").click();
       await expect(faq).toHaveAttribute("open", "");
       if (path === "/" && testInfo.project.name === "mobile") {
-        await page.locator("header summary").click();
+        await page.locator("header details[data-mobile-menu] > summary").click();
         await expect(page.locator("header").getByRole("link", { name: "Precios", exact: true })).toBeVisible();
       }
       expect(violations).toEqual([]);

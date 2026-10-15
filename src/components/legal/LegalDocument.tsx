@@ -1,12 +1,12 @@
 import Footer from "@/components/layout/Footer";
-import { NavMinimal } from "@/components/layout/NavMinimal";
+import { SiteHeader } from "@/components/layout/SiteHeader";
 import type { LegalPage } from "@/content/legal";
 
 /** Plantilla común de las páginas legales (RF-20). */
 export function LegalDocument({ page }: { page: LegalPage }) {
   return (
     <>
-      <NavMinimal />
+      <SiteHeader variant="legal" />
       <main id="contenido" className="px-6 py-16">
         <article className="mx-auto flex max-w-3xl flex-col gap-10">
           <header className="flex flex-col gap-3">

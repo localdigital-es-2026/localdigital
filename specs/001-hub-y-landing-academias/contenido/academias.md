@@ -247,3 +247,13 @@ Aviso legal · Política de privacidad · Política de cookies
 - [ ] RGPD con menores.
 - [ ] Verificación técnica del número de WhatsApp y de los recordatorios.
 - [ ] Asistente de ejemplo real para el enlace "pruébalo ya".
+
+---
+
+## v1.8 · Portada con conversación de ejemplo (aprobada el 2026-10-15)
+
+Textos sin cambios. Se añade el botón secundario [Ver precios] y, bajo la nota, un móvil dibujado (etiqueta «Ejemplo», contacto «Tu academia»):
+- Interesado, 22:47: Hola, ¿cuánto cuesta el curso de inglés B1 y queda plaza en septiembre?
+- Asistente, 22:47: ¡Hola! El B1 son 65 €/mes. En septiembre quedan plazas los martes y jueves a las 18:00. ¿Quieres reservar una prueba de nivel gratis?
+- Interesado, 22:48: Sí, el martes.
+- Asistente, 22:48: Hecho: prueba de nivel el martes a las 18:00. Te avisamos el lunes.

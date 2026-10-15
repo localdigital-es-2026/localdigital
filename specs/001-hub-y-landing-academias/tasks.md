@@ -97,6 +97,15 @@
 - [x] T-42 · El logo del menú del HUB vuelve arriba estando ya en `/` (enlace normal). Test: desplazarse a «precios», pulsar el logo y ver el `h1` · cubre RNF-02, RF-47
 - [x] T-43 · Quitar la imagen y el 3D de la portada de `/` y `/academias`, borrar sus componentes y desinstalar `three`. Tests: RF-47 a 375 y 1280 px; sin peticiones del 3D; batería completa y Lighthouse ≥ 90 · cubre RF-47, RNF-01
 
+## Bloque P · Cambio v1.8 · rediseño según la maqueta (aprobado)
+
+- [x] T-44 · Paleta y botones: tokens azules, `CtaButton` azul (variante `onBrand`), `SecondaryButton` de contorno, enlaces `#0066CC` y alternancia blanco/gris sin secciones negras. Tests: colores de RF-48 en `/`, `/academias` y `/aviso-legal`; un único texto de botón (RF-01); contraste AA · cubre RF-48, RF-01
+- [x] T-45 · Cabecera clara en tres zonas y menú de escritorio con desplegables (`SiteHeader`, `MegaMenu`, `content/navigation.ts`). Tests: RF-49 en las cuatro páginas; menú centrado; desplegables con clic, teclado, Escape, clic fuera y sin JS; «Sectores» lleva a `/academias`; CSP sin violaciones · cubre RF-49, RF-50, RF-16
+- [x] T-46 · Menú móvil a pantalla completa (`MobileMenu`). Tests: RF-51 a 375 px (abre, apartados, cierra al pulsar enlace, ✕ y Escape, sin JS) · cubre RF-51, RF-13
+- [x] T-47 · Portada y problema con dibujos (`PhoneChat`, `LockScreen`) en `/` y `/academias`. Tests: RF-52 y RF-53; sin imágenes de mapa de bits ni 3D; textos de v1.8 · cubre RF-52, RF-53, RF-17
+- [x] T-48 · Servicios unificados, pasos con miniatura, piloto en banda azul, sector, quiénes somos y datos en la FAQ (HUB). Tests: RF-54 a RF-57, RF-10 (nuevo orden), RF-38, RF-04, CL-07 · cubre RF-54, RF-55, RF-56, RF-57, RF-10
+- [x] T-49 · `/academias` con el mismo sistema visual y verificación final: batería completa, Lighthouse ≥ 90 (móvil y escritorio) y revisión visual a 375 y 1280 px · cubre RF-48 a RF-52, RNF-01
+
 ## Trazabilidad
 
 ### RF → tareas
@@ -132,6 +141,7 @@
 |  |  | RF-45 | T-38 |
 |  |  | RF-46 | T-39, T-40, T-41 |
 |  |  | RF-47 | T-42, T-43 |
+|  |  | RF-48 a RF-57 | T-44 a T-49 |
 
 ### RNF → tareas
 
@@ -145,4 +155,4 @@
 | RNF-08 | T-07 |
 | RNF-09, RNF-10 | T-02 (sin formularios, peticiones externas ni almacenamiento) |
 
-Todas las tareas (T-01 a T-43) cubren al menos un RF.
+Todas las tareas (T-01 a T-49) cubren al menos un RF.

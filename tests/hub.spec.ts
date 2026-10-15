@@ -1,5 +1,6 @@
 import { expect, test } from "@playwright/test";
 import { hub } from "../src/content/hub";
+import { hubMenu } from "../src/content/navigation";
 import type { Section } from "../src/content/types";
 
 const byKind = <K extends Section["kind"]>(kind: K) =>
@@ -10,7 +11,7 @@ test.describe("HUB · secciones superiores", () => {
     await page.goto("/");
   });
 
-  test("RF-10 · portada con etiqueta, titular único, subtítulo, botón y nota, sin imagen (v1.7)", async ({ page }) => {
+  test("RF-10 · portada con etiqueta, titular único, subtítulo, botón, nota y móvil dibujado (v1.8)", async ({ page }) => {
     const hero = byKind("hero");
     const section = page.locator(`section#${hero.id}`);
     await expect(page.locator("h1")).toHaveCount(1);
@@ -19,7 +20,7 @@ test.describe("HUB · secciones superiores", () => {
     await expect(section.getByText(hero.subtitle)).toBeVisible();
     await expect(section.locator("[data-cta='primary']")).toBeVisible();
     await expect(section.getByText(hero.ctaNote)).toBeVisible();
-    await expect(section.getByRole("img")).toHaveCount(0);
+    await expect(section.getByRole("img")).toHaveAccessibleName(/WhatsApp/);
   });
 
   test("RF-34 · sin número del asistente de ejemplo no aparece el enlace «pruébalo ya»", async ({ page }) => {
@@ -33,17 +34,6 @@ test.describe("HUB · secciones superiores", () => {
     await expect(section.getByRole("heading", { level: 2 })).toHaveText(problem.title);
     for (const scene of problem.scenes) await expect(section.getByText(scene.title)).toBeVisible();
     await expect(section.getByText(problem.closing)).toBeVisible();
-  });
-
-  test("RF-10 · qué hacemos con sus cuatro puntos, el control y el botón", async ({ page }) => {
-    const features = byKind("features");
-    const section = page.locator(`section#${features.id}`);
-    await expect(section.getByRole("heading", { level: 2 })).toHaveText(features.title);
-    await expect(section.getByText(features.intro)).toBeVisible();
-    await expect(section.locator("li")).toHaveCount(features.items.length);
-    for (const item of features.items) await expect(section.getByText(item.title)).toBeVisible();
-    await expect(section.getByText(features.control!.body)).toBeVisible();
-    await expect(section.locator("[data-cta='primary']")).toHaveCount(1);
   });
 
   test("RF-38 · servicios: tres bloques con la misma plantilla y sin botones", async ({ page }) => {
@@ -98,11 +88,11 @@ test.describe("HUB · precios y piloto", () => {
   test("RF-04 · piloto con precio de lanzamiento, lo que pedimos a cambio y plazas libres", async ({ page }) => {
     const pilot = byKind("pilot");
     const section = page.locator(`section#${pilot.id}`);
-    await expect(section.getByRole("heading", { level: 2 })).toHaveText("Buscamos 3 negocios para nuestros primeros casos.");
+    await expect(section.getByRole("heading", { level: 2 })).toHaveText("Instalación a mitad de precio para nuestros 3 primeros negocios.");
     const text = await section.innerText();
     expect(text).toMatch(/190\s€ en lugar de 375\s€/);
     for (const ask of pilot.asks) expect(text).toContain(ask);
-    await expect(section.getByText("Quedan 3 plazas.")).toBeVisible();
+    await expect(section.getByText("Quedan 3 de 3 plazas.")).toBeVisible();
   });
 });
 
@@ -130,13 +120,6 @@ test.describe("HUB · secciones inferiores", () => {
     for (const item of about.commitments ?? []) await expect(section.getByText(item.title)).toBeVisible();
     await expect(section.getByRole("img")).toHaveAccessibleName(/.+/);
     await expect(section.locator("img[src$='.jpg'], img[src$='.jpeg'], img[src$='.png'], img[src$='.webp']")).toHaveCount(0);
-  });
-
-  test("RF-10 · tus datos con sus tres puntos", async ({ page }) => {
-    const privacy = byKind("privacy");
-    const section = page.locator(`section#${privacy.id}`);
-    await expect(section.getByRole("heading", { level: 2 })).toHaveText(privacy.title);
-    for (const point of privacy.points) await expect(section.getByText(point)).toBeVisible();
   });
 
   test("RF-07 · cada pregunta frecuente se abre y se cierra con clic y con teclado", async ({ page }) => {
@@ -178,39 +161,19 @@ test.describe("HUB · página y menú", () => {
     expect(ids).toEqual(hub.sections.map((s) => s.id));
   });
 
-  test("RF-11 · el menú de escritorio tiene los cinco enlaces y ningún botón (v1.6)", async ({ page }, testInfo) => {
+  test("RF-12 · RF-50 · cada enlace del menú lleva a su sección", async ({ page }, testInfo) => {
     test.skip(testInfo.project.name !== "desktop-chrome");
     await page.goto("/");
     const nav = page.getByRole("navigation", { name: "Principal" });
-    for (const link of hub.navLinks!) {
-      await expect(nav.getByRole("link", { name: link.label, exact: true })).toHaveAttribute("href", link.href);
+    for (const group of hubMenu) {
+      for (const item of group.items ?? [{ label: group.label, href: group.href! }]) {
+        if (!item.href.startsWith("#")) continue;
+        await page.goto("/");
+        if (group.items) await nav.locator("summary", { hasText: group.label }).click();
+        await nav.getByRole("link", { name: new RegExp(item.label) }).first().click();
+        await expect(page.locator(item.href)).toBeInViewport();
+      }
     }
-    await expect(page.locator("header [data-cta]")).toHaveCount(0);
-  });
-
-  test("RF-12 · cada enlace del menú lleva a su sección", async ({ page }, testInfo) => {
-    test.skip(testInfo.project.name !== "desktop-chrome");
-    await page.goto("/");
-    const nav = page.getByRole("navigation", { name: "Principal" });
-    for (const link of hub.navLinks!) {
-      await nav.getByRole("link", { name: link.label, exact: true }).click();
-      await expect(page.locator(link.href)).toBeInViewport();
-    }
-  });
-
-  test("RF-13 · en móvil el menú está plegado y se abre y cierra con su botón", async ({ page }, testInfo) => {
-    test.skip(testInfo.project.name !== "mobile");
-    await page.goto("/");
-    const toggle = page.locator("header summary");
-    await expect(toggle).toBeVisible();
-    await expect(toggle).toHaveText("Menú");
-    const firstLink = page.locator("header").getByRole("link", { name: hub.navLinks![0].label, exact: true });
-    await expect(firstLink).toBeHidden();
-    await toggle.click();
-    await expect(firstLink).toBeVisible();
-    await expect(page.locator("header [data-cta]")).toHaveCount(0);
-    await toggle.click();
-    await expect(firstLink).toBeHidden();
   });
 
   for (const anchor of ["#faq", "#servicios", "#proceso", "#sobre-nosotros"]) {

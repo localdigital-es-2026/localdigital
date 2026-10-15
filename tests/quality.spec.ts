@@ -72,7 +72,7 @@ test.describe("Sin JavaScript", () => {
   test("RNF-04 · CL-01 · el menú móvil se abre sin JS", async ({ page }, testInfo) => {
     test.skip(testInfo.project.name !== "mobile");
     await page.goto("/");
-    await page.locator("header summary").click();
+    await page.locator("header details[data-mobile-menu] > summary").click();
     await expect(page.locator("header").getByRole("link", { name: "Precios", exact: true })).toBeVisible();
   });
 });

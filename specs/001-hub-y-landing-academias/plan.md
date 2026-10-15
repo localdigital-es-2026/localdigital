@@ -1,6 +1,6 @@
 # Plan técnico — Spec 001 · HUB y landing de academias
 
-> Estado: aprobado · Fecha: 2026-10-14 · cambio v1.1 (§9) aprobado el 2026-10-15 · cambio v1.2 (§10) aprobado el 2026-10-15 · cambio v1.3 (§11) aprobado el 2026-10-15 · cambio v1.4 (§12) aprobado el 2026-10-15 · cambio v1.5 (§13) aprobado el 2026-10-15 · cambio v1.6 (§14) aprobado el 2026-10-15 · cambio v1.7 (§15) aprobado el 2026-10-15
+> Estado: aprobado · Fecha: 2026-10-14 · cambio v1.1 (§9) aprobado el 2026-10-15 · cambio v1.2 (§10) aprobado el 2026-10-15 · cambio v1.3 (§11) aprobado el 2026-10-15 · cambio v1.4 (§12) aprobado el 2026-10-15 · cambio v1.5 (§13) aprobado el 2026-10-15 · cambio v1.6 (§14) aprobado el 2026-10-15 · cambio v1.7 (§15) aprobado el 2026-10-15 · cambio v1.8 (§16) aprobado el 2026-10-15
 > Basado en: `docs/constitution.md` v1.0 y `specs/001-hub-y-landing-academias/spec.md` (aprobada).
 > Solo firmas e interfaces; nada de implementación.
 
@@ -546,3 +546,49 @@ export interface Footnote { id: 1 | 2; text: string }
 **Decisión D-34:** quitar también el 3D y sus dependencias, no solo ocultarlo: menos peso, menos código y menos superficie de seguridad.
 
 **Riesgo:** portada más sobria, sin ningún elemento visual. Mitigación: es el patrón de apple.com/services (titular grande y botón); la cinta de preguntas, justo debajo, aporta el movimiento.
+
+## 16. Cambio v1.8 · rediseño según la maqueta (aprobado)
+
+**Origen:** maqueta aprobada por el usuario (https://claude.ai/artifact/7f21LBRWkeLUcTusVFdBzh). Vuelve a la línea clara de Apple con botones azules e imágenes de producto dibujadas, y rehace el menú.
+
+**Módulos:**
+
+| Módulo | Cambio | RF |
+|---|---|---|
+| `globals.css` | Tokens nuevos: `--ld-blue: #0071e3`, `--ld-blue-text: #0058b0`, `--ld-link: #0066cc`, tintes `--ld-tint-green/blue/warm`; tono `brand` para la banda del piloto. Se retiran el tono `dark` de las secciones y `--tone-btn-*`. | RF-48 |
+| `layout/CtaButton.tsx` | Relleno `#0071E3`, texto blanco; variante `onBrand` (blanco/`#0058B0`) para la banda del piloto. Mismo texto y enlace (RF-01). | RF-48, RF-01 |
+| `layout/SecondaryButton.tsx` | Contorno y texto `#0071E3`; acepta enlaces internos (`Ver precios`). | RF-48, RF-52 |
+| `layout/SiteHeader.tsx` (nuevo; sustituye a `NavFull` y `NavMinimal`) | Cabecera clara en tres zonas (logo · menú · botón) con variantes `hub`, `landing` y `legal`. | RF-49 |
+| `layout/MegaMenu.tsx` (nuevo) | Desplegables con `<details>` (funcionan sin JS) + un script pequeño (cliente) que cierra al elegir un enlace, con Escape, al abrir otro o al hacer clic fuera. Contenido desde `content/navigation.ts` (nuevo). | RF-50 |
+| `layout/MobileMenu.tsx` (nuevo) | Panel a pantalla completa con `<details>` + script que lo cierra al pulsar un enlace o Escape; bloquea el desplazamiento del fondo mientras está abierto. | RF-51, RF-13 |
+| `illustrations/PhoneChat.tsx`, `LockScreen.tsx`, `MonthlySummary.tsx`, `WebMockup.tsx`, `MapsCard.tsx`, `StepThumb.tsx` (nuevos) | Dibujos en HTML/SVG, sin imágenes de mapa de bits, con `role="img"` y descripción. | RF-52, RF-53, RF-54, RF-55 |
+| `sections/Hero.tsx` | Fondo gris, dos botones, `PhoneChat` con la conversación del sector. | RF-52 |
+| `sections/Problem.tsx` | Dos columnas: escenas + `LockScreen`. | RF-53 |
+| `sections/Services.tsx` | Tarjeta grande del asistente + dos tarjetas con tinte; absorbe `Features` en el HUB (`Features` se queda para `/academias`). | RF-54, RF-38 |
+| `sections/Steps.tsx` | Tarjetas con miniatura. | RF-55 |
+| `sections/Pilot.tsx` | Banda azul con `CtaButton onBrand`. | RF-56 |
+| `sections/Sectors.tsx`, `About.tsx`, `Faq.tsx`; se retira `DataPrivacy` del HUB | Tarjeta de sector; compromisos en tarjetas; pregunta de datos en la FAQ. | RF-57 |
+| `content/hub.ts`, `academias.ts`, `types.ts` | Textos de v1.8, nuevos campos (`chat`, `lockScreen`…), fuera `features` y `privacy` del HUB. | RF-10 |
+| `SectionRenderer.tsx` | Alternancia blanco/gris sin tonos oscuros; `piloto` con tono `brand`. | RF-48 |
+| CSP (`postbuild-headers.mjs`) | Sin cambios: el script de menús va en un archivo propio del dominio, no en línea. | RNF-06 |
+| Tests | Se reescriben los de paleta, cabecera, botones, menú y portada (v1.4–v1.7) según RF-48 a RF-57. *(Cambian por requisito.)* Nuevos: menú de escritorio, menú móvil, ilustraciones. | — |
+
+**Decisiones:**
+
+| # | Decisión | Motivo |
+|---|---|---|
+| D-35 | Menús con `<details>` + JavaScript mínimo. | Funcionan sin JS (RNF-04) y el script solo añade el cierre automático, que es lo que fallaba. |
+| D-36 | Ilustraciones dibujadas en HTML/SVG, no fotos ni imágenes generadas. | Pesan casi nada, se ven nítidas, no inventan clientes reales y no afectan a Lighthouse. |
+| D-37 | El resumen mensual de ejemplo **sin cifras**. | RF-31 prohíbe cifras sin clientes reales detrás; la maqueta llevaba números inventados. |
+| D-38 | El botón del piloto mantiene el texto de RF-01 (la maqueta decía «Quiero una plaza»). | Un único texto de llamada a la acción en toda la web (RF-01). |
+| D-39 | Contacto de las conversaciones de ejemplo: «Tu negocio» / «Tu academia». | Evita parecer un cliente real (la maqueta decía «Peluquería Bea»). |
+| D-40 | Se conservan los `id` de sección (`servicios`, `proceso`, `sobre-nosotros`, `faq`…). | Las anclas antiguas siguen funcionando (CL-07). |
+
+**Riesgos:**
+
+| Riesgo | Mitigación |
+|---|---|
+| Cambio grande: muchos tests de v1.4–v1.7 se reescriben. | Por tareas pequeñas, cada una con su batería completa en verde. |
+| El script de menús rompe la CSP. | Archivo propio del dominio (`script-src 'self'`); test de CSP sin violaciones. |
+| Más dibujos = más peso y peor Lighthouse. | Solo HTML/CSS/SVG en línea; Lighthouse ≥ 90 en móvil y escritorio en la última tarea. |
+| Contraste del azul `#0071E3` con texto blanco (4,6:1) justo por encima de AA. | Botones a 17 px con peso 500; auditoría de accesibilidad. |

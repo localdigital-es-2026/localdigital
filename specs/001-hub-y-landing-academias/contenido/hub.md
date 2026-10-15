@@ -298,3 +298,58 @@ Aviso legal · Política de privacidad · Política de cookies
 - **Varios botones** (WhatsApp, llamar, formulario, presupuesto) → un único botón de demo.
 - **Mezcla "nosotros/yo"** → siempre "nosotros".
 - **Web, SEO e IA al mismo nivel** → el asistente es el protagonista; lo demás, complemento.
+
+---
+
+## v1.8 · Textos de la maqueta (aprobados el 2026-10-15)
+
+Sustituyen a los de arriba donde se indica; lo que no aparece aquí no cambia.
+
+**Menú (§1):** Servicios ▾ · Sectores ▾ · Precios · Cómo trabajamos ▾ · Nosotros · **[Reserva una demo de 15 min]**
+- Servicios: Asistente de WhatsApp («el principal») — «Contesta por ti, a cualquier hora.» · Web para tu negocio — «Clara, rápida en el móvil y con el WhatsApp a un toque.» · Ficha de Google Maps — «Sal cuando alguien de tu zona busca lo que ofreces.»
+- Sectores: Academias y autoescuelas — «Matrículas, horarios y la temporada de septiembre.»
+- Cómo trabajamos: Cómo funciona — «Tres pasos, 5 días.» · Programa piloto — «3 plazas a mitad de precio.» · Tus datos — «RGPD y contrato de tratamiento.» · Preguntas frecuentes — «Precio, permanencia, errores.»
+
+**Portada (§2):**
+- Etiqueta: Asistentes de WhatsApp para negocios locales
+- Titular: sin cambios.
+- Subtítulo: Un asistente contesta a tus clientes en segundos. Tú solo hablas con los que ya quieren comprar.
+- Botones: [Reserva una demo de 15 min] · [Ver precios] (secundario)
+- Nota: Gratis y sin compromiso
+- Conversación de ejemplo (móvil dibujado, etiqueta «Ejemplo», contacto «Tu negocio»):
+  - Cliente, 23:04: Hola, ¿tenéis cita el sábado por la mañana?
+  - Asistente, 23:04: ¡Hola! Sí, el sábado quedan huecos a las 10:00 y a las 12:30. ¿Te reservo alguno?
+  - Cliente, 23:05: A las 10, porfa. ¿Cuánto es?
+  - Asistente, 23:05: Reservado: sábado a las 10:00. Son 18 €. Te mando un recordatorio el viernes.
+
+**Problema (§3):** titular y frase final sin cambios. Escenas:
+- **Son las 22:00.** Te preguntan el precio. Contestas a las 9:00. Ya se ha apuntado en otro sitio.
+- **Las mismas cinco preguntas.** Precio, horario, plazas, dirección, forma de pago. Treinta veces al día.
+- **Estás con un cliente** y suena el teléfono. Ese otro no vuelve a llamar.
+- Dibujo: pantalla de bloqueo, 23:12, «WhatsApp · 14 mensajes sin leer» con tres avisos («¿Cuánto cuesta?», «¿Abrís mañana?», «¿Queda plaza?») y «y 11 más».
+
+**Servicios (§4 + §5 unidos):**
+- Titular: Todo lo que necesitas para no perder clientes.
+- Entradilla: El asistente es lo principal. Si te falta lo básico, también lo hacemos.
+- Asistente — etiqueta «El más pedido»; titular «Asistente de WhatsApp. Atiende como lo harías tú.»; funciones: Contesta precios, horarios y dudas al momento. · Reserva citas o recoge los datos del cliente. · Te avisa de cada cliente nuevo. · Te pasa la conversación si no sabe la respuesta.; precio «Desde 375 € + 75 €/mes¹»; enlace «Ver precios ›»; dibujo «Ejemplo de resumen mensual» con «Mensajes contestados», «Contactos para ti» y «Fuera de tu horario» (sin cifras).
+- Web — «Web para tu negocio.» / «Clara, rápida en el móvil y con el WhatsApp a un toque.» / «Desde 449 €¹» / «Ver precios ›».
+- Google Maps — «Ficha de Google Maps.» / «Sal cuando alguien de tu zona busca lo que ofreces.» / «Incluida con la web · suelta 99 €¹» / «Ver precios ›».
+- Se conserva en la FAQ: «Tú decides qué contesta y qué no. Si cambias precios u horarios, lo actualizamos en menos de 24 horas laborables.» (pregunta nueva «¿Puedo cambiar lo que contesta?»).
+
+**Cómo funciona (§6):** Paso 1 «Demo de 15 minutos.» — «Lo ves funcionar con preguntas de tu sector.» · Paso 2 «Lo instalamos en 5 días.» — «Nos das la información de tu negocio; el resto lo hacemos nosotros.» · Paso 3 «Lo mantenemos cada mes.» — «Lo ajustamos y te mandamos un resumen de resultados.»
+
+**Precios (§7):** sin cambios de contenido; cifras grandes y la etiqueta «Garantía de 60 días²» bajo el titular.
+
+**Piloto (§8):**
+- Etiqueta: Plazas de lanzamiento · quedan N de 3
+- Titular: Instalación a mitad de precio para nuestros 3 primeros negocios.
+- Texto: 190 € en lugar de 375 €. Somos una agencia nueva y preferimos decirlo claro. A cambio, si te gusta el resultado, te pediremos una opinión y una reseña en Google.
+- Botón: [Reserva una demo de 15 min] (variante blanca)
+
+**Sector (§9):** etiqueta «Sectores»; titular sin cambios; texto «Una versión pensada para ti: matrículas, horarios, plazas y la temporada de septiembre.»; enlace «Ver la solución para academias ›».
+
+**Quiénes somos (§10):** «Dos desarrolladores y las dos personas detrás de Local Digital. Sin comerciales ni intermediarios: hablas con quien construye tu asistente.» Compromisos: Trato directo — Nos escribes a nosotros. · Te hablamos claro — Si no te ayuda, te lo decimos. · Menos de 24 h — Siempre respondemos.
+
+**Tus datos (§11) → pregunta frecuente:** «¿Qué pasa con los datos de mis clientes?» — «Cumplimos el RGPD y firmamos contigo el contrato de tratamiento de datos. Los datos de tus clientes son tuyos y no se usan para entrenar ninguna IA. Tú decides qué información puede dar el asistente.»
+
+**Cierre (§13):** titular sin cambios; texto «15 minutos, con preguntas de tu sector. Sin compromiso y sin tecnicismos.»
