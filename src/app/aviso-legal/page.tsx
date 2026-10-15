@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
+import Footer from "@/components/layout/Footer";
+import { NavMinimal } from "@/components/layout/NavMinimal";
 
 export const metadata: Metadata = {
   title: "Aviso Legal | Local Digital",
@@ -11,15 +11,15 @@ export const metadata: Metadata = {
 export default function AvisoLegal() {
   return (
     <>
-      <Navigation />
-      <main className="pt-32 pb-24 px-6">
+      <NavMinimal />
+      <main id="contenido" className="pt-16 pb-24 px-6">
         <div className="max-w-3xl mx-auto">
           {/* Header */}
           <div className="mb-12">
             <p className="text-sm font-bold uppercase tracking-widest text-primary mb-3">
               Información legal
             </p>
-            <h1 className="text-4xl font-bold mb-4">Aviso Legal</h1>
+            <h1 className="mb-4">Aviso Legal</h1>
             <p className="text-foreground/50 text-sm">
               Última actualización: abril de 2026
             </p>
@@ -29,7 +29,7 @@ export default function AvisoLegal() {
             
             {/* 1. Identificación */}
             <section>
-              <h2 className="text-xl font-bold text-foreground/90 mb-4">
+              <h2 className="text-foreground/90 mb-4">
                 1. Identificación del Titular
               </h2>
               <p>
@@ -83,7 +83,7 @@ export default function AvisoLegal() {
 
             {/* 2. Objeto */}
             <section>
-              <h2 className="text-xl font-bold text-foreground/90 mb-4">
+              <h2 className="text-foreground/90 mb-4">
                 2. Objeto y Ámbito de Aplicación
               </h2>
               <p>
@@ -101,7 +101,7 @@ export default function AvisoLegal() {
 
             {/* 3. Propiedad intelectual */}
             <section>
-              <h2 className="text-xl font-bold text-foreground/90 mb-4">
+              <h2 className="text-foreground/90 mb-4">
                 3. Propiedad Intelectual e Industrial
               </h2>
               <p>
@@ -121,7 +121,7 @@ export default function AvisoLegal() {
 
             {/* 4. Responsabilidad */}
             <section>
-              <h2 className="text-xl font-bold text-foreground/90 mb-4">
+              <h2 className="text-foreground/90 mb-4">
                 4. Exclusión de Responsabilidad
               </h2>
               <p>
@@ -147,7 +147,7 @@ export default function AvisoLegal() {
 
             {/* 5. Links */}
             <section>
-              <h2 className="text-xl font-bold text-foreground/90 mb-4">
+              <h2 className="text-foreground/90 mb-4">
                 5. Enlaces a Terceros
               </h2>
               <p>
@@ -161,7 +161,7 @@ export default function AvisoLegal() {
 
             {/* 6. Ley aplicable */}
             <section>
-              <h2 className="text-xl font-bold text-foreground/90 mb-4">
+              <h2 className="text-foreground/90 mb-4">
                 6. Legislación Aplicable y Jurisdicción
               </h2>
               <p>
@@ -176,7 +176,7 @@ export default function AvisoLegal() {
 
             {/* 7. Modificaciones */}
             <section>
-              <h2 className="text-xl font-bold text-foreground/90 mb-4">
+              <h2 className="text-foreground/90 mb-4">
                 7. Modificaciones
               </h2>
               <p>

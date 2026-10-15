@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
+import Footer from "@/components/layout/Footer";
+import { NavMinimal } from "@/components/layout/NavMinimal";
 
 export const metadata: Metadata = {
   title: "Política de Cookies | Local Digital",
@@ -12,15 +12,15 @@ export const metadata: Metadata = {
 export default function PoliticaCookies() {
   return (
     <>
-      <Navigation />
-      <main className="pt-32 pb-24 px-6">
+      <NavMinimal />
+      <main id="contenido" className="pt-16 pb-24 px-6">
         <div className="max-w-3xl mx-auto">
           {/* Header */}
           <div className="mb-12">
             <p className="text-sm font-bold uppercase tracking-widest text-primary mb-3">
               Uso de cookies
             </p>
-            <h1 className="text-4xl font-bold mb-4">Política de Cookies</h1>
+            <h1 className="mb-4">Política de Cookies</h1>
             <p className="text-foreground/50 text-sm">
               Última actualización: abril de 2026
             </p>
@@ -42,7 +42,7 @@ export default function PoliticaCookies() {
 
             {/* 1. Qué son */}
             <section>
-              <h2 className="text-xl font-bold text-foreground/90 mb-4">
+              <h2 className="text-foreground/90 mb-4">
                 1. ¿Qué son las cookies?
               </h2>
               <p>
@@ -61,7 +61,7 @@ export default function PoliticaCookies() {
 
             {/* 2. Tipos */}
             <section>
-              <h2 className="text-xl font-bold text-foreground/90 mb-4">
+              <h2 className="text-foreground/90 mb-4">
                 2. Cookies que Utilizamos
               </h2>
 
@@ -71,7 +71,7 @@ export default function PoliticaCookies() {
                   <span className="px-3 py-1 rounded-full text-xs font-bold bg-emerald-400/10 text-emerald-300 border border-emerald-400/20">
                     No requieren consentimiento
                   </span>
-                  <h3 className="font-bold text-foreground/80">
+                  <h3 className="text-foreground/80">
                     Cookies estrictamente necesarias
                   </h3>
                 </div>
@@ -114,7 +114,7 @@ export default function PoliticaCookies() {
                   <span className="px-3 py-1 rounded-full text-xs font-bold bg-white/5 text-foreground/40 border border-white/10">
                     Actualmente no utilizadas
                   </span>
-                  <h3 className="font-bold text-foreground/50">
+                  <h3 className="text-foreground/50">
                     Cookies analíticas y de marketing
                   </h3>
                 </div>
@@ -129,7 +129,7 @@ export default function PoliticaCookies() {
 
             {/* 3. Consentimiento */}
             <section>
-              <h2 className="text-xl font-bold text-foreground/90 mb-4">
+              <h2 className="text-foreground/90 mb-4">
                 3. Tu Consentimiento
               </h2>
               <p>
@@ -159,7 +159,7 @@ export default function PoliticaCookies() {
 
             {/* 4. Cómo desactivarlas */}
             <section>
-              <h2 className="text-xl font-bold text-foreground/90 mb-4">
+              <h2 className="text-foreground/90 mb-4">
                 4. Cómo Gestionar o Eliminar las Cookies
               </h2>
               <p>
@@ -206,7 +206,7 @@ export default function PoliticaCookies() {
 
             {/* 5. Actualizaciones */}
             <section>
-              <h2 className="text-xl font-bold text-foreground/90 mb-4">
+              <h2 className="text-foreground/90 mb-4">
                 5. Actualizaciones de esta Política
               </h2>
               <p>
@@ -219,7 +219,7 @@ export default function PoliticaCookies() {
 
             {/* 6. Contacto */}
             <section>
-              <h2 className="text-xl font-bold text-foreground/90 mb-4">
+              <h2 className="text-foreground/90 mb-4">
                 6. Contacto
               </h2>
               <p>

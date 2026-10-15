@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches: [main, "feat/**"]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      # Constitución §6 (v1.1): bloquea vulnerabilidades altas o críticas en lo que se publica…
+      - name: Auditoría de producción (bloquea)
+        run: npm audit --omit=dev --audit-level=high
+      # …y revisa las de desarrollo sin bloquear.
+      - name: Auditoría completa (informa)
+        run: npm audit
+        continue-on-error: true
+      - run: npx playwright install --with-deps chromium
+      - run: npm test
