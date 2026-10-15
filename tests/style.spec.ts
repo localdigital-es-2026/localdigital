@@ -253,7 +253,9 @@ test.describe("v1.5 · botones de apple.com/services", () => {
         text: el.textContent!.trim(),
       }));
       expect(style.decoration).toBe("none");
-      expect(style.after).toContain("›");
+      // Solo la flecha, sin restos de escapes (p. ej. «\0a0›»), y fuera del nombre accesible.
+      expect(style.after).toBe(`"›" / ""`);
+      expect(style.text.endsWith("→")).toBe(false);
       // La flecha es decorativa: no forma parte del nombre accesible.
       await expect(page.getByRole("link", { name: style.text, exact: true }).first()).toBeAttached();
       await link.focus();

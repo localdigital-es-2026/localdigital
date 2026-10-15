@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import { expect, test } from "@playwright/test";
 
 // RF-46 · El botón secundario solo se muestra cuando existe el número del asistente
@@ -18,4 +18,12 @@ test.describe("v1.5 · botón secundario", () => {
       expect(source, file).not.toMatch(/<ExternalLink href=\{demoUrl\}/);
     }
   });
+});
+
+test("ningún archivo de código o estilos contiene bytes nulos (evita caracteres rotos como «�a0›»)", () => {
+  const files = readdirSync("src", { recursive: true, withFileTypes: true })
+    .filter((entry) => entry.isFile() && /\.(tsx?|css)$/.test(entry.name))
+    .map((entry) => `${entry.parentPath}/${entry.name}`);
+  expect(files.length).toBeGreaterThan(10);
+  for (const file of files) expect(readFileSync(file).includes(0), file).toBe(false);
 });
