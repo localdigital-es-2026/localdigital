@@ -1,5 +1,5 @@
 import Footer from "@/components/layout/Footer";
-import { NavFull } from "@/components/layout/NavFull";
+import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SectionRenderer } from "@/components/sections/SectionRenderer";
 import { hub } from "@/content/hub";
 import { site } from "@/content/site";
@@ -25,9 +25,9 @@ export default function Home() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <NavFull links={hub.navLinks ?? []} />
+      <SiteHeader variant="hub" />
       <main id="contenido">
-        <SectionRenderer sections={hub.sections} darkSections={hub.darkSections} />
+        <SectionRenderer sections={hub.sections} />
       </main>
       <Footer />
     </>

@@ -37,7 +37,7 @@ export const site: SiteData = {
       slug: "academias",
       title: "¿Tienes una academia o una autoescuela?",
       summary:
-        "Hemos preparado una versión pensada para ti: matrículas, horarios, plazas y temporada de septiembre.",
+        "Una versión pensada para ti: matrículas, horarios, plazas y la temporada de septiembre.",
       linkText: "Ver la solución para academias",
     },
   ],

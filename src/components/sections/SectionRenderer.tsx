@@ -4,7 +4,6 @@ import { isPilotVisible, withoutPilot } from "@/lib/pilot";
 import { About } from "./About";
 import { ChatDemo } from "./ChatDemo";
 import { Closing } from "./Closing";
-import { DataPrivacy } from "./DataPrivacy";
 import { Faq } from "./Faq";
 import { Features } from "./Features";
 import { Guarantee } from "./Guarantee";
@@ -17,14 +16,11 @@ import { Sectors } from "./Sectors";
 import { Services } from "./Services";
 import { Steps } from "./Steps";
 
-/** Tonos de fondo: impacto en oscuro y el resto alternando blanco y gris (RF-44, D-23). */
-export function sectionTones(sections: Section[], darkSections: string[]): Tone[] {
-  let nextLight: Tone = "white";
+/** Tonos de fondo: portada en gris, el resto alternando blanco y gris y el piloto en azul (RF-48, D-23). */
+export function sectionTones(sections: Section[]): Tone[] {
+  let nextLight: Tone = "gray";
   return sections.map((section) => {
-    if (darkSections.includes(section.id)) {
-      nextLight = "white";
-      return "dark";
-    }
+    if (section.kind === "pilot") return "brand";
     const tone = nextLight;
     nextLight = tone === "white" ? "gray" : "white";
     return tone;
@@ -32,9 +28,9 @@ export function sectionTones(sections: Section[], darkSections: string[]): Tone[
 }
 
 /** Elige el componente de cada sección; las páginas solo pasan su lista (capa de páginas). */
-export function SectionRenderer({ sections, darkSections = [] }: { sections: Section[]; darkSections?: string[] }) {
+export function SectionRenderer({ sections }: { sections: Section[] }) {
   const visible = withoutPilot(sections, isPilotVisible(site.pilot));
-  const tones = sectionTones(visible, darkSections);
+  const tones = sectionTones(visible);
   return (
     <>
       {visible.map((section, index) => {
@@ -62,8 +58,6 @@ export function SectionRenderer({ sections, darkSections = [] }: { sections: Sec
             return <Sectors key={section.id} section={section} tone={tone} />;
           case "about":
             return <About key={section.id} section={section} tone={tone} />;
-          case "privacy":
-            return <DataPrivacy key={section.id} section={section} tone={tone} />;
           case "faq":
             return <Faq key={section.id} section={section} tone={tone} />;
           case "closing":

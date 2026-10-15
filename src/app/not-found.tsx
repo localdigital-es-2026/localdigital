@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Footer from "@/components/layout/Footer";
-import { NavMinimal } from "@/components/layout/NavMinimal";
+import { SiteHeader } from "@/components/layout/SiteHeader";
 
 export const metadata = {
   title: "Página no encontrada · Local Digital",
@@ -10,7 +10,7 @@ export const metadata = {
 export default function NotFound() {
   return (
     <>
-      <NavMinimal />
+      <SiteHeader variant="legal" />
       <main id="contenido" className="flex min-h-screen flex-col items-center justify-center gap-6 px-6 text-center">
         <h1>Esta página no existe</h1>
         <p>Puede que el enlace sea antiguo o que la dirección tenga una errata.</p>

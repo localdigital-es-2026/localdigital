@@ -11,14 +11,6 @@ const monthly = formatMonthly(prices.assistantMonthly);
 export const hub: PageContent = {
   slug: "",
   nav: "full",
-  darkSections: ["inicio", "problema", "cierre"],
-  navLinks: [
-    { label: "Qué hacemos", href: "#servicios" },
-    { label: "Cómo funciona", href: "#proceso" },
-    { label: "Precios", href: "#precios" },
-    { label: "Quiénes somos", href: "#sobre-nosotros" },
-    { label: "Preguntas", href: "#faq" },
-  ],
   seo: {
     title: "Local Digital · Asistentes de WhatsApp para negocios locales",
     description:
@@ -28,11 +20,22 @@ export const hub: PageContent = {
     {
       kind: "hero",
       id: "inicio",
-      eyebrow: "Asistentes de WhatsApp para negocios locales · España",
+      eyebrow: "Asistentes de WhatsApp para negocios locales",
       title: "Ningún cliente sin respuesta. Ni a las 11 de la noche.",
-      subtitle:
-        "Instalamos un asistente que responde a tus clientes en segundos, de día y de noche: precios, horarios, plazas y citas. Tú solo hablas con los que ya quieren comprar.",
-      ctaNote: "Gratis y sin compromiso · Te lo enseñamos funcionando con preguntas de tu negocio",
+      subtitle: "Un asistente contesta a tus clientes en segundos. Tú solo hablas con los que ya quieren comprar.",
+      ctaNote: "Gratis y sin compromiso",
+      secondaryCta: { label: "Ver precios", href: "#precios" },
+      chat: {
+        contact: "Tu negocio",
+        description:
+          "Ejemplo de conversación de WhatsApp: a las 23:04 un cliente pregunta si hay cita el sábado y el asistente le ofrece dos horas, reserva la de las 10:00 y le dice el precio.",
+        messages: [
+          { from: "cliente", time: "23:04", text: "Hola, ¿tenéis cita el sábado por la mañana?" },
+          { from: "asistente", time: "23:04", text: "¡Hola! Sí, el sábado quedan huecos a las 10:00 y a las 12:30. ¿Te reservo alguno?" },
+          { from: "cliente", time: "23:05", text: "A las 10, porfa. ¿Cuánto es?" },
+          { from: "asistente", time: "23:05", text: "Reservado: sábado a las 10:00. Son 18 €. Te mando un recordatorio el viernes." },
+        ],
+      },
       demoLinkText: "¿Prefieres probarlo ya? Escríbele a nuestro asistente por WhatsApp →",
     },
     {
@@ -42,18 +45,26 @@ export const hub: PageContent = {
       scenes: [
         {
           title: "Son las 22:00.",
-          body: "Alguien te pregunta el precio. Lo ves a las 9:00 y contestas. Ya se ha apuntado en otro sitio.",
+          body: "Te preguntan el precio. Contestas a las 9:00. Ya se ha apuntado en otro sitio.",
         },
         {
           title: "Las mismas cinco preguntas.",
-          body: "Precio, horario, si hay plazas, dónde estáis, cómo se paga. Treinta veces al día.",
+          body: "Precio, horario, plazas, dirección, forma de pago. Treinta veces al día.",
         },
         {
-          title: "Estás atendiendo a un cliente",
-          body: "y suena el teléfono. No puedes cogerlo. Ese cliente no vuelve a llamar.",
+          title: "Estás con un cliente",
+          body: "y suena el teléfono. Ese otro no vuelve a llamar.",
         },
       ],
       closing: "No es falta de clientes. Es falta de manos para atenderlos a tiempo.",
+      lockScreen: {
+        date: "martes, 14 de octubre",
+        time: "23:12",
+        title: "WhatsApp · 14 mensajes sin leer",
+        previews: ["¿Cuánto cuesta?", "¿Abrís mañana?", "¿Queda plaza?"],
+        more: "y 11 más",
+        description: "Pantalla de bloqueo de un móvil a las 23:12 con 14 mensajes de WhatsApp sin leer de clientes que preguntan precio, horario y plazas.",
+      },
     },
     {
       kind: "marquee",
@@ -71,33 +82,8 @@ export const hub: PageContent = {
       ],
     },
     {
-      kind: "features",
-      id: "servicios",
-      eyebrow: "Qué hacemos",
-      title: "Un asistente en tu WhatsApp que atiende como lo harías tú.",
-      intro:
-        "Lo preparamos con la información real de tu negocio. Habla con tu tono, no como un robot. Y cuando una conversación necesita a una persona, te la pasa.",
-      items: [
-        { title: "Contesta al momento", body: "precios, horarios, ubicación y dudas frecuentes." },
-        {
-          title: "Reserva citas o pide datos",
-          body: "(nombre, teléfono, qué necesita) y te los deja ordenados.",
-        },
-        { title: "Te avisa", body: "de cada cliente nuevo para que no se te escape ninguno." },
-        {
-          title: "Te pasa la conversación",
-          body: "cuando la pregunta es delicada o no sabe la respuesta.",
-        },
-      ],
-      control: {
-        title: "Tú tienes el control:",
-        body: `Tú decides qué contesta y qué no. Si cambias precios u horarios, lo actualizamos en menos de ${conditions.updateHours} horas laborables.`,
-      },
-      cta: true,
-    },
-    {
       kind: "services",
-      id: "que-ofrecemos",
+      id: "servicios",
       title: "Todo lo que necesitas para no perder clientes.",
       intro: "El asistente es lo principal. Si te falta lo básico, también lo hacemos.",
       blocks: [
@@ -106,7 +92,22 @@ export const hub: PageContent = {
           name: "Asistente de WhatsApp",
           title: "Contesta por ti, a cualquier hora.",
           price: `Desde ${setup} + ${monthly}`,
-          link: { label: "Cómo funciona", href: "#servicios" },
+          link: { label: "Ver precios", href: "#precios" },
+          featured: {
+            badge: "El más pedido",
+            features: [
+              "Contesta precios, horarios y dudas al momento.",
+              "Reserva citas o recoge los datos del cliente.",
+              "Te avisa de cada cliente nuevo.",
+              "Te pasa la conversación si no sabe la respuesta.",
+            ],
+            summary: {
+              label: "Ejemplo de resumen mensual",
+              items: ["Mensajes contestados", "Contactos para ti", "Fuera de tu horario"],
+              description:
+                "Ejemplo del resumen mensual que te enviamos: mensajes contestados, contactos que te pasa el asistente y cuántos llegaron fuera de tu horario.",
+            },
+          },
         },
         {
           icon: "web",
@@ -129,18 +130,13 @@ export const hub: PageContent = {
       id: "proceso",
       title: "Tres pasos. Tú sigues con tu negocio.",
       steps: [
-        {
-          title: "Demo de 15 minutos.",
-          body: "Te enseñamos el asistente funcionando con preguntas de tu sector. Sin compromiso.",
-        },
+        { title: "Demo de 15 minutos.", body: "Lo ves funcionar con preguntas de tu sector.", thumb: "call" },
         {
           title: `Lo instalamos en ${conditions.installDays} días laborables.`,
-          body: "Nos das la información de tu negocio y nosotros hacemos el resto. Lo pruebas antes de activarlo.",
+          body: "Nos das la información de tu negocio; el resto lo hacemos nosotros.",
+          thumb: "list",
         },
-        {
-          title: "Lo mantenemos cada mes.",
-          body: "Lo ajustamos según las preguntas reales de tus clientes y te enviamos un resumen mensual: cuántos mensajes ha contestado y cuántos contactos te ha pasado.",
-        },
+        { title: "Lo mantenemos cada mes.", body: "Lo ajustamos y te mandamos un resumen de resultados.", thumb: "chat" },
       ],
     },
     {
@@ -179,9 +175,9 @@ export const hub: PageContent = {
       kind: "pilot",
       id: "piloto",
       eyebrow: "Plazas de lanzamiento",
-      title: `Buscamos ${pilot.total} negocios para nuestros primeros casos.`,
-      body: `Somos una agencia nueva y preferimos decirlo claro. Por eso ofrecemos la instalación a mitad de precio, ${formatEuros(prices.pilotSetup)} en lugar de ${setup}, a los primeros ${pilot.total} negocios que confíen en nosotros.`,
-      asksIntro: "A cambio, si estás contento con el resultado, te pediremos:",
+      title: `Instalación a mitad de precio para nuestros ${pilot.total} primeros negocios.`,
+      body: `${formatEuros(prices.pilotSetup)} en lugar de ${setup}. Somos una agencia nueva y preferimos decirlo claro.`,
+      asksIntro: "A cambio, si te gusta el resultado, te pediremos:",
       asks: ["Una opinión que podamos publicar.", "Una reseña en Google."],
     },
     { kind: "sectors", id: "sectores" },
@@ -190,23 +186,12 @@ export const hub: PageContent = {
       id: "sobre-nosotros",
       title: "Somos Beatriz y Mauri.",
       body: [
-        "Somos dos desarrolladores y las dos personas detrás de Local Digital. No hay comerciales ni intermediarios: hablas con quien construye tu asistente.",
-        "Montamos Local Digital porque vimos negocios muy buenos perdiendo clientes por no llegar a contestar a tiempo. Eso tiene arreglo, y no hace falta que entiendas de tecnología.",
+        "Dos desarrolladores y las dos personas detrás de Local Digital. Sin comerciales ni intermediarios: hablas con quien construye tu asistente.",
       ],
       commitments: [
-        { title: "Trato directo.", body: "Nos escribes a nosotros, no a un centro de soporte." },
-        { title: "Te hablamos claro.", body: "Si la IA no te va a ayudar, te lo diremos en la demo." },
-        { title: "Respuesta en menos de 24 h.", body: "Siempre." },
-      ],
-    },
-    {
-      kind: "privacy",
-      id: "datos",
-      title: "Tus datos, protegidos.",
-      points: [
-        "Cumplimos el RGPD y firmamos contigo el contrato de tratamiento de datos.",
-        "Los datos de tus clientes son tuyos y no se usan para entrenar ninguna IA.",
-        "Tú decides qué información puede dar el asistente.",
+        { title: "Trato directo", body: "Nos escribes a nosotros." },
+        { title: "Te hablamos claro", body: "Si no te ayuda, te lo decimos." },
+        { title: "Menos de 24 h", body: "Siempre respondemos." },
       ],
     },
     {
@@ -231,6 +216,14 @@ export const hub: PageContent = {
           a: "Solo contesta con la información que tú nos das. Cuando no sabe algo, no se lo inventa: te pasa la conversación a ti.",
         },
         {
+          q: "¿Qué pasa con los datos de mis clientes?",
+          a: "Cumplimos el RGPD y firmamos contigo el contrato de tratamiento de datos. Los datos de tus clientes son tuyos y no se usan para entrenar ninguna IA. Tú decides qué información puede dar el asistente.",
+        },
+        {
+          q: "¿Puedo cambiar lo que contesta?",
+          a: `Sí. Tú decides qué contesta y qué no. Si cambias precios u horarios, lo actualizamos en menos de ${conditions.updateHours} horas laborables.`,
+        },
+        {
           q: "¿Tengo que saber de tecnología?",
           a: "No. Nosotros lo instalamos y lo mantenemos. Tú sigues usando tu WhatsApp como siempre.",
         },
@@ -248,7 +241,7 @@ export const hub: PageContent = {
       kind: "closing",
       id: "cierre",
       title: "Mira cómo contestaría tu negocio.",
-      body: "En 15 minutos te enseñamos el asistente respondiendo preguntas de tu sector. Sin compromiso y sin tecnicismos.",
+      body: "15 minutos, con preguntas de tu sector. Sin compromiso y sin tecnicismos.",
     },
   ],
 };

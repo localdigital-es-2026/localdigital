@@ -4,8 +4,8 @@ import { ExternalLink } from "./ExternalLink";
 export const CTA_LABEL = "Reserva una demo de 15 min";
 
 /**
- * Única llamada a la acción principal de la web (RF-01). Cápsula al estilo de apple.com/services
- * (RF-46): sus colores salen del tono de la sección, así que se invierte sola sobre negro (CL-13).
+ * Única llamada a la acción principal de la web (RF-01). Cápsula azul de Apple (RF-48): sus colores
+ * salen del tono de la sección, así que en la banda azul del piloto pasa a blanca (RF-56).
  */
 export function CtaButton({ className = "" }: { className?: string }) {
   return (

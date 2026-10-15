@@ -1,20 +1,27 @@
 @import "tailwindcss";
 
-/* Paleta v1.2 · estilo profesional (RF-28). Contrastes en plan.md §10.2. */
+/* Paleta v1.8 · línea clara de Apple con botones azules (RF-48). */
 :root {
   --ld-white: #ffffff;
   --ld-gray: #f5f5f7;
   --ld-dark: #000000;
   --ld-brand: #0d4964;
+  --ld-blue: #0071e3;
+  --ld-blue-text: #0058b0;
+  --ld-link: #0066cc;
+  --ld-tint-green: #e9f8ee;
+  --ld-tint-blue: #e8f1fd;
+  --ld-tint-warm: #fdf1e3;
 
-  /* Tono por defecto: sección blanca. Cada sección puede cambiarlo con data-tone (RF-44). */
+  /* Tono por defecto: sección blanca. Cada sección puede cambiarlo con data-tone (RF-48). */
   --tone-bg: var(--ld-white);
   --tone-card: var(--ld-gray);
   --tone-fg: #1d1d1f;
   --tone-muted: #6e6e73;
   --tone-line: #d2d2d7;
-  --tone-icon: var(--ld-brand);
-  --tone-btn-bg: #1d1d1f;
+  --tone-icon: var(--ld-blue);
+  --tone-link: var(--ld-link);
+  --tone-btn-bg: var(--ld-blue);
   --tone-btn-fg: var(--ld-white);
 }
 
@@ -23,6 +30,20 @@
   --tone-card: var(--ld-white);
 }
 
+/* Banda del programa piloto: azul con el botón en su variante blanca (RF-56). */
+[data-tone="brand"] {
+  --tone-bg: var(--ld-blue);
+  --tone-card: rgba(255, 255, 255, 0.12);
+  --tone-fg: var(--ld-white);
+  --tone-muted: rgba(255, 255, 255, 0.85);
+  --tone-line: rgba(255, 255, 255, 0.35);
+  --tone-icon: var(--ld-white);
+  --tone-link: var(--ld-white);
+  --tone-btn-bg: var(--ld-white);
+  --tone-btn-fg: var(--ld-blue-text);
+}
+
+/* Sin uso desde v1.8 (no hay secciones ni cabecera negras). */
 [data-tone="dark"] {
   --tone-bg: var(--ld-dark);
   --tone-card: #1d1d1f;
@@ -47,7 +68,12 @@
   --color-muted: var(--tone-muted);
   --color-line: var(--tone-line);
   --color-secondary: var(--tone-icon);
-  --color-accent: var(--ld-brand);
+  --color-accent: var(--ld-blue);
+  --color-blue: var(--ld-blue);
+  --color-link: var(--tone-link);
+  --color-tint-green: var(--ld-tint-green);
+  --color-tint-blue: var(--ld-tint-blue);
+  --color-tint-warm: var(--ld-tint-warm);
   --color-btn: var(--tone-btn-bg);
   --color-on-btn: var(--tone-btn-fg);
 
@@ -172,10 +198,11 @@ section[id] {
   }
 }
 
-/* v1.5 · enlaces de texto al estilo «Learn more ›» (RF-46, D-32): la flecha es decorativa
-   y queda fuera del nombre accesible gracias al texto alternativo vacío de `content`. */
+/* Enlaces de texto «… ›» (v1.5, RF-48): la flecha es decorativa y queda fuera del nombre
+   accesible gracias al texto alternativo vacío de `content`. Azul de enlace de Apple (v1.8). */
 .ld-more {
-  font-weight: 600;
+  color: var(--tone-link);
+  font-weight: 500;
   text-decoration: none;
 }
 .ld-more::after {
@@ -185,4 +212,9 @@ section[id] {
 .ld-more:hover,
 .ld-more:focus-visible {
   text-decoration: underline;
+}
+
+/* Con el menú móvil abierto, el fondo no se desplaza (RF-51). */
+html.ld-menu-open {
+  overflow: hidden;
 }

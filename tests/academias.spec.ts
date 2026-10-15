@@ -48,20 +48,13 @@ test.describe("Academias · página", () => {
     expect(ids).toEqual(academias.sections.map((s) => s.id));
   });
 
-  test("RF-16 · el menú solo tiene el logo (al HUB), sin botón (v1.6)", async ({ page }) => {
+  test("RF-16 · el menú tiene el logo (al HUB) y el botón principal (v1.8)", async ({ page }) => {
     await page.goto("/academias");
     const header = page.locator("header");
-    await expect(header.getByRole("link")).toHaveCount(1);
+    await expect(header.getByRole("link")).toHaveCount(2);
     await expect(header.getByRole("link", { name: "Local Digital" })).toHaveAttribute("href", "/");
-    await expect(header.locator("[data-cta]")).toHaveCount(0);
+    await expect(header.locator("[data-cta='primary']")).toHaveCount(1);
   });
-
-  for (const path of ["/", "/academias", "/aviso-legal", "/politica-de-privacidad", "/politica-de-cookies", "/no-existe"]) {
-    test(`RF-11 · RF-16 · ninguna cabecera lleva botón de reserva: ${path}`, async ({ page }) => {
-      await page.goto(path);
-      await expect(page.locator("header [data-cta]")).toHaveCount(0);
-    });
-  }
 
   test("RF-19 · el pie tiene «Volver a localdigital.es» hacia el HUB", async ({ page }) => {
     await page.goto("/academias");
@@ -103,7 +96,7 @@ test.describe("Coherencia entre páginas", () => {
         monthly: text.includes("75 €/mes"),
         web: /449 €/.test(text),
         pilot: text.includes("190 € en lugar de 375 €"),
-        seats: text.includes("Quedan 3 plazas."),
+        seats: text.includes("Quedan 3 de 3 plazas."),
         vat: text.includes("IVA no incluido"),
       };
     };

@@ -4,7 +4,7 @@ const PAGES = ["/", "/aviso-legal"];
 
 test.describe("Paleta v1.2", () => {
   for (const path of PAGES) {
-    test(`RF-28 · ${path} usa la paleta v1.2 y el botón de RF-46`, async ({ page }) => {
+    test(`RF-28 · ${path} usa la paleta clara y el botón azul de RF-48`, async ({ page }) => {
       await page.goto(path);
       const colors = await page.evaluate(() => {
         const root = getComputedStyle(document.documentElement);
@@ -15,7 +15,6 @@ test.describe("Paleta v1.2", () => {
           background: body.backgroundColor,
           text: body.color,
           brand: root.getPropertyValue("--ld-brand").trim().toLowerCase(),
-          dark: root.getPropertyValue("--ld-dark").trim().toLowerCase(),
           gray: root.getPropertyValue("--ld-gray").trim().toLowerCase(),
           ctaBg: c?.backgroundColor,
           ctaText: c?.color,
@@ -25,12 +24,11 @@ test.describe("Paleta v1.2", () => {
       expect(colors.background).toBe("rgb(255, 255, 255)");
       expect(colors.text).toBe("rgb(29, 29, 31)");
       expect(colors.brand).toBe("#0d4964");
-      expect(colors.dark).toMatch(/^#000(000)?$/); // el minificador de CSS escribe #000
       expect(colors.gray).toBe("#f5f5f7");
-      // v1.6: las páginas legales no llevan botón; en / el primero está en la portada negra (RF-46).
+      // v1.8: las páginas legales no llevan botón en el contenido; en / el primero es azul (RF-48).
       if (path === "/") {
-        expect(colors.ctaBg).toBe("rgb(245, 245, 247)");
-        expect(colors.ctaText).toBe("rgb(29, 29, 31)");
+        expect(colors.ctaBg).toBe("rgb(0, 113, 227)");
+        expect(colors.ctaText).toBe("rgb(255, 255, 255)");
         expect(colors.ctaBorder).toBe("0px");
       } else {
         expect(colors.ctaBg).toBeUndefined();

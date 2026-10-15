@@ -37,46 +37,6 @@ test.describe("v1.2 · escala tipográfica", () => {
   }
 });
 
-test.describe("v1.2 · fondos por sección", () => {
-  const DARK = "rgb(0, 0, 0)";
-  const LIGHT = ["rgb(255, 255, 255)", "rgb(245, 245, 247)"];
-  const CASES = [
-    { path: "/", dark: ["inicio", "problema", "cierre"] },
-    { path: "/academias", dark: ["inicio", "cierre"] },
-  ];
-
-  for (const { path, dark } of CASES) {
-    test(`RF-44 · ${path}: impacto en negro y el resto alterna blanco y gris`, async ({ page }) => {
-      await page.goto(path);
-      const sections = await page.locator("main > section[id]").evaluateAll((els) =>
-        els.map((el) => ({ id: el.id, bg: getComputedStyle(el).backgroundColor, fg: getComputedStyle(el).color })),
-      );
-      let previousLight: string | null = null;
-      for (const s of sections) {
-        if (dark.includes(s.id)) {
-          expect(s.bg, s.id).toBe(DARK);
-          expect(s.fg, s.id).toBe("rgb(245, 245, 247)");
-          previousLight = null;
-        } else {
-          expect(LIGHT, s.id).toContain(s.bg);
-          expect(s.fg, s.id).toBe("rgb(29, 29, 31)");
-          if (previousLight) expect(s.bg, `${s.id} repite fondo`).not.toBe(previousLight);
-          previousLight = s.bg;
-        }
-      }
-    });
-  }
-
-  test("CL-13 · el botón principal se invierte en una sección negra (relleno claro, sin borde)", async ({ page }) => {
-    await page.goto("/");
-    const style = await page.locator("section#cierre [data-cta='primary']").evaluate((el) => {
-      const s = getComputedStyle(el);
-      return { bg: s.backgroundColor, fg: s.color, border: s.borderTopWidth };
-    });
-    expect(style).toEqual({ bg: "rgb(245, 245, 247)", fg: "rgb(29, 29, 31)", border: "0px" });
-  });
-});
-
 test.describe("v1.3 · logotipo gris 3D", () => {
   for (const path of ["/", "/academias", "/aviso-legal", "/politica-de-privacidad", "/politica-de-cookies", "/no-existe"]) {
     test(`RF-42 · cabecera y pie de ${path} muestran el logo 3D (≤ 30 KB) y «Local Digital»`, async ({ page, request, baseURL }) => {
@@ -154,95 +114,11 @@ test.describe("v1.3 · logotipo gris 3D", () => {
   });
 });
 
-test.describe("v1.4 · cabecera negra", () => {
-  const BLACK = "rgb(0, 0, 0)";
-  const LIGHT_TEXT = "rgb(245, 245, 247)";
-
-  for (const path of ["/", "/academias", "/aviso-legal", "/no-existe"]) {
-    test(`RF-45 · ${path}: cabecera negra con texto claro`, async ({ page }) => {
-      await page.goto(path);
-      const header = page.locator("header").first();
-      const styles = await header.evaluate((el) => ({
-        bg: getComputedStyle(el).backgroundColor,
-        fg: getComputedStyle(el).color,
-        links: [...el.querySelectorAll("a:not([data-cta]), summary")]
-          .filter((a) => (a as HTMLElement).offsetParent !== null)
-          .map((a) => getComputedStyle(a).color),
-      }));
-      expect(styles.bg).toBe(BLACK);
-      expect(styles.fg).toBe(LIGHT_TEXT);
-      for (const color of styles.links) expect(color).toBe(LIGHT_TEXT);
-    });
-  }
-
-  test("RF-45 · sigue negra al desplazarse sobre una sección blanca", async ({ page }) => {
-    await page.goto("/");
-    const white = page.locator("main > section[id]").filter({ has: page.locator("h2") });
-    const ids = await white.evaluateAll((els) =>
-      els.filter((el) => getComputedStyle(el).backgroundColor === "rgb(255, 255, 255)").map((el) => el.id),
-    );
-    expect(ids.length).toBeGreaterThan(0);
-    await page.locator(`#${ids[0]}`).scrollIntoViewIfNeeded();
-    const bg = await page.locator("header").first().evaluate((el) => getComputedStyle(el).backgroundColor);
-    expect(bg).toBe(BLACK);
-  });
-
-  test("RF-45 · en móvil el menú desplegado es negro con enlaces claros", async ({ page }, testInfo) => {
-    test.skip(testInfo.project.name !== "mobile");
-    await page.goto("/");
-    await page.locator("header summary").click();
-    const menu = page.locator("header details nav");
-    await expect(menu).toBeVisible();
-    const styles = await menu.evaluate((el) => ({
-      bg: getComputedStyle(el).backgroundColor,
-      link: getComputedStyle(el.querySelector("a")!).color,
-    }));
-    expect(styles.bg).toBe(BLACK);
-    expect(styles.link).toBe(LIGHT_TEXT);
-  });
-});
-
-test.describe("v1.5 · botones de apple.com/services", () => {
-  for (const { path, needsLight } of [{ path: "/", needsLight: true }, { path: "/academias", needsLight: false }]) {
-    test(`RF-46 · RF-01 · ${path}: botón principal en cápsula, invertido según el fondo`, async ({ page }) => {
-      await page.goto(path);
-      const buttons = await page.locator("[data-cta='primary']").evaluateAll((els) =>
-        els
-          .filter((el) => (el as HTMLElement).offsetParent !== null)
-          .map((el) => {
-            const s = getComputedStyle(el);
-            const box = el.getBoundingClientRect();
-            const container = el.closest("section, header")!;
-            return {
-              where: container.id || container.tagName,
-              containerBg: getComputedStyle(container).backgroundColor,
-              bg: s.backgroundColor,
-              fg: s.color,
-              border: s.borderTopWidth,
-              radius: parseFloat(s.borderTopLeftRadius),
-              height: box.height,
-            };
-          }),
-      );
-      expect(buttons.length).toBeGreaterThan(1);
-      let light = 0;
-      for (const b of buttons) {
-        const onBlack = b.containerBg === "rgb(0, 0, 0)";
-        if (!onBlack) light++;
-        expect(b.bg, b.where).toBe(onBlack ? "rgb(245, 245, 247)" : "rgb(29, 29, 31)");
-        expect(b.fg, b.where).toBe(onBlack ? "rgb(29, 29, 31)" : "rgb(255, 255, 255)");
-        expect(b.border, b.where).toBe("0px");
-        expect(b.radius, b.where).toBeGreaterThanOrEqual(22);
-        expect(b.height, b.where).toBeGreaterThanOrEqual(44);
-      }
-      // En /academias todos los botones están en la cabecera o en secciones negras.
-      if (needsLight) expect(light, "algún botón sobre fondo claro").toBeGreaterThan(0);
-    });
-  }
-
+// v1.8: los colores del botón los comprueba tests/v18.spec.ts (RF-48); aquí queda la forma de los enlaces.
+test.describe("v1.5 · enlaces de texto", () => {
   test("RF-46 · RF-38 · los enlaces de servicios y sectores son «… ›» sin subrayado y se subrayan con el foco", async ({ page }) => {
     await page.goto("/");
-    const links = page.locator("section#que-ofrecemos article > a, section#sectores a");
+    const links = page.locator("main a.ld-more");
     const count = await links.count();
     expect(count).toBeGreaterThan(3);
     for (let i = 0; i < count; i++) {

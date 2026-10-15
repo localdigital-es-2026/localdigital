@@ -12,7 +12,6 @@ const monthly = formatMonthly(prices.assistantMonthly);
 export const academias: PageContent = {
   slug: "academias",
   nav: "minimal",
-  darkSections: ["inicio", "cierre"],
   seo: {
     title: "Asistente de WhatsApp para academias y autoescuelas · Local Digital",
     description: `Contesta precios, horarios y plazas al instante, también de noche y en septiembre. Desde ${setup} + ${monthly}, sin permanencia. Reserva una demo gratis de 15 minutos.`,
@@ -25,6 +24,18 @@ export const academias: PageContent = {
       title: "Septiembre sin 200 WhatsApps sin contestar.",
       subtitle: `Un asistente que responde precios, horarios, niveles y plazas en segundos, de día y de noche. Apunta a los interesados y te los deja listos para matricular. Listo en ${conditions.installDays} días laborables.`,
       ctaNote: "Gratis y sin compromiso · Te lo enseñamos con las preguntas que te hacen tus alumnos",
+      secondaryCta: { label: "Ver precios", href: "#precios" },
+      chat: {
+        contact: "Tu academia",
+        description:
+          "Ejemplo de conversación de WhatsApp: a las 22:47 una persona pregunta el precio del curso de inglés B1 y si quedan plazas; el asistente responde y le reserva una prueba de nivel.",
+        messages: [
+          { from: "cliente", time: "22:47", text: "Hola, ¿cuánto cuesta el curso de inglés B1 y queda plaza en septiembre?" },
+          { from: "asistente", time: "22:47", text: "¡Hola! El B1 son 65 €/mes. En septiembre quedan plazas los martes y jueves a las 18:00. ¿Quieres reservar una prueba de nivel gratis?" },
+          { from: "cliente", time: "22:48", text: "Sí, el martes." },
+          { from: "asistente", time: "22:48", text: "Hecho: prueba de nivel el martes a las 18:00. Te avisamos el lunes." },
+        ],
+      },
     },
     {
       kind: "problem",
