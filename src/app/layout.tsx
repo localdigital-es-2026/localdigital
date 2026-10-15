@@ -4,7 +4,11 @@ import "./globals.css";
 import { SkipLink } from "@/components/layout/SkipLink";
 import { hub } from "@/content/hub";
 import { site } from "@/content/site";
+import { validateSiteData } from "@/content/validate";
 
+
+// Sin URL de reservas o sin datos de la titular la compilación falla y no se puede publicar (RF-20, RF-35).
+validateSiteData(site);
 
 const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-inter", axes: ["opsz"] });
 

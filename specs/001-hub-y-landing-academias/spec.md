@@ -221,13 +221,13 @@ Los RNF se aceptan con: RNF-01 auditoría ≥ 90 ×4 en móvil y en escritorio; 
 
 ## 9. Preguntas abiertas
 
-- **P-01 · Enlaces externos (parcial):** resuelto el comportamiento (RF-02, RF-34, RF-35). Pendiente: la URL de Calendly, obligatoria antes de publicar. El número del asistente de ejemplo se añadirá cuando exista.
+- **P-01 · Enlaces externos (parcial):** resuelto el comportamiento (RF-02, RF-34, RF-35). Pendiente: la URL de Calendly, obligatoria antes de publicar. El número del asistente de ejemplo se añadirá cuando exista. URL de Calendly configurada el 2026-10-14; falta solo el número del asistente de ejemplo.
 - ~~P-02~~ · Resuelta: 3D suave solo en escritorio, con imagen fija en móvil, reducir movimiento, sin soporte 3D o sin JavaScript (RF-29, RF-33).
 - ~~P-03~~ · Resuelta: `/portfolio` devuelve 404 ahora y se reutilizará en una spec futura como escaparate de webs (RF-32, Fuera de alcance).
 - ~~P-04~~ · Resuelta: contador único compartido, inicial 3; a 0 se oculta el piloto en todas las páginas (RF-04, RF-05).
 - ~~P-05~~ · Resuelta: se muestran los dos tipos a la vez, con etiquetas (RF-18).
 - ~~P-06~~ · Resuelta: HUB «Ningún cliente sin respuesta. Ni a las 11 de la noche.»; academias «Septiembre sin 200 WhatsApps sin contestar.» (actualizado en los documentos de contenido).
-- **P-07 · Datos de la titular (parcial):** forma jurídica resuelta (Beatriz, autónoma). Pendiente que Beatriz facilite nombre completo, NIF y domicilio profesional antes de publicar; sin ellos no se puede cumplir RF-20.
+- ~~P-07~~ · Resuelta: titular Beatriz Palomo del Pozo, autónoma; NIF y domicilio en `site.ts` (2026-10-15).
 - ~~P-08~~ · Resuelta: 12 meses desde el último contacto para no clientes; plazos legales para clientes (RF-20).
 - ~~P-09~~ · Resuelta: ilustraciones planas con la paleta A en lugar de fotos (RF-36); sustitución por fotos reales anotada como mejora futura.
 - ~~P-10~~ · Resuelta: «junio o julio» (actualizado en `contenido/academias.md`).

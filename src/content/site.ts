@@ -24,12 +24,12 @@ export const site: SiteData = {
     updateHours: 24,
   },
   pilot: { total: 3, remaining: 3 },
-  // Pendiente: Beatriz facilitará estos datos antes de publicar (P-07).
+  // Titular de la web (aviso legal, RF-20). Datos facilitados el 2026-10-15 (P-07).
   owner: {
-    fullName: "",
-    nif: "",
-    address: "",
-    email: "",
+    fullName: "Beatriz Palomo del Pozo",
+    nif: "11847771-B",
+    address: "C. Cercedilla, 7, Loc 2, 28400 Collado Villalba, Madrid",
+    email: "localdigital.es@gmail.com",
   },
   retention: { leadsMonths: 12, mercantileYears: 6, fiscalYears: 4 },
   activeSectors: [

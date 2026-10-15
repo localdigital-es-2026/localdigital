@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import { expect, test } from "@playwright/test";
 import { site } from "../src/content/site";
 import { SiteDataError, validateSiteData } from "../src/content/validate";
@@ -74,5 +75,17 @@ test.describe("Validación de datos", () => {
   test("las plazas libres del piloto no pueden superar el total ni ser negativas", () => {
     expect(fieldOf(() => validateSiteData(completeData({ pilot: { total: 3, remaining: 4 } })))).toBe("pilot.remaining");
     expect(fieldOf(() => validateSiteData(completeData({ pilot: { total: 3, remaining: -1 } })))).toBe("pilot.remaining");
+  });
+});
+
+test.describe("Validación al compilar (T-15)", () => {
+  test("RF-20 · RF-35 · los datos reales de site.ts están completos", () => {
+    expect(() => validateSiteData(site)).not.toThrow();
+  });
+
+  test("RF-35 · la plantilla común valida los datos, así que compilar con datos incompletos falla", () => {
+    const layout = readFileSync("src/app/layout.tsx", "utf8");
+    expect(layout).toMatch(/import \{ validateSiteData \} from "@\/content\/validate";/);
+    expect(layout).toMatch(/^validateSiteData\(site\);$/m);
   });
 });

@@ -39,8 +39,8 @@
 
 ## Bloque F · Legal, SEO y datos
 
-- [ ] T-14 · Páginas legales desde `legal.ts`. Tests: las tres existen; incluyen titular, NIF, Calendly, WhatsApp, Netlify como encargado, plazos (12 meses / 6 años / 4 años), derechos y la AEPD; no contienen «[COMPLETAR», «formulario», «Resend» ni «Google Tag Manager» · cubre RF-20
-- [ ] T-15 · Conectar la validación de datos a la compilación. Test: compilar con la URL de reservas vacía falla e indica el dato; con datos completos compila · cubre RF-35, RF-20
+- [x] T-14 · Páginas legales desde `legal.ts`. Tests: las tres existen; incluyen titular, NIF, Calendly, WhatsApp, Netlify como encargado, plazos (12 meses / 6 años / 4 años), derechos y la AEPD; no contienen «[COMPLETAR», «formulario», «Resend» ni «Google Tag Manager» · cubre RF-20
+- [x] T-15 · Conectar la validación de datos a la compilación. Test: compilar con la URL de reservas vacía falla e indica el dato; con datos completos compila · cubre RF-35, RF-20
 - [x] T-16 · SEO: metadatos por página, imagen para redes generada (paleta A), `sitemap`, `robots` y JSON-LD del HUB. Tests: título y descripción en cada página; la imagen existe y mide 1200×630; el sitemap tiene las 5 direcciones; robots lo referencia; JSON-LD válido con imagen existente · cubre RF-21, RF-22, RF-23, RF-36
 - [x] T-17 · `llms.txt` generado desde los datos. Test: responde; menciona el asistente, academias y +34 603 03 80 50; no contiene otros números de teléfono · cubre RF-24
 
